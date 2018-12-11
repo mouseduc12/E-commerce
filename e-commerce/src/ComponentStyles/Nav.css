@@ -1,0 +1,101 @@
+.nav{
+    font-family: "Roboto";
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    background-color: #232f3e;
+    color: white;
+}
+
+.first-nav-row{
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+}
+.brand{
+    width: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bars button{
+    font-size: 20px;
+    border: none;
+    background-color: #232f3e;
+    cursor: pointer;
+    animation: mySecondMove;
+    animation-duration: 1s;
+    transition-timing-function: linear;
+}
+.icon{
+    color: white;
+}
+@keyframes mySecondMove{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1
+    }
+}
+
+.search-shop{
+    width: 70%;
+}
+.cart{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-shop{
+    display: flex;
+    align-items: center;
+}
+.search-shop input{
+    height: 40px;
+    width: 95%;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.search-shop button{
+    height: 40px;
+    width: 5%;
+    border: none;
+    font-size: 20px;
+    background: orange;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.cart button{
+    font-size: 25px;
+    height: 40px;
+    color:white;
+    background: #232f3e;
+    border: none;
+}
+
+.second-nav-row{
+    color: rgba(255,255,255,1);
+    display: flex;
+    height: 50px;
+    align-items: center;
+    font-size: 17px;
+    justify-content: space-evenly;
+    width: 45%;
+    animation: myMove;
+    animation-duration: 1s;
+    transition-timing-function: linear;
+    -webkit-font-smoothing: antialiased; 
+}
+@keyframes myMove{
+    from{
+        height: 0;
+    } to{
+        height: 50px;
+    }
+}
+.second-nav-row li{
+    cursor: pointer;
+}
