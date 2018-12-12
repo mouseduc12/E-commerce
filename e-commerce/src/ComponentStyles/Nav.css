@@ -6,6 +6,11 @@
     background-color: #232f3e;
     color: white;
 }
+.brand h1{
+    color: goldenrod;
+    letter-spacing: 2.5px;
+    cursor: pointer;
+}
 
 .first-nav-row{
     display: flex;
@@ -46,7 +51,7 @@
     width: 10%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .search-shop{
     display: flex;
@@ -74,6 +79,7 @@
     color:white;
     background: #232f3e;
     border: none;
+    cursor: pointer;
 }
 
 .second-nav-row{
@@ -83,7 +89,7 @@
     align-items: center;
     font-size: 17px;
     justify-content: space-evenly;
-    width: 45%;
+    width: 52%;
     animation: myMove;
     animation-duration: 1s;
     transition-timing-function: linear;
@@ -98,4 +104,7 @@
 }
 .second-nav-row li{
     cursor: pointer;
+}
+.second-nav-row li:hover{
+    color: #d4ab92
 }

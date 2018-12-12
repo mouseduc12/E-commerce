@@ -54,13 +54,14 @@ class Nav extends React.Component {
                                 : <button onClick={this.checkNav} style={{ display: window.scrollY < 30 && "none" }}><FontAwesomeIcon icon="times" className="icon" /></button>
                             }
                         </div>
-                        <h1>TALITZ</h1>
+                        <h1>SUIT<i>'s</i></h1>
                     </div>
                     <form className="search-shop">
                         <input type="text" />
                         <button><FontAwesomeIcon icon="search" /></button>
                     </form>
                     <div className="cart">
+                        <button><FontAwesomeIcon icon="heart"/></button>
                         <button><FontAwesomeIcon icon="shopping-cart" /></button>
                     </div>
                 </div>
@@ -70,6 +71,7 @@ class Nav extends React.Component {
                         <li>Blog</li>
                         <li>About</li>
                         <li>Contact</li>
+                        <li>Login</li>
                     </ul>
                 }
             </div>
