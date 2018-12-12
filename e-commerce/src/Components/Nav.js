@@ -20,7 +20,7 @@ class Nav extends React.Component {
 
     handleScroll = () => {
         console.log(window.scrollY)
-        if (window.scrollY > 30) {
+        if (window.scrollY > 100) {
             this.setState({
                 isScroll: true,
                 openNav: false

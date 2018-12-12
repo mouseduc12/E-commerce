@@ -33,10 +33,14 @@ class Header extends React.Component {
             <div>
                 <Nav addMargin={this.state.addMargin} />
                 {this.state.slide === 0 &&
-                    <div className="image" style={{ backgroundImage: `url("https://ik.imagekit.io/ts/s/files/1/0070/1922/t/12/assets/slide7_sm.progressive.jpg?17753354039077565496")`}}>
+                    <div className="image" id="first-slider">
                         <div>
                             <button>Hello World</button>
                             <button>Nothing Left</button>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon="arrow-left" />
+                            <FontAwesomeIcon icon="arrow-right" />
                         </div>
                         <div>
                             <FontAwesomeIcon icon="circle" style={{ color: "darkCyan" }} />
@@ -47,10 +51,14 @@ class Header extends React.Component {
                     </div>
                 }
                 {this.state.slide === 1 &&
-                    <div className="image">
+                    <div className="image" id="second-slider">
                         <div>
                             <button>Hello World</button>
                             <button>Nothing Left</button>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon="arrow-left" />
+                            <FontAwesomeIcon icon="arrow-right" />
                         </div>
                         <div>
                             <FontAwesomeIcon icon="circle" />
@@ -61,10 +69,14 @@ class Header extends React.Component {
                     </div>
                 }
                 {this.state.slide === 2 &&
-                    <div className="image">
+                    <div className="image" id="third-slider">
                         <div>
                             <button>Hello World</button>
                             <button>Nothing Left</button>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon="arrow-left" />
+                            <FontAwesomeIcon icon="arrow-right" />
                         </div>
                         <div>
                             <FontAwesomeIcon icon="circle" />
@@ -75,10 +87,14 @@ class Header extends React.Component {
                     </div>
                 }
                 {this.state.slide === 3 &&
-                    <div className="image">
+                    <div className="image" id="fourth-slider">
                         <div>
                             <button>Hello World</button>
                             <button>Nothing Left</button>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon="arrow-left" />
+                            <FontAwesomeIcon icon="arrow-right" />
                         </div>
                         <div>
                             <FontAwesomeIcon icon="circle" />

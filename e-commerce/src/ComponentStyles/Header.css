@@ -5,3 +5,15 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+#first-slider{
+    background-image: url("../images/pexels-photo-999267.jpeg")
+}
+#second-slider{
+    background-image: url("../images/professional.jpeg")
+}
+#third-slider{
+    background-image: url("../images/s-professional.jpeg")
+}
+#fourth-slider{
+    background-image: url("../images/mens-suit-patterns-windowpane.jpg")
+}
