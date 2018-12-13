@@ -1,0 +1,26 @@
+.benefits{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(1,1,1,0.2);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.benefit{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 25%;
+}
+.icons{
+    font-size: 35px;
+}
+.ad{
+    width: 70%;
+    height: 100%;
+    line-height: 25px;
+}
+.ad h2{
+    line-height: 35px;
+}
+.ad p{
+    font-size: 18px;
+}

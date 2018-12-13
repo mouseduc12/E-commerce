@@ -1,10 +1,11 @@
 import React from "react"
+import Events from  "./Events"
 
 class GeneralShop extends React.Component{
     render(){
         return(
             <div>
-                <h1>Hello World</h1>
+                <Events />
             </div>
         )
     }
