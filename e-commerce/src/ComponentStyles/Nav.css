@@ -1,13 +1,13 @@
 .nav{
     font-family: "Roboto";
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 60px;
     width: 100%;
     background-color: #232f3e;
     color: white;
 }
 .brand h1{
-    color: goldenrod;
+    color: khaki;
     letter-spacing: 2.5px;
     cursor: pointer;
 }
@@ -89,7 +89,8 @@
     align-items: center;
     font-size: 17px;
     justify-content: space-evenly;
-    width: 52%;
+    width: 45%;
+    font-weight: bold;
     animation: myMove;
     animation-duration: 1s;
     transition-timing-function: linear;

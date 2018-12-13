@@ -1,14 +1,20 @@
 import React from "react"
 import Nav from "./Nav"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { TransitionGroup, CSSTransition } from "react-transition-group"
 import "../ComponentStyles/Header.css"
+import Slider from "./Slider"
+import img1 from '../images/decors.jpeg'
+import img2 from "../images/firePits.jpeg"
+import img3 from "../images/outdoorLignting.jpeg"
+import img4 from "../images/Plants.jpeg"
 
 class Header extends React.Component {
     constructor() {
         super()
         this.state = {
             slide: 0,
-            addMargin: false
+            bool: false,
+            sliderImages: [img1, img2, img3, img4]
         }
     }
     componentDidMount() {
@@ -20,90 +26,55 @@ class Header extends React.Component {
                     })
                 } else {
                     this.setState({
-                        slide: this.state.slide + 1
+                        slide: this.state.slide + 1,
                     })
                 }
-            }, 3000
+            }, 10000
         )
     }
+    handleSlideRight = () => {
+        if (this.state.slide >= 3) {
+            this.setState({
+                slide: 0
+            })
+        } else {
+            this.setState({
+                slide: this.state.slide + 1
+            })
+        }
+    }
 
+    hanldeSlideLeft = () => {
+        if (this.state.slide <= 0) {
+            this.setState({
+                slide: 3
+            })
+        } else {
+            this.setState({
+                slide: this.state.slide - 1
+            })
+        }
+    }
 
     render() {
         return (
             <div>
-                <Nav addMargin={this.state.addMargin} />
-                {this.state.slide === 0 &&
-                    <div className="image" id="first-slider">
-                        <div>
-                            <button>Hello World</button>
-                            <button>Nothing Left</button>
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="arrow-left" />
-                            <FontAwesomeIcon icon="arrow-right" />
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="circle" style={{ color: "darkCyan" }} />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                        </div>
-                    </div>
-                }
-                {this.state.slide === 1 &&
-                    <div className="image" id="second-slider">
-                        <div>
-                            <button>Hello World</button>
-                            <button>Nothing Left</button>
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="arrow-left" />
-                            <FontAwesomeIcon icon="arrow-right" />
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" style={{ color: "darkCyan" }} />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                        </div>
-                    </div>
-                }
-                {this.state.slide === 2 &&
-                    <div className="image" id="third-slider">
-                        <div>
-                            <button>Hello World</button>
-                            <button>Nothing Left</button>
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="arrow-left" />
-                            <FontAwesomeIcon icon="arrow-right" />
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" style={{ color: "darkCyan" }} />
-                            <FontAwesomeIcon icon="circle" />
-                        </div>
-                    </div>
-                }
-                {this.state.slide === 3 &&
-                    <div className="image" id="fourth-slider">
-                        <div>
-                            <button>Hello World</button>
-                            <button>Nothing Left</button>
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="arrow-left" />
-                            <FontAwesomeIcon icon="arrow-right" />
-                        </div>
-                        <div>
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" />
-                            <FontAwesomeIcon icon="circle" style={{ color: "darkCyan" }} />
-                        </div>
-                    </div>
-                }
+                <Nav />
+                <TransitionGroup>
+                    <CSSTransition
+                        in={true}
+                        appear={true}
+                        key={this.state.slide}
+                        timeout={300}
+                        classNames="slide"
+                    >
+                        <Slider 
+                        image={this.state.sliderImages[this.state.slide]} 
+                        slide={this.state.slide} 
+                        handleSlideRight= {this.handleSlideRight}
+                        handleSlideLeft = {this.hanldeSlideLeft}/>
+                    </CSSTransition>
+                </TransitionGroup>
             </div>
         )
     }

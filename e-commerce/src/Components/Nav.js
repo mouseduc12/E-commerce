@@ -51,10 +51,10 @@ class Nav extends React.Component {
                             {this.state.isScroll &&
                                 this.state.openNav === false ?
                                 <button onClick={this.checkNav}><FontAwesomeIcon icon="bars" className="icon" /></button>
-                                : <button onClick={this.checkNav} style={{ display: window.scrollY < 30 && "none" }}><FontAwesomeIcon icon="times" className="icon" /></button>
+                                : <button onClick={this.checkNav} style={{ display: window.scrollY < 100 && "none" }}><FontAwesomeIcon icon="times" className="icon" /></button>
                             }
                         </div>
-                        <h1>SUIT<i>'s</i></h1>
+                        <h1>DECOR<i>'s</i></h1>
                     </div>
                     <form className="search-shop">
                         <input type="text" />

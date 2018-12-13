@@ -1,0 +1,76 @@
+.image {
+    box-shadow: inset 0 0 0 1000px rgba(1, 1, 1, 0.5);
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    animation: move;
+    animation-duration: 1s;
+    transition-timing-function: linear;
+    grid-template-rows: 3fr 40px;
+    background-attachment: fixed;
+}
+
+
+.image .check-out {
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-directive {
+    width: 30%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    color: rgba(255,255,255,0.8)
+}
+.text-sub{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+.text-sub h2{
+    font-size: 35px;
+    line-height: 50px;
+    text-align: center;
+}
+.text-sub p{
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+}
+.shop-button{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.button-directive button {
+    background-color: #ffab41;
+    border: 1px solid #ffab41;
+    color: black;
+    font-size: 17px;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+}
+.where-you-at-parent{
+    display: flex;
+    justify-content: center
+}
+.where-you-at{
+    display: flex;
+    width: 8%;
+    justify-content: space-evenly;
+}
+.arrow{
+    font-size: 35px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
