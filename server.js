@@ -6,9 +6,13 @@ const mongoose = require("mongoose")
 
 app.use(express.json())
 app.use(morgan("dev"))
-app.use("/mansuits", require("./routes/manSuits"))
+app.use("/outdoorLight", require("./routes/manSuits"))
 
-mongoose.connect("mongodb://localhost:27017/men-suit", {useNewUrlParser: true} ,() =>{
+app.use((err, req, res, next) =>{
+    return res.status(500).send({error: err.message})
+})
+
+mongoose.connect("mongodb://localhost:27017/garther", {useNewUrlParser: true} ,() =>{
     console.log("I'm connected")
 })
 

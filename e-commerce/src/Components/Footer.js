@@ -15,7 +15,6 @@ const Footer = () => {
                         <p><FontAwesomeIcon icon={['fab', 'linkedin']} /></p>
                         <p><FontAwesomeIcon icon={['fab', 'twitter']} /></p>
                     </div>
-                    <hr/>
                 </div>
                 <div className="quick-links">
                     <h2>Quick Services:</h2>
