@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Header from "./Header"
 import { Switch, Route } from "react-router-dom"
 import Nav from "./Nav"
@@ -9,10 +9,14 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <Switch>
-                    <Route path="/" component= {Header} />
-                    <Route path="/" component={GeneralShop}/>
+                    <Route exact path="/" render={(props) =>
+                        <Fragment>
+                            <Header {...props} />
+                            <GeneralShop {...props} />
+                        </Fragment>
+                    } />
                 </Switch>
                 <Footer />
             </div>

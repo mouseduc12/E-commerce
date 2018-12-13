@@ -6,6 +6,7 @@ class GeneralShop extends React.Component{
         return(
             <div>
                 <Events />
+                
             </div>
         )
     }

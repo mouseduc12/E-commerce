@@ -11,7 +11,7 @@
     width: 25%;
 }
 .icons{
-    font-size: 35px;
+    font-size: 30px;
 }
 .ad{
     width: 70%;
@@ -20,6 +20,7 @@
 }
 .ad h2{
     line-height: 35px;
+    font-size: 20px;
 }
 .ad p{
     font-size: 18px;
