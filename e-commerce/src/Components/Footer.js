@@ -39,7 +39,7 @@ const Footer = () => {
                 </div>
                 <div className="help">
                     <h2>Need help? Call Us:</h2>
-                    <h2>18822712811</h2>
+                    <h2>+18822712811</h2>
                 </div>
                 <div className="credits-card">
                     <div className= "credit-cards">
