@@ -8,10 +8,10 @@ const plantSchema = new Schema({
     },
     price: Number,
     image: String,
-    otherImages: {
-        type: Array,
+    otherImages: [{
+        type: String,
         required: true
-    },
+    }],
     description: {
         type: String,
         required: true
