@@ -6,21 +6,26 @@ const plantSchema = new Schema({
         type: String,
         required: true
     },
-    price: Number,
+    price: String,
     image: String,
     otherImages: [{
         type: String,
         required: true
     }],
-    description: {
+    description: [{
         type: String,
         required: true
-    }, 
+    }], 
     relatedProduct: {
         type: [{
             type: Object 
         }]
-    }
+    },
+    reviews: {
+        type: Number,
+        max: 5,
+        min: 1
+    } 
 }) 
 
-module.exports = plantSchema.model("PlantSchema", plantSchema)
+module.exports = mongoose.model("PlantSchema", plantSchema)

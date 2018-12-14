@@ -11,6 +11,8 @@
     transition-timing-function: linear;
     grid-template-rows: 3fr 40px;
     background-attachment: fixed;
+    font-family: 'Merriweather';
+    letter-spacing: 2px;
 }
 
 
@@ -22,7 +24,7 @@
 }
 
 .button-directive {
-    width: 30%;
+    width: 50%;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -37,12 +39,12 @@
 }
 .text-sub h2{
     font-size: 35px;
-    line-height: 50px;
+    line-height: 100px;
     text-align: center;
 }
 .text-sub p{
     font-size: 20px;
-    line-height: 28px;
+    line-height: 30px;
     text-align: center;
 }
 .shop-button{
@@ -56,9 +58,11 @@
     border: 1px solid #ffab41;
     color: black;
     font-size: 17px;
-    width: 150px;
+    width: 200px;
     height: 50px;
     border-radius: 5px;
+    font-weight: 600;
+    line-height: 20px;
 }
 .where-you-at-parent{
     display: flex;
