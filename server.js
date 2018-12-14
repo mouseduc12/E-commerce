@@ -17,9 +17,6 @@ mongoose.connect("mongodb://localhost:27017/garther", {useNewUrlParser: true} ,(
     console.log("I'm connected")
 })
 
-app.get("/", (req,res) => {
-    res.send("Hello")
-})
 
 app.listen(8000, () =>{
     console.log("Working")

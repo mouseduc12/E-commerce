@@ -1,0 +1,15 @@
+.manage-showoff{
+    display: flex;
+    overflow-x: auto;
+    width: 100%; 
+    font-family: "Roboto"   
+}
+
+.visit-store-teller{
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

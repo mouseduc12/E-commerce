@@ -1,18 +1,27 @@
 import React from "react"
-import Events from  "./Events"
-import ShowOffProducts from "./ShowOffProducts";
+import Events from "./Events"
+import ShowOffProduct from "./ShowOffProduct";
 import { withProduct } from "../Context/ProductsProvider"
+import "../ComponentStyles/GeneralShop.css"
 
-class GeneralShop extends React.Component{
-    componentDidMount(){
+class GeneralShop extends React.Component {
+    componentDidMount() {
         this.props.getPlant()
     }
-    render(){
+    render() {
         console.log(this.props.plants)
-        return(
+        return (
             <div>
                 <Events />
-                <ShowOffProducts />
+                <div className="manage-showoff">
+                    <div className = "manage-store-teller">
+                        <div className="visit-store-teller">
+                            <p>VISIT OUR</p>
+                            <h2>PLANTS</h2>
+                        </div>
+                    </div>
+                    {this.props.plants.map(each => <ShowOffProduct {...each} key={each._id} />)}
+                </div>
             </div>
         )
     }
