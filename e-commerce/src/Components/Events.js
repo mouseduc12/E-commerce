@@ -1,5 +1,4 @@
 import React from "react"
-import LazyLoad from "react-lazyload";
 import "../ComponentStyles/Events.css";
 import Event from "./Event"
 import "../ComponentStyles/Events.css"
@@ -80,5 +79,3 @@ class Events extends React.Component {
 }
 
 export default Events
-{/* <LazyLoad height={850} once throttle={500} className="load-animated"> */ }
-{/* </LazyLoad> */ }
