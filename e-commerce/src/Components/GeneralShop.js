@@ -8,6 +8,7 @@ class GeneralShop extends React.Component{
         this.props.getPlant()
     }
     render(){
+        console.log(this.props.plants)
         return(
             <div>
                 <Events />
