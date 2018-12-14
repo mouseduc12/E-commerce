@@ -6,7 +6,8 @@ const mongoose = require("mongoose")
 
 app.use(express.json())
 app.use(morgan("dev"))
-app.use("/outdoorLight", require("./routes/manSuits"))
+app.use("/plants", require("./routes/plants"))
+app.use("/sculptures", require("./routes/plants"))
 
 app.use((err, req, res, next) =>{
     return res.status(500).send({error: err.message})
