@@ -5,6 +5,19 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    animation: eachProduct;
+    animation-duration: 1s;
+    transition-timing-function: linear
+}
+@keyframes eachProduct{
+    from{
+        opacity: 0;
+        transform: translateY(-50%)
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
 .product-image {
     width: 200px;
@@ -12,7 +25,13 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: all 1s;
 }
+.product-image:hover{
+    transform: scale(1.1);
+    cursor: pointer
+}
+
 .product-image-text{
     display: flex;
     flex-direction: column;

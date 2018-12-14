@@ -2,14 +2,19 @@
     display: flex;
     overflow-x: auto;
     width: 100%; 
-    font-family: "Roboto"   
+    font-family: "Roboto";
+    margin-bottom: 50px;
 }
-
 .visit-store-teller{
-    width: 200px;
+    width: 250px;
     height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 0.5;
+    transition: all 1s;
+}
+.visit-store-teller h2{
+    line-height: 50px;
 }

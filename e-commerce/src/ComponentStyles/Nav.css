@@ -5,6 +5,7 @@
     width: 100%;
     background-color: #232f3e;
     color: white;
+    z-index: 1;
 }
 .brand h1{
     color: khaki;
