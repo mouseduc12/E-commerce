@@ -29,7 +29,7 @@
 }
 .product-image:hover{
     transform: scale(1.1);
-    cursor: pointer
+    cursor: pointer;
 }
 
 .product-image-text{
@@ -41,4 +41,21 @@
     text-align: center;
     line-height: 50px;
     font-size: 17px;
+}
+.product-buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+.product-heart-button{
+    color: red;
+    font-size: 20px;
+    margin-right: 50px;
+    border: none
+}
+.product-cart-button{
+    color: darkcyan;
+    font-size: 20px;
+    border: none
 }

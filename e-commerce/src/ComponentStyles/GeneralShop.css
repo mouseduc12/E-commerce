@@ -18,3 +18,15 @@
 .visit-store-teller h2{
     line-height: 50px;
 }
+.scroll-arrow{
+    font-size: 25px;
+}
+.scroll-arrow-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.scroll-arrow-container p {
+    font-size: 14px;
+}
+

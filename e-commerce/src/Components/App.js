@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom"
 import Nav from "./Nav"
 import Footer from "./Footer"
 import GeneralShop from "./GeneralShop"
+import QuickServices from "./QuickServices/QuickServices"
 
 class App extends React.Component {
     render() {
@@ -17,6 +18,9 @@ class App extends React.Component {
                             <GeneralShop {...props} />
                         </Fragment>
                     } />
+                    <Route path = "/quickservice/:name" render= {(props) =>(
+                        <QuickServices {...props}/>
+                    )}/>
                 </Switch>
                 <Footer />
             </div>

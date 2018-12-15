@@ -13,7 +13,6 @@ class ProductsProvider extends React.Component {
 
     getPlant = () => {
         axios.get("/plants").then(res => {
-            console.log(res)
             this.setState({
                 plants: res.data
             })

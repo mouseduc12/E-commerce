@@ -1,6 +1,7 @@
 import React from "react"
 import "../ComponentStyles/ShowOffProduct.css"
 import LazyLoad from "react-lazyload"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ShowOffProduct extends React.Component {
     constructor() {
@@ -8,7 +9,8 @@ class ShowOffProduct extends React.Component {
         this.state = {
             mouseEnter: false,
             mouseLeave: true,
-            slideOver: 0
+            slideOver: 0,
+            getIcon: false
         }
         this.intervalId = undefined
     }
@@ -31,6 +33,7 @@ class ShowOffProduct extends React.Component {
                 }
             }, 2000)
     }
+
     handleLeave = () => {
         clearInterval(this.intervalId)
         this.setState({
@@ -39,10 +42,21 @@ class ShowOffProduct extends React.Component {
         })
     }
 
+    handleIcon = () => {
+        this.setState({
+            getIcon: true
+        })
+    }
+    handleIconLeave = () => {
+        this.setState({
+            getIcon: false
+        })
+    }
+
     render() {
         return (
             <LazyLoad height={400} once throttle={1000}>
-                <div className="manage-front">
+                <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>
                     <div className="manage-front-inside">
                         <div
                             onMouseEnter={this.handleOver}
@@ -54,6 +68,12 @@ class ShowOffProduct extends React.Component {
                             <h3>{this.props.headline}</h3>
                             <p>{this.props.price}</p>
                         </div>
+                        {this.state.getIcon &&
+                            <div className="product-buttons">
+                                <button className="product-heart-button"><FontAwesomeIcon icon="heart" /></button>
+                                <button className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
+                            </div>
+                        }
                     </div>
                 </div>
             </LazyLoad>

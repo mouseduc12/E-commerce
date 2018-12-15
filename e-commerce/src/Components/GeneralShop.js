@@ -3,7 +3,7 @@ import Events from "./Events"
 import ShowOffProduct from "./ShowOffProduct";
 import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/GeneralShop.css"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class GeneralShop extends React.Component {
     constructor() {
@@ -47,6 +47,12 @@ class GeneralShop extends React.Component {
                         }}>
                             <p>VISIT OUR</p>
                             <h2>PLANTS</h2>
+                            {!this.state.scrollX &&
+                                <div className = "scroll-arrow-container">
+                                    <FontAwesomeIcon icon="long-arrow-alt-right" className="scroll-arrow" />
+                                    <p>Scroll right</p>
+                                </div>
+                            }
                         </div>
                     </div>
                     {this.props.plants.map(each => <ShowOffProduct {...each} key={each._id} />)}

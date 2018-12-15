@@ -19,11 +19,11 @@ const Footer = () => {
                 <div className="quick-links">
                     <h2>Quick Services:</h2>
                     <div className="links">
-                        <Link to="/">FAQ</Link>
-                        <Link to="/">Return</Link>
-                        <Link to="/">Shipping</Link>
-                        <Link to="/">Privacy Policy</Link>
-                        <Link to="/">Blog</Link>
+                        <Link to="/quickservice/faq">FAQ</Link>
+                        <Link to="/quickservice/return">Return</Link>
+                        <Link to="/quickservice/shipping">Shipping</Link>
+                        <Link to="/quickservice/privacy">Privacy Policy</Link>
+                        <Link to="/quickservice/blog">Blog</Link>
                     </div>
                 </div>
                 <p className="copy-right">Copyright@ 2018 Decor's <i>Duc</i> </p>
