@@ -7,7 +7,8 @@ class ProductsProvider extends React.Component {
     constructor() {
         super()
         this.state = {
-            plants: []
+            plants: [],
+            sculptures: []
         }
     }
 
@@ -18,13 +19,21 @@ class ProductsProvider extends React.Component {
             })
         })
     }
+    getSculptures = () => {
+        axios.get("/sculptures").then(res => {
+            this.setState({
+                sculptures: res.data
+            })
+        })
+    }
 
     render() {
         return (
             <ProductProviderContext.Provider
                 value={{
                     ...this.state,
-                    getPlant: this.getPlant
+                    getPlant: this.getPlant,
+                    getSculptures: this.getSculptures
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

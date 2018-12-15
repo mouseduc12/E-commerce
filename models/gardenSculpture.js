@@ -7,7 +7,7 @@ const gardenSculptureSchema = new Schema({
         type: String,
         required: true
     },
-    price: Number,
+    price: String,
     image: String,
     otherImages: [{
         type: String,

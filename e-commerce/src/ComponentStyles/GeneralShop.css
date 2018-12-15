@@ -4,6 +4,7 @@
     width: 100%; 
     font-family: "Roboto";
     margin-bottom: 50px;
+    /* position: relative; */
 }
 .visit-store-teller{
     width: 250px;
@@ -29,4 +30,3 @@
 .scroll-arrow-container p {
     font-size: 14px;
 }
-
