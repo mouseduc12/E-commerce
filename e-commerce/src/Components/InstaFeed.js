@@ -1,10 +1,12 @@
 import React from "react"
-
+import InstaFeed from "react-instafeed"
 
 const InstaFeed = () => {
     return(
         <div>
-            <h1>Insta Feed</h1>
+            
         </div>
     )
 }
+
+export default InstaFeed

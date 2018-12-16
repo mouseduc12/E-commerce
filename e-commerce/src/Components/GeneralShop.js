@@ -19,12 +19,8 @@ class GeneralShop extends React.Component {
     componentDidMount() {
         this.props.getPlant();
         this.props.getSculptures();
-        window.addEventListener("scroll", this.handleScroll)
     }
 
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
-    }
     handleScroll = () => {
         const manageShowOff = this.myRef.current
         const manageNewShowOff = this.mySecondRef.current
@@ -49,6 +45,7 @@ class GeneralShop extends React.Component {
         }
     }
     render() {
+        console.log("I'm running again WTF by some how")
         return (
             <div>
                 <Header />

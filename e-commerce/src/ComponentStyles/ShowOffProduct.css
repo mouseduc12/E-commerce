@@ -64,7 +64,7 @@
     color: darkcyan;
     font-size: 20px;
     border: none;
-    background: rgba(252, 185, 65, 1);
+    background: rgba(252, 185, 65, 0.7);
     width: 15%;
     border-radius: 5px;
     cursor: pointer;

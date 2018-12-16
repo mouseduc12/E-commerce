@@ -10,6 +10,8 @@
     "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-instafeed": "^0.4.0",
+    "react-lazy-load": "^3.0.13",
     "react-lazyload": "^2.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",

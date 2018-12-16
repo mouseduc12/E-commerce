@@ -19,7 +19,6 @@ class ShowOffProduct extends React.Component {
         this.intervalId = setInterval(
             () => {
                 if (this.state.slideOver >= this.props.otherImages.length - 1) {
-                    console.log("It's right")
                     this.setState({
                         slideOver: 0
                     })
@@ -54,6 +53,7 @@ class ShowOffProduct extends React.Component {
     }
 
     render() {
+        console.log("I'm running again WTF")
         return (
             <LazyLoad height={400} once throttle={1000}>
                 <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>
