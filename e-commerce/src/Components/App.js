@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import Header from "./Header"
 import { Switch, Route } from "react-router-dom"
 import Nav from "./Nav"
 import Footer from "./Footer"
@@ -13,10 +12,7 @@ class App extends React.Component {
                 <Nav />
                 <Switch>
                     <Route exact path="/" render={(props) =>
-                        <Fragment>
-                            <Header {...props} />
                             <GeneralShop {...props} />
-                        </Fragment>
                     } />
                     <Route path = "/quickservice/:name" render= {(props) =>(
                         <QuickServices {...props}/>

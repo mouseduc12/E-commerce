@@ -47,15 +47,25 @@
     justify-content: center;
     width: 100%;
     margin-top: 20px;
+    cursor: pointer;
 }
 .product-heart-button{
     color: red;
     font-size: 20px;
     margin-right: 50px;
-    border: none
+    width:15%;
+    height: 40px;
+    border-radius: 5px;
+    background: rgba(1,1,1,0.1);
+    border: 1px solid rgba(1,1,1,0.1);
+    cursor: pointer;
 }
 .product-cart-button{
     color: darkcyan;
     font-size: 20px;
-    border: none
+    border: none;
+    background: rgba(252, 185, 65, 1);
+    width: 15%;
+    border-radius: 5px;
+    cursor: pointer;
 }

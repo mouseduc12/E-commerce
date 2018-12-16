@@ -3,7 +3,8 @@ import Events from "./Events"
 import ShowOffProduct from "./ShowOffProduct";
 import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/GeneralShop.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Header from "./Header"
 
 class GeneralShop extends React.Component {
     constructor() {
@@ -50,6 +51,7 @@ class GeneralShop extends React.Component {
     render() {
         return (
             <div>
+                <Header />
                 <Events />
                 <Fragment>
                     <div className="manage-showoff" onScroll={this.handleScroll} ref={this.myRef}>
