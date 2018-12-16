@@ -1,6 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../ComponentStyles/Nav.css"
+import { Link } from "react-router-dom"
 
 class Nav extends React.Component {
     constructor() {
@@ -53,7 +54,7 @@ class Nav extends React.Component {
                                 : <button onClick={this.checkNav} style={{ display: window.scrollY < 100 && "none" }}><FontAwesomeIcon icon="times" className="icon" /></button>
                             }
                         </div>
-                        <h1>DECOR<i>'s</i></h1>
+                        <h1><Link to = "/" style={{color: "yellow"}}>DECOR<i>'s</i></Link></h1>
                     </div>
                     <form className="search-shop">
                         <input type="text" />

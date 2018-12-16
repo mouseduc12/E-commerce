@@ -54,6 +54,9 @@
     color: rgba(255,255,255,0.5);
     line-height: 30px;
 }
+.links a:hover{
+    color: darkorchid;
+}
 .first-footer-section .copy-right {
     margin: auto auto;
 }
