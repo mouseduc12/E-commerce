@@ -23,7 +23,7 @@ class GeneralShop extends React.Component {
     handleScroll = () => {
         const manageShowOff = this.myRef.current
         const manageNewShowOff = this.mySecondRef.current
-        if (manageShowOff.scrollLeft > 100) {
+        if (manageShowOff.scrollLeft > 100 ) {
             this.setState({
                 scrollX: true,
                 scrollNewX: true

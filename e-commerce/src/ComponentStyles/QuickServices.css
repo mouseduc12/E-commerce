@@ -30,9 +30,9 @@
 }
 
 .second-level .second-level-text{
-    margin-top: 250px;
-    margin-left: 225px;
-    position: fixed
+    top: 0;
+    position: sticky;
+    padding-top: 80px;
 }
 
 .third-level{

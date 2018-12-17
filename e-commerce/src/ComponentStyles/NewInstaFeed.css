@@ -1,5 +1,5 @@
 .new-insta{
-    margin: 40px 0px;
+    margin: 40px 0px 0px 0;
     display: flex;
     box-shadow: 0 0 12px 0 rgba(1,1,1,1)
 } 
@@ -7,23 +7,57 @@
     width: 20%;
     overflow: hidden;
 }
-.image_general:hover{
-    background-color: black
-}
 .image_general a{
     width: 100%;
 }
-.image_general a {
-    background-color: black
+.nothing{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Roboto"
 }
-
+.nothing p{
+    padding: 0 20px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    line-height: 40px;
+}
+.nothing:hover{
+    opacity: 1;
+    background-color: rgba(37, 116, 169, 0.6)
+}
 .instafeed__item__background{
     width: 100%;
     height: 280px;
     background-position: center;
     background-size: cover;
-    transition: all 1s
+    transition: all 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fa{
+    color: white;
+    font-size: 30px;
 }
 .instafeed__item__background:hover{
     transform: scale(1.1);
+}
+.insta-brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(37, 116, 169, 0.6); 
+}
+.insta-brand h3{
+    margin-left: 20px;
+    font-size: 25px;
+}
+.insta-font{
+    font-size: 35px;
 }
