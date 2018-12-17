@@ -4,6 +4,9 @@ import Nav from "./Nav"
 import Footer from "./Footer"
 import GeneralShop from "./GeneralShop"
 import QuickServices from "./QuickServices/QuickServices"
+import NewInstaFeed from "./NewInstaFeed"
+import Events from "./Events"
+import Header from "./Header"
 
 class App extends React.Component {
     render() {
@@ -12,7 +15,12 @@ class App extends React.Component {
                 <Nav />
                 <Switch>
                     <Route exact path="/" render={(props) =>
-                            <GeneralShop {...props} />
+                            <Fragment>
+                            <Header {...props}/>
+                            <Events {...props}/>
+                            <GeneralShop {...props}/>
+                            <NewInstaFeed {...props}/>
+                            </Fragment>
                     } />
                     <Route path = "/quickservice/:name" render= {(props) =>(
                         <QuickServices {...props}/>

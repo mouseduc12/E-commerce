@@ -1,0 +1,18 @@
+.new-insta{
+    margin: 40px 0px;
+    display: flex;
+    box-shadow: 0 0 12px 0 rgba(1,1,1,1)
+} 
+.image_general{
+    width: 20%;
+}
+.image_general a{
+    width: 100%;
+}
+
+.instafeed__item__background{
+    width: 100%;
+    height: 280px;
+    background-position: center;
+    background-size: cover;
+}

@@ -1,10 +1,9 @@
 import React, { Fragment } from "react"
-import Events from "./Events"
 import ShowOffProduct from "./ShowOffProduct";
 import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/GeneralShop.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Header from "./Header"
+
 
 class GeneralShop extends React.Component {
     constructor() {
@@ -48,8 +47,6 @@ class GeneralShop extends React.Component {
         console.log("I'm running again WTF by some how")
         return (
             <div>
-                <Header />
-                <Events />
                 <Fragment>
                     <div className="manage-showoff" onScroll={this.handleScroll} ref={this.myRef}>
                         <div className="manage-store-teller">
