@@ -1,32 +1,10 @@
 import React from "react"
 import InstaFeed from "react-instafeed"
 import "../ComponentStyles/NewInstaFeed.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LazyLoad from "react-lazyload"
 
 class NewInstaFeed extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            isHovered: false
-        }
-        this.myRef = React.createRef()
-    }
-    componentDidMount() {
-        console.log(this.myRef.current)
-        console.log(this.myRef.onClick)
-    }
-
-    onMouseOver = () => {
-        console.log("true")
-        this.setState({
-            isHovered: true
-        })
-    }
-    handleClick = () => {
-        console.log("I just clicked")
-    }
-
     render() {
         const display =
             `<div class ="image_general">
@@ -41,27 +19,26 @@ class NewInstaFeed extends React.Component {
             </div>`
         const instafeedTarget = 'instafeed';
         return (
-            <div className="insta-holder">
-                <div id={instafeedTarget} className="new-insta">
-                    <InstaFeed
-                        onClick={this.handleClick}
-                        onMouseOver={this.onMouseOver}
-                        limit='5'
-                        ref={this.myRef}
-                        resolution='standard_resolution'
-                        sortBy='most-recent'
-                        target={instafeedTarget}
-                        template={display}
-                        userId={`${process.env.REACT_APP_USERID}`}
-                        clientId={`${process.env.REACT_APP_INSTASECRET}`}
-                        accessToken={`${process.env.REACT_APP_ACCESSTOKEN}`}
-                    />
+            <LazyLoad height={500} once throttle={1000}>
+                <div className="insta-holder">
+                    <div id={instafeedTarget} className="new-insta">
+                        <InstaFeed
+                            limit='5'
+                            resolution='standard_resolution'
+                            sortBy='most-recent'
+                            target={instafeedTarget}
+                            template={display}
+                            userId={`${process.env.REACT_APP_USERID}`}
+                            clientId={`${process.env.REACT_APP_INSTASECRET}`}
+                            accessToken={`${process.env.REACT_APP_ACCESSTOKEN}`}
+                        />
+                    </div>
+                    <div className="insta-brand">
+                        <p><FontAwesomeIcon icon={['fab', 'instagram']} className="insta-font" /></p>
+                        <h3>Garden_Decors</h3>
+                    </div>
                 </div>
-                <div className="insta-brand">
-                    <p><FontAwesomeIcon icon={['fab', 'instagram']} className="insta-font"/></p>
-                    <h3>Garden_Decors</h3>
-                </div>
-            </div>
+            </LazyLoad>
         )
     }
 }

@@ -1,11 +1,23 @@
 .new-insta{
     margin: 40px 0px 0px 0;
     display: flex;
-    box-shadow: 0 0 12px 0 rgba(1,1,1,1)
+    box-shadow: 0 0 12px 0 rgba(1,1,1,1);
+    overflow: hidden;
 } 
+@keyframes instafeed{
+    from{
+        transform: scale(1.2);
+        opacity: 0.5
+    }
+    to{
+        transform: scale(1);
+        opacity: 1
+    }
+}
 .image_general{
     width: 20%;
     overflow: hidden;
+    animation: instafeed 1s ease-in-out
 }
 .image_general a{
     width: 100%;
