@@ -7,6 +7,7 @@ import QuickServices from "./QuickServices/QuickServices"
 import NewInstaFeed from "./NewInstaFeed"
 import Events from "./Events"
 import Header from "./Header"
+import IFrame from "./Iframe"
 
 class App extends React.Component {
     render() {
@@ -19,6 +20,7 @@ class App extends React.Component {
                             <Header {...props}/>
                             <Events {...props}/>
                             <GeneralShop {...props}/>
+                            <IFrame {...props}/>
                             <NewInstaFeed {...props}/>
                             </Fragment>
                     } />

@@ -5,11 +5,11 @@ import LazyLoad from "react-lazyload"
 
 class Slider extends React.Component {
     render() {
-        console.log("Im Pushing?")
+        console.log("I'm running by some how")
         return (
-            <div>
+            <div className="slider-container">
                 <LazyLoad height={560} once>
-                    <div className="image" style={{ backgroundImage: `url(${this.props.image}` }}>
+                    <div className="image" style={{ backgroundImage: `url(${this.props.image}`, animation: this.props.slide === 0 ? "impulse 0.5s linear" : " "}}>
                         <div className="check-out">
                             <FontAwesomeIcon icon="arrow-left" className="arrow" onClick={this.props.handleSlideLeft} />
                             <div className="button-directive">

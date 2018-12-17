@@ -19,24 +19,24 @@ class Header extends React.Component {
         this.setIntervalId = undefined
     }
 
-    // componentDidMount() {
-    //     this.setIntervalId = setInterval(
-    //         () => {
-    //             if (this.state.slide >= 3) {
-    //                 this.setState({
-    //                     slide: 0
-    //                 })
-    //             } else {
-    //                 this.setState({
-    //                     slide: this.state.slide + 1,
-    //                 })
-    //             }
-    //         }, 10000
-    //     )
-    // }
-    // componentWillUnmount(){
-    //     clearInterval(this.setIntervalId)
-    // }
+    componentDidMount() {
+        this.setIntervalId = setInterval(
+            () => {
+                if (this.state.slide >= 3) {
+                    this.setState({
+                        slide: 0
+                    })
+                } else {
+                    this.setState({
+                        slide: this.state.slide + 1,
+                    })
+                }
+            }, 10000
+        )
+    }
+    componentWillUnmount(){
+        clearInterval(this.setIntervalId)
+    }
 
     handleSlideRight = () => {
         if (this.state.slide >= 3) {
@@ -63,7 +63,7 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log("I'm pushing it down")
+        console.log("I'm pushing it down, I'm a murder")
         return (
             <div>
                 <TransitionGroup>

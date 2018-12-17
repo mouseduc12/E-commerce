@@ -5,6 +5,7 @@
 } 
 .image_general{
     width: 20%;
+    overflow: hidden;
 }
 .image_general a{
     width: 100%;
@@ -15,4 +16,8 @@
     height: 280px;
     background-position: center;
     background-size: cover;
+    transition: all 1s
+}
+.instafeed__item__background:hover{
+    transform: scale(1.1)
 }
