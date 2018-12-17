@@ -7,8 +7,14 @@
     width: 20%;
     overflow: hidden;
 }
+.image_general:hover{
+    background-color: black
+}
 .image_general a{
     width: 100%;
+}
+.image_general a {
+    background-color: black
 }
 
 .instafeed__item__background{
@@ -19,5 +25,5 @@
     transition: all 1s
 }
 .instafeed__item__background:hover{
-    transform: scale(1.1)
+    transform: scale(1.1);
 }

@@ -4,12 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import LazyLoad from "react-lazyload"
 
 class Slider extends React.Component {
+    generatorClass = () => {
+        if (this.props.count) {
+            if (this.props.count <= 1) {
+                return "is-selected-but-no-animation"
+            } else {
+                return "is-selected"
+            }
+        }
+        else {
+            if (this.props.slide === this.props.sliderCount) {
+                return "is-selected"
+            }
+            else {
+                return "not-selected"
+            }
+        }
+    }
     render() {
-        console.log("I'm running by some how")
         return (
-            <div className="slider-container">
-                <LazyLoad height={560} once>
-                    <div className="image" style={{ backgroundImage: `url(${this.props.image}`, animation: this.props.slide === 0 ? "impulse 0.5s linear" : " "}}>
+            <LazyLoad height={600} once>
+                <div className={`slider-container ${this.generatorClass()}`}>
+                    <div className="image" style={{ backgroundImage: `url(${this.props.image}` }}>
                         <div className="check-out">
                             <FontAwesomeIcon icon="arrow-left" className="arrow" onClick={this.props.handleSlideLeft} />
                             <div className="button-directive">
@@ -57,8 +73,8 @@ class Slider extends React.Component {
                             </div>
                         </div>
                     </div>
-                </LazyLoad>
-            </div>
+                </div>
+            </LazyLoad>
         )
     }
 }

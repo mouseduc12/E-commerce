@@ -28,8 +28,8 @@ class NewInstaFeed extends React.Component {
 
     render() {
         const display = 
-            `<div class ="image_general" onclick = {this.handleClick}>
-                <a href='{{link}}' target='_blank' class='instafeed__item' onclick = {this.handleClick}>
+            `<div class ="image_general">
+                <a href='{{link}}' target='_blank' class='instafeed__item'>
                 <div class='instafeed__item__background' style="background-image: url('{{image}}')">
                     <div class='nothing'>
                         <p class='instafeed__item__caption'>{{model.short_caption}}</p>

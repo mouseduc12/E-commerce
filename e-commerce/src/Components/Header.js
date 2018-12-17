@@ -1,5 +1,4 @@
 import React from "react"
-import { TransitionGroup, CSSTransition } from "react-transition-group"
 import "../ComponentStyles/Header.css"
 import Slider from "./Slider"
 import img1 from '../images/decors.jpeg'
@@ -13,10 +12,10 @@ class Header extends React.Component {
         super()
         this.state = {
             slide: 0,
-            bool: false,
             sliderImages: [img1, img2, img3, img4],
+            count: 1
         };
-        this.setIntervalId = undefined
+        this.setIntervalId = undefined;
     }
 
     componentDidMount() {
@@ -24,7 +23,8 @@ class Header extends React.Component {
             () => {
                 if (this.state.slide >= 3) {
                     this.setState({
-                        slide: 0
+                        slide: 0,
+                        count: this.state.count +1
                     })
                 } else {
                     this.setState({
@@ -34,7 +34,7 @@ class Header extends React.Component {
             }, 10000
         )
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.setIntervalId)
     }
 
@@ -63,24 +63,35 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log("I'm pushing it down, I'm a murder")
         return (
             <div>
-                <TransitionGroup>
-                    <CSSTransition
-                        in={true}
-                        appear={true}
-                        key={this.state.slide}
-                        timeout={300}
-                        classNames="slide"
-                    >
-                        <Slider
-                            image={this.state.sliderImages[this.state.slide]}
-                            slide={this.state.slide}
-                            handleSlideRight={this.handleSlideRight}
-                            handleSlideLeft={this.hanldeSlideLeft} />
-                    </CSSTransition>
-                </TransitionGroup>
+                <div className="container-sliders">
+                    <Slider
+                        image={this.state.sliderImages[0]}
+                        slide={0}
+                        count = {this.state.count}
+                        sliderCount={this.state.slide}
+                        handleSlideRight={this.handleSlideRight}
+                        handleSlideLeft={this.hanldeSlideLeft} />
+                    <Slider
+                        image={this.state.sliderImages[1]}
+                        slide={1}
+                        sliderCount={this.state.slide}
+                        handleSlideRight={this.handleSlideRight}
+                        handleSlideLeft={this.hanldeSlideLeft} />
+                    <Slider
+                        image={this.state.sliderImages[2]}
+                        slide={2}
+                        sliderCount={this.state.slide}
+                        handleSlideRight={this.handleSlideRight}
+                        handleSlideLeft={this.hanldeSlideLeft} />
+                    <Slider
+                        image={this.state.sliderImages[3]}
+                        slide={3}
+                        sliderCount={this.state.slide}
+                        handleSlideRight={this.handleSlideRight}
+                        handleSlideLeft={this.hanldeSlideLeft} />
+                </div>
                 <Benefits />
             </div>
         )
