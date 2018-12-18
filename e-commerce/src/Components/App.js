@@ -9,6 +9,7 @@ import Events from "./Events"
 import Header from "./Header"
 import IFrame from "./Iframe"
 import CustomerReviews from "./CustomerReviews"
+import GoogleMap from "./GoogleMap"
 
 class App extends React.Component {
     render() {
@@ -23,6 +24,7 @@ class App extends React.Component {
                             <GeneralShop {...props}/>
                             <CustomerReviews />
                             <IFrame {...props}/>
+                            <GoogleMap {...props} />
                             <NewInstaFeed {...props}/>
                             </Fragment>
                     } />
