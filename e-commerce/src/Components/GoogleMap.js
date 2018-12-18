@@ -10,7 +10,7 @@ class GoogleMap extends React.Component {
             lat: 38.81350339999999,
             lng: -104.8379567
         },
-        zoom: 17
+        zoom: 15
     };
 
     render() {
