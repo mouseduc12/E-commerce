@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import "../ComponentStyles/CustomerReviews.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LazyLoad from "react-lazyload"
 
 class CustomerReviews extends React.Component {
     constructor() {
@@ -30,6 +31,7 @@ class CustomerReviews extends React.Component {
 
     render() {
         return (
+            <LazyLoad hieght ={600} once>
             <div className="customer-reviews">
                 <div className="customers">
                     <div className="img customer-big-img"></div>
@@ -65,6 +67,7 @@ class CustomerReviews extends React.Component {
                     </div>
                 </div>
             </div>
+            </LazyLoad>
         )
     }
 }

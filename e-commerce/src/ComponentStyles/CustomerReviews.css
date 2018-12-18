@@ -54,6 +54,19 @@
     left: 40px;
     transform: rotate(20deg);
     z-index: 0;
+    animation: firstImgMove 3s linear
+}
+@keyframes firstImgMove{
+    from{
+        transform: rotate(0);
+        left: 300px;
+        opacity: 0.25
+    }
+    to{
+        transform: rotate(20deg);
+        left: 40px;
+        opacity: 1;
+    }
 }
 .customer-small-img2{
     background-image: url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -64,7 +77,23 @@
     right: 50px;
     transform: rotate(30deg);
     z-index: 0;
+    animation: secondImgMove 3s linear
 }
+@keyframes secondImgMove{
+    from{
+        bottom: 50%;
+        transform: rotate(0);
+        right: 300px;
+        opacity: 0.25
+    }
+    to{
+        bottom: 0;
+        transform: rotate(30deg);
+        right: 50px;
+        opacity: 1;
+    }
+}
+
 .customer-small-img3{
     background-image: url("https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     width: 350px;
@@ -74,6 +103,21 @@
     left: 120px;
     transform: rotate(10deg);
     z-index: 0;
+    animation: thirdImgMove 3s linear
+}
+@keyframes thirdImgMove{
+    from{
+        top: 300px;
+        left: 300px;
+        transform: rotate(0);
+        opacity: 0.25;
+    }
+    to{
+        top: 0;
+        left: 120px;
+        transform: rotate(10);
+        opacity: 1;
+    }
 }
 .customer-medium-img1{
     background-image: url("https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -83,7 +127,22 @@
     top: 0;
     right: 120px;
     transform: rotate(10deg);
-    z-index: 0;   
+    z-index: 0;
+    animation: fourthImgMove 3s linear   
+}
+@keyframes fourthImgMove{
+    from{
+        top: 300px;
+        right: 300px;
+        transform: rotate(0);
+        opacity: 0.25;
+    }
+    to{
+        top: 0;
+        right: 120px;
+        transform: rotate(10);
+        opacity: 1;
+    }
 }
 .customers-words p{
     font-size: 20px;
