@@ -3,6 +3,7 @@
     font-family: "Open Sans";
     overflow: hidden;
     box-shadow: 0 0 10px 3px rgba(1,1,1,0.5);
+    margin: 0 20px 0 40px;
 }
 .info-of-author{
     background:  url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX10030015.jpg");
