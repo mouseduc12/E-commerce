@@ -1,5 +1,6 @@
 import React from "react"
 import GoogleMapReact from 'google-map-react';
+import GoogleMark from "./GoogleMark"
 
 const GoogleMap = () => {
     return (
@@ -9,14 +10,15 @@ const GoogleMap = () => {
                     bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE}` }}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}>
-                    <Text
+                    <GoogleMark
                         lat={40.6447239}
-                        lng={-73.7283829}
-                        text={'Operation'} />
+                        lng={-73.7283829} />
                 </GoogleMapReact>
             </div>
-            <div className = "operation-hours">
+            <div className="operation-hours">
                 <h1>12 hours a day</h1>
+                <p>9330 W. Hilltop Avenue
+                    Colorado Springs, CO 80911</p>
             </div>
         </div>
     )
