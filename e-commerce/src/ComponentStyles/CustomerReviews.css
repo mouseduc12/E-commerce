@@ -1,0 +1,81 @@
+.customer-reviews{
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+    margin: 100px 0;
+    font-family: "Roboto"
+}
+.customers{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.customers-words-container{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.customers-words{
+    height: 80%;
+    line-height: 50px;
+}
+.customers-words h3{
+    font-size: 25px;
+}
+.img{
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
+}
+.customer-big-img{
+    background-image: url("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 600px;
+    height: 500px;
+    z-index: 1;
+}
+.customer-small-img1{
+    background-image: url("https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 350px;
+    height: 300px;
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    transform: rotate(20deg);
+    z-index: 0;
+}
+.customer-small-img2{
+    background-image: url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 350px;
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    transform: rotate(30deg);
+    z-index: 0;
+}
+.customer-small-img3{
+    background-image: url("https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 350px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 120px;
+    transform: rotate(10deg);
+    z-index: 0;
+}
+.customer-medium-img1{
+    background-image: url("https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    right: 120px;
+    transform: rotate(10deg);
+    z-index: 0;   
+}
+.customers-words p{
+    font-size: 18px;
+}

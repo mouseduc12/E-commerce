@@ -8,6 +8,7 @@ import NewInstaFeed from "./NewInstaFeed"
 import Events from "./Events"
 import Header from "./Header"
 import IFrame from "./Iframe"
+import CustomerReviews from "./CustomerReviews"
 
 class App extends React.Component {
     render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
                             <Header {...props}/>
                             <Events {...props}/>
                             <GeneralShop {...props}/>
+                            <CustomerReviews />
                             <IFrame {...props}/>
                             <NewInstaFeed {...props}/>
                             </Fragment>

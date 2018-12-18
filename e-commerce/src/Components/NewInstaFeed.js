@@ -19,7 +19,7 @@ class NewInstaFeed extends React.Component {
             </div>`
         const instafeedTarget = 'instafeed';
         return (
-            <LazyLoad height={500} once throttle={1000}>
+            <LazyLoad height={500} once throttle={500}>
                 <div className="insta-holder">
                     <div id={instafeedTarget} className="new-insta">
                         <InstaFeed
