@@ -20,7 +20,8 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            count: 0
         }
     }
 
@@ -28,7 +29,8 @@ class App extends React.Component {
         !this.state.modalIsOpen &&
             setTimeout(() => {
                 this.setState(prevState => ({
-                    modalIsOpen: !prevState.modalIsOpen
+                    modalIsOpen: !prevState.modalIsOpen,
+                    count: prevState.count + 1
                 }))
             }, 3000)
     }
@@ -40,6 +42,7 @@ class App extends React.Component {
     }
 
     render() {
+        console.log("I'm rendering")
         return (
             <div>
                 <Nav />
@@ -52,7 +55,7 @@ class App extends React.Component {
                             <CustomerReviews />
                             <IFrame {...props} />
                             <GoogleMap {...props} />
-                            <NewInstaFeed {...props} />
+                            <NewInstaFeed {...props} count = {this.state.count}/>
                         </Fragment>
                     } />
                     <Route path="/quickservice/:name" render={(props) => (

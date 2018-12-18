@@ -23,7 +23,7 @@ class NewInstaFeed extends React.Component {
                 <div className="insta-holder">
                     <div id={instafeedTarget} className="new-insta">
                         <InstaFeed
-                            limit='5'
+                            limit= {this.props.count === 0 ? "5" : "0"}
                             resolution='standard_resolution'
                             sortBy='most-recent'
                             target={instafeedTarget}
