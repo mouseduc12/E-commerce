@@ -4,7 +4,7 @@ const Return = () => {
     return(
        <div className="top-level">
             <div className="second-level">
-                <div className="second-level-return">
+                <div className="second-level-text">
                     <h1>Return</h1>
                     <hr />
                 </div>

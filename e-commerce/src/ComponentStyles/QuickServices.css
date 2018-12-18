@@ -40,6 +40,9 @@
 .third-level{
     height: auto;
     background: rgba(35,47,62, 0.2);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .third-level h3{
     letter-spacing: 1px;
