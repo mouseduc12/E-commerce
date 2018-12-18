@@ -19,6 +19,17 @@
     font-weight: bold;
     font-size: 50px;
     margin-bottom: 20px;
+    animation: blurIt 1s linear 
+}
+@keyframes blurIt{
+    from{
+        opacity: 0.25;
+        transform: translateY(-50%)
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1
+    }
 }
 .second-level hr{
     height: 5px;

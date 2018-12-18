@@ -71,7 +71,7 @@ class Nav extends React.Component {
                         <li>Blog</li>
                         <li>About</li>
                         <li>Contact</li>
-                        <li>Login</li>
+                        <li><Link to ="/login">Login</Link></li>
                     </ul>
                 }
             </div>

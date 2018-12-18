@@ -13,6 +13,7 @@ import GoogleMap from "./GoogleMap"
 import Modal from "react-modal"
 import "../ComponentStyles/App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Authentication from "./Authentication";
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -21,7 +22,8 @@ class App extends React.Component {
         super()
         this.state = {
             modalIsOpen: false,
-            count: 0
+            count: 0,
+            hasLoadedInsta: false
         }
     }
 
@@ -34,6 +36,7 @@ class App extends React.Component {
                 }))
             }, 3000)
     }
+
 
     closeModal = () => {
         this.setState({
@@ -61,6 +64,8 @@ class App extends React.Component {
                     <Route path="/quickservice/:name" render={(props) => (
                         <QuickServices {...props} />
                     )} />
+                    <Route path="/login" render={(props) => (<Authentication {...props}/>)} />
+
                 </Switch>
                 <Modal
                     ariaHideApp={false}

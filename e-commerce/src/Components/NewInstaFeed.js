@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LazyLoad from "react-lazyload"
 
 class NewInstaFeed extends React.Component {
+    shouldComponentUpdate(){
+        if(this.props.count > 0){
+            return false
+        }
+    }
     render() {
         const display =
             `<div class ="image_general">
@@ -23,7 +28,7 @@ class NewInstaFeed extends React.Component {
                 <div className="insta-holder">
                     <div id={instafeedTarget} className="new-insta">
                         <InstaFeed
-                            limit= {this.props.count === 0 ? "5" : "0"}
+                            limit="5"
                             resolution='standard_resolution'
                             sortBy='most-recent'
                             target={instafeedTarget}
@@ -40,7 +45,9 @@ class NewInstaFeed extends React.Component {
                 </div>
             </LazyLoad>
         )
+
     }
 }
 
 export default NewInstaFeed
+//{this.props.count === 0 ? "5" : "0"}
