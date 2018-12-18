@@ -5,7 +5,15 @@
 }
 .second-level{
     border-right: 1px solid rgba(1,1,1, 0.1);
-    box-shadow: inset 0 0 0 1000px rgba(1,1,1, 0.1)
+    box-shadow: inset 0 0 0 1000px rgba(1,1,1, 0.1);
+}
+.second-level .second-level-text{
+    top: 0;
+    position: sticky;
+    height: auto;
+    width: 30%;
+    margin: 0 auto; 
+    padding: 200px 0;
 }
 .second-level h1{
     font-weight: bold;
@@ -18,21 +26,15 @@
     background: #232f3e;
     border: none;
     animation: generalHr 1s linear;
-    width: 70%
+    width: 80%;
 }
 @keyframes generalHr{
     from{
         width: 0
     }
     to{
-        width: 70%
+        width: 80%
     }
-}
-
-.second-level .second-level-text{
-    top: 0;
-    position: sticky;
-    padding-top: 80px;
 }
 
 .third-level{
