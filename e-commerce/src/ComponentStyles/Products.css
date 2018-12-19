@@ -7,8 +7,9 @@
 }
 
 .each-product{
-    width: 300px;
+    width: 23%;
     height: 450px;
+    margin-right: 20px;
 }
 .each-product h3{
     font-size: 15px;
