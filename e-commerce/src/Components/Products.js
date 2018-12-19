@@ -1,10 +1,10 @@
 import React from "react"
-
+import "../ComponentStyles/Products.css"
 
 const Products = (props) =>{
     return(
-        <div>
-            <div className="product-images" style ={{backgroundImage: props.image}}></div>
+        <div className = "each-product">
+            <div className="product-images" style ={{backgroundImage: `url(${props.image})`}}></div>
             <div>
                 <h3>{props.headline}</h3>
                 <p>{props.price}</p>
