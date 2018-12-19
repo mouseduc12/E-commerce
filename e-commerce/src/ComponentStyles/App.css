@@ -72,5 +72,6 @@
     font-size: 25px;
     border: none;
     background: black;
-    color:white
+    color:white;
+    cursor: pointer
 }

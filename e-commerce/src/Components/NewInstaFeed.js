@@ -8,6 +8,8 @@ class NewInstaFeed extends React.Component {
     shouldComponentUpdate(){
         if(this.props.count > 0){
             return false
+        } else {
+            return true
         }
     }
     render() {

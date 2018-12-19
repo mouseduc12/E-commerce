@@ -108,6 +108,6 @@
     cursor: pointer;
     color: rgba(255,255,255,1)
 }
-.second-nav-row li:hover{
+.second-nav-row li a:hover{
     color: #d4ab92
 }

@@ -10,7 +10,8 @@ class GeneralShop extends React.Component {
         super()
         this.state = {
             scrollX: false,
-            scrollNewX: false
+            scrollNewX: false,
+            toggle: false
         }
         this.myRef = React.createRef();
         this.mySecondRef = React.createRef()
@@ -19,6 +20,14 @@ class GeneralShop extends React.Component {
         this.props.getPlant();
         this.props.getSculptures();
     }
+
+    // shouldComponentUpdate(){
+    //     if(this.state.toggle === false){
+    //         this.setState({
+    //             toggle: true
+    //         }, () => false)
+    //     }
+    // }
 
     handleScroll = () => {
         const manageShowOff = this.myRef.current

@@ -14,6 +14,7 @@ import Modal from "react-modal"
 import "../ComponentStyles/App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Authentication from "./Authentication";
+import Shop from "./Shop"
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -23,7 +24,6 @@ class App extends React.Component {
         this.state = {
             modalIsOpen: false,
             count: 0,
-            hasLoadedInsta: false
         }
     }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
                     modalIsOpen: !prevState.modalIsOpen,
                     count: prevState.count + 1
                 }))
-            }, 3000)
+            }, 30000)
     }
 
 
@@ -61,11 +61,11 @@ class App extends React.Component {
                             <NewInstaFeed {...props} count = {this.state.count}/>
                         </Fragment>
                     } />
-                    <Route path="/quickservice/:name" render={(props) => (
+                    <Route exact path="/quickservice/:name" render={(props) => (
                         <QuickServices {...props} />
                     )} />
                     <Route path="/login" render={(props) => (<Authentication {...props}/>)} />
-
+                    <Route path="/shop" render={(props) => (<Shop {...props}/>)} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}
