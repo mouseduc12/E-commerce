@@ -26,7 +26,7 @@ class Shop extends React.Component {
                             <div className="department-options">
                                 <h3><Link to="/shop" style={{ color: "darkCyan" }}>All Products</Link></h3>
                                 <h3><Link to="/shop/fire-pits">Fire Pits</Link></h3>
-                                <h3><Link to="/shop/plants">Plant</Link></h3>
+                                <h3><Link to="/shop/plants">Plants</Link></h3>
                                 <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
                             </div>
                             <select className="selects-to-choose">
