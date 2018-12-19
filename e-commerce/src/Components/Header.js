@@ -2,8 +2,8 @@ import React from "react"
 import "../ComponentStyles/Header.css"
 import Slider from "./Slider"
 import img1 from '../images/decors.jpeg'
-import img2 from "../images/firePits.jpeg"
-import img3 from "../images/outdoorLignting.jpeg"
+import img3 from "../images/firePits.jpeg"
+import img2 from "../images/outdoorLignting.jpeg"
 import img4 from "../images/Plants.jpeg"
 import Benefits from "./Benefits"
 

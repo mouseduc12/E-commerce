@@ -90,7 +90,7 @@
     align-items: center;
     font-size: 17px;
     justify-content: space-evenly;
-    width: 45%;
+    width: 35%;
     font-weight: bold;
     animation: myMove;
     animation-duration: 1s;
@@ -110,4 +110,25 @@
 }
 .second-nav-row li a:hover{
     color: #d4ab92
+}
+.department{
+    width: 40%;
+    justify-content: space-evenly;
+    display: flex;
+    margin-top: 15px;
+    -webkit-font-smoothing: antialiased; 
+}
+.department-container{
+    display: flex;
+    background-color: rgba(1,1,1,0.5) ;
+    align-items: center;
+    height: 60px;
+    cursor: pointer;
+}
+.department-container li:hover{
+    color: orange;
+}
+.nav-arrows{
+    font-size:12px;
+    margin-left: 5px;
 }

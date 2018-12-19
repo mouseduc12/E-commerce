@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
@@ -9,6 +9,7 @@ class Nav extends React.Component {
         this.state = {
             isScroll: false,
             openNav: true,
+            openShop: false
         }
     }
     componentDidMount() {
@@ -42,6 +43,18 @@ class Nav extends React.Component {
         })
     }
 
+    handleOnMouseOver = () => {
+        this.setState({
+            openShop: true
+        })
+    }
+
+    handleOnMouseLeave = () => {
+        this.setState({
+            openShop: false
+        })
+    }
+
     render() {
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
@@ -67,12 +80,21 @@ class Nav extends React.Component {
                 </div>
                 {this.state.openNav &&
                     <ul className="second-nav-row">
-                        <li><Link to="/">Shop</Link></li>
+                        <li onMouseOver={this.handleOnMouseOver}><Link to="/shop">Shop <FontAwesomeIcon className = "nav-arrows" icon = {!this.state.openShop ? "arrow-down" : "arrow-up"}/></Link></li>
                         <li><Link to="/">Blog</Link></li>
                         <li><Link to="/">About</Link></li>
-                        <li><Link to="/">Contact</Link></li>
                         <li><Link to="/login">Login</Link></li>
                     </ul>
+                }
+                {this.state.openShop &&
+                    <div className = "department-container"  onMouseLeave={this.handleOnMouseLeave}>
+                        <ul className="department">
+                            <li><Link to="/">Sculptures</Link></li>
+                            <li>Plants</li>
+                            <li>Outdoor Lights</li>
+                            <li>Fire Pits</li>
+                        </ul>
+                    </div>
                 }
             </div>
         )
