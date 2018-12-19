@@ -89,10 +89,10 @@ class Nav extends React.Component {
                 {this.state.openShop &&
                     <div className = "department-container"  onMouseLeave={this.handleOnMouseLeave}>
                         <ul className="department">
-                            <li><Link to="/">Sculptures</Link></li>
-                            <li>Plants</li>
-                            <li>Outdoor Lights</li>
-                            <li>Fire Pits</li>
+                            <li><Link to="/shop/sculptures">Sculptures</Link></li>
+                            <li><Link to="/shop/plants">Plants</Link></li>
+                            <li><Link to="/shop/ligths">Outdoor Lights</Link></li>
+                            <li><Link to="/shop/firepits">Fire Pits</Link></li>
                         </ul>
                     </div>
                 }

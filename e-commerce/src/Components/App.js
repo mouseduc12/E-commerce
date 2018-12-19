@@ -14,7 +14,8 @@ import Modal from "react-modal"
 import "../ComponentStyles/App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Authentication from "./Authentication";
-import Shop from "./Shop"
+import Shop from "./Shop";
+import Department from "./Department"
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -65,7 +66,8 @@ class App extends React.Component {
                         <QuickServices {...props} />
                     )} />
                     <Route path="/login" render={(props) => (<Authentication {...props}/>)} />
-                    <Route path="/shop" render={(props) => (<Shop {...props}/>)} />
+                    <Route exact path="/shop" render={(props) => (<Shop {...props}/>)} />
+                    <Route path="/shop/:name" render={(props) => (<Department {...props}/>)} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}
