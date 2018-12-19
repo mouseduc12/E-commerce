@@ -24,6 +24,7 @@ class Plants extends React.Component {
                                     <h3><Link to="/shop/fire-pits">Fire Pits</Link></h3>
                                     <h3><Link to="/shop/plants" style={{ color: "darkCyan" }}>Plants</Link></h3>
                                     <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
+                                    <h3><Link to="/shop/lights">Outdoor Lights</Link></h3>
                                 </div>
                                 <select className="selects-to-choose">
                                     <option>Sort By</option>

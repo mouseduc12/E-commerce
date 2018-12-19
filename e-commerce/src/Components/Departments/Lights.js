@@ -1,11 +1,46 @@
-import React from "react"
+import React, { Fragment } from "react"
+import Products from "../Products";
+import { withProduct } from "../../Context/ProductsProvider"
+import { Link } from "react-router-dom"
 
-const Lights = () =>{
-    return(
-        <div>
-            <h2>Hello Nerd</h2>
-        </div>
-    )
+class Lights extends React.Component {
+    componentDidMount(){
+        this.props.getOutDoorLights()
+    }
+    render(){
+        return (
+            <div>
+                <Fragment>
+                    <div className="image-each-section-container">
+                        <div className="image-each-section" style={{ backgroundImage: `url("https://images.pexels.com/photos/1677765/pexels-photo-1677765.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")` }}>
+                            <h2>Outdoor Lights</h2>
+                        </div>
+                    </div>
+                    <div className="products-container">
+                        <div className="selected-options">
+                            <div className="options">
+                                <div className="department-options">
+                                    <h3><Link to="/shop">All Products</Link></h3>
+                                    <h3><Link to="/shop/fire-pits">Fire Pits</Link></h3>
+                                    <h3><Link to="/shop/plants">Plants</Link></h3>
+                                    <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
+                                    <h3><Link to="/shop/lights" style={{ color: "darkCyan" }}>Outdoor Lights</Link></h3>
+                                </div>
+                                <select className="selects-to-choose">
+                                    <option>Sort By</option>
+                                    <option>Lowest To highest</option>
+                                    <option>Highest To lowest</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="product-container">
+                            {this.props.lights.map(each => <Products {...each} />)}
+                        </div>
+                    </div>
+                </Fragment>
+            </div>
+        )
+    }
 }
 
-export default Lights
+export default withProduct(Lights)
