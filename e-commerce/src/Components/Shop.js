@@ -15,11 +15,13 @@ class Shop extends React.Component {
         return (
             <div className="products-container">
                 <div className="selected-options">
-                    <div>
+                    <div className = "options">
+                        <div className = "department-options">
                         <h3>All Products</h3>
                         <h3>Fire Pits</h3>
                         <h3>Plants</h3>
                         <h3>Garden Sculptures</h3>
+                        </div>
                         <select>
                             <option>Sort By</option>
                             <option>Lowest To highest</option>

@@ -2,9 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-left: 30px;
 }
 .products-container{
     display: flex;
     justify-content: space-between    
+}
+.options{
+    width: 200px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
