@@ -42,6 +42,8 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    position: sticky;
+    top: 0
 }
 .options h3{
     line-height: 30px;
@@ -51,7 +53,10 @@
 }
 .selects-to-choose{
     width: 80%;
-    height: 5%;
-    background: rgba(1, 1, 1, 0.1)
-
+    height: 10%;
+    font-size: 17px;
+}
+.selects-to-choose option{
+    background: rgba(255,255,255,0.1);
+    padding: 0 20px;
 }

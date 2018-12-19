@@ -70,13 +70,26 @@ class App extends React.Component {
                         <QuickServices {...props} />
                     )} />
                     <Route path="/login" render={(props) => (<Authentication {...props} />)} />
+
                     <Route exact path="/shop" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<Shop {...props} {...secondprops} />)}/>
+                        <HandleMouse render={(secondprops) => (<Shop {...props} {...secondprops} />)} />
                     )} />
-                    <Route path="/shop/fire-pits" render={(props) => (<FirePits {...props} />)} />
-                    <Route path="/shop/plants" render={(props) => (<Plants {...props} />)} />
-                    <Route path="/shop/lights" render={(props) => (<Lights {...props} />)} />
-                    <Route path="/shop/sculptures" render={(props) => (<Sculptures {...props} />)} />
+
+                    <Route path="/shop/fire-pits" render={(props) => (
+                        <HandleMouse render={(secondprops) => (<FirePits {...props}  {...secondprops} />)} />
+                    )} />
+
+                    <Route path="/shop/plants" render={(props) => (
+                        <HandleMouse render={(secondprops) => (<Plants {...props}  {...secondprops} />)} />
+                    )} />
+
+                    <Route path="/shop/lights" render={(props) => (
+                        <HandleMouse render={(secondprops) => (<Lights {...props}  {...secondprops} />)} />
+                    )} />
+                    
+                    <Route path="/shop/sculptures" render={(props) => (
+                        <HandleMouse render={(secondprops) => (<Sculptures {...props} {...secondprops} />)} />
+                    )} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}
