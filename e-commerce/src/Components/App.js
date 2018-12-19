@@ -15,7 +15,10 @@ import "../ComponentStyles/App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Authentication from "./Authentication";
 import Shop from "./Shop";
-import Department from "./Department"
+import FirePits from "./Departments/FirePits"
+import Lights from "./Departments/Lights"
+import Plants from "./Departments/Plants"
+import Sculptures from "./Departments/Sculptures"
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -67,7 +70,10 @@ class App extends React.Component {
                     )} />
                     <Route path="/login" render={(props) => (<Authentication {...props}/>)} />
                     <Route exact path="/shop" render={(props) => (<Shop {...props}/>)} />
-                    <Route path="/shop/:name" render={(props) => (<Department {...props}/>)} />
+                    <Route path = "/shop/fire-pits" render={(props) => (<FirePits {...props}/>)} />
+                    <Route path = "/shop/plants" render={(props) => (<Plants {...props}/>)} />
+                    <Route path = "/shop/lights" render={(props) => (<Lights {...props}/>)} />
+                    <Route path = "/shop/sculptures" render={(props) => (<Sculptures {...props}/>)} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}

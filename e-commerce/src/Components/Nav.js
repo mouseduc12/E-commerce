@@ -91,8 +91,8 @@ class Nav extends React.Component {
                         <ul className="department">
                             <li><Link to="/shop/sculptures">Sculptures</Link></li>
                             <li><Link to="/shop/plants">Plants</Link></li>
-                            <li><Link to="/shop/ligths">Outdoor Lights</Link></li>
-                            <li><Link to="/shop/firepits">Fire Pits</Link></li>
+                            <li><Link to="/shop/lights">Outdoor Lights</Link></li>
+                            <li><Link to="/shop/fire-pits">Fire Pits</Link></li>
                         </ul>
                     </div>
                 }
