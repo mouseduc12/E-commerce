@@ -8,22 +8,44 @@ class ProductsProvider extends React.Component {
         super()
         this.state = {
             plants: [],
-            sculptures: []
+            sculptures: [],
+            lights: [],
+            firePits: [],
+            allData: [],
         }
     }
 
     getPlant = () => {
         axios.get("/plants").then(res => {
-            this.setState({
-                plants: res.data
+            this.setState(prevState => ({
+                plants: res.data,
+                allData: [...prevState.allData, ...res.data] 
             })
+            )
         })
     }
     getSculptures = () => {
         axios.get("/sculptures").then(res => {
-            this.setState({
-                sculptures: res.data
-            })
+            this.setState(prevState =>({
+                sculptures: res.data,
+                allData: [...prevState.allData, ...res.data] 
+            }))
+        })
+    }
+    getOutDoorLights = () => {
+        axios.get("/lights").then(res => {
+            this.setState(prevState =>({
+                lights: res.data,
+                allData: [...prevState.allData, ...res.data] 
+            }))
+        })
+    }
+    getFirePits = () => {
+        axios.get("/firepits").then(res => {
+            this.setState(prevState =>({
+                firePits: res.data,
+                allData: [...prevState.allData, ...res.data] 
+            }))
         })
     }
 
@@ -33,7 +55,9 @@ class ProductsProvider extends React.Component {
                 value={{
                     ...this.state,
                     getPlant: this.getPlant,
-                    getSculptures: this.getSculptures
+                    getSculptures: this.getSculptures,
+                    getFirePits: this.getFirePits,
+                    getOutDoorLights: this.getOutDoorLights, 
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

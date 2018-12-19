@@ -37,6 +37,7 @@
     margin-right: 10px;
     font-size: 30px;
     background-color: whitesmoke;
+    cursor: pointer
 }
 .text-new-seletter{
     display: flex;
