@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(morgan("dev"))
 app.use("/plants", require("./routes/plants"))
 app.use("/sculptures", require("./routes/gardenSculptures"))
-app.use("/plants", require("./routes/outdoorLights"))
+app.use("/lights", require("./routes/outdoorLights"))
 app.use("/firepits", require("./routes/firePits"))
 
 app.use((err, req, res, next) =>{

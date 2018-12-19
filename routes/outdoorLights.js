@@ -33,5 +33,18 @@ outdoorLightRouter.get("/:lightId" , (req, res, next) => {
     })
 })
 
+outdoorLightRouter.put("/:id", (req, res, next) => {
+    OutDoorLightData.findOneAndUpdate({ _id: req.params.id },
+        req.body,
+        { new: true },
+        (err, data) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(data)
+        })
+})
+
 
 module.exports = outdoorLightRouter
