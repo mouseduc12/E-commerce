@@ -46,6 +46,9 @@
 .options h3{
     line-height: 30px;
 }
+.department-options a{
+    color: black;
+}
 .selects-to-choose{
     width: 80%;
     height: 5%;

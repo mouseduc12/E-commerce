@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import Products from "./Products"
 import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/Shop.css"
+import { Link } from "react-router-dom"
 
 class Shop extends React.Component {
     componentDidMount() {
@@ -11,6 +12,7 @@ class Shop extends React.Component {
         this.props.getPlant()
     }
     render() {
+        console.log(this.props)
         return (
             <Fragment>
                 <div className ="image-each-section-container">
@@ -22,10 +24,10 @@ class Shop extends React.Component {
                     <div className="selected-options">
                         <div className="options">
                             <div className="department-options">
-                                <h3 style={{ color: "darkCyan" }}>All Products</h3>
-                                <h3>Fire Pits</h3>
-                                <h3>Plants</h3>
-                                <h3>Garden Sculptures</h3>
+                                <h3><Link to="/shop" style={{ color: "darkCyan" }}>All Products</Link></h3>
+                                <h3><Link to="/shop/fire-pits">Fire Pits</Link></h3>
+                                <h3><Link to="/shop/plants">Plant</Link></h3>
+                                <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
                             </div>
                             <select className="selects-to-choose">
                                 <option>Sort By</option>
