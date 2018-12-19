@@ -7,16 +7,16 @@ const outdoorSchema = new Schema({
         type: String,
         required: true
     },
-    price: Number,
+    price: String,
     image: String,
-    otherImages: {
+    otherImages: [{
         type: Array,
         required: true
-    },
-    description: {
+    }],
+    description: [{
         type: String,
         required: true
-    }, 
+    }], 
     relatedProduct: {
         type: [{
             type: Object 
