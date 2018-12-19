@@ -11,7 +11,7 @@ class ProductsProvider extends React.Component {
             sculptures: [],
             lights: [],
             firePits: [],
-            allData: [],
+
         }
     }
 
@@ -19,37 +19,36 @@ class ProductsProvider extends React.Component {
         axios.get("/plants").then(res => {
             this.setState(prevState => ({
                 plants: res.data,
-                allData: [...prevState.allData, ...res.data] 
             })
             )
         })
     }
     getSculptures = () => {
         axios.get("/sculptures").then(res => {
-            this.setState(prevState =>({
+            this.setState(prevState => ({
                 sculptures: res.data,
-                allData: [...prevState.allData, ...res.data] 
             }))
         })
     }
     getOutDoorLights = () => {
         axios.get("/lights").then(res => {
-            this.setState(prevState =>({
+            this.setState(prevState => ({
                 lights: res.data,
-                allData: [...prevState.allData, ...res.data] 
+
             }))
         })
     }
     getFirePits = () => {
         axios.get("/firepits").then(res => {
-            this.setState(prevState =>({
+            this.setState(prevState => ({
                 firePits: res.data,
-                allData: [...prevState.allData, ...res.data] 
+
             }))
         })
     }
 
     render() {
+        const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
             <ProductProviderContext.Provider
                 value={{
@@ -57,7 +56,8 @@ class ProductsProvider extends React.Component {
                     getPlant: this.getPlant,
                     getSculptures: this.getSculptures,
                     getFirePits: this.getFirePits,
-                    getOutDoorLights: this.getOutDoorLights, 
+                    getOutDoorLights: this.getOutDoorLights,
+                    data: data
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

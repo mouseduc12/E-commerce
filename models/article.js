@@ -26,21 +26,5 @@ const articleSchema = new Schema({
         }
     ]  
 })
-// articleSchema.methods.love = function() {
-//     this.love++
-//     return this.save()
-// }
-
-// articleSchema.methods.comment = function(comment) {
-//     this.comment.push(comment)
-//     return this.save()
-// }
-// articleSchema.methods.addAuthor = function(author_id) {
-//     this.author = author_id
-//     return this.save()
-// }
-// articleSchema.methods.getAuthorArticle = function(_id) {
-//     articleSchema.find()
-// }
 
 module.exports = mongoose.model("BlogSchema", articleSchema)
