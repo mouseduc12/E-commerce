@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { withProduct } from "../../Context/ProductsProvider"
 import { Link } from "react-router-dom"
 import Products from "../Products"
+import HandleMouse from "../../shared/HandleMouse"
 
 class FirePits extends React.Component {
     componentDidMount() {
@@ -33,7 +34,7 @@ class FirePits extends React.Component {
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.firePits.map(each => <Products {...each} />)}
+                        {this.props.firePits.map(each => <HandleMouse render = {(props) => <Products {...each} {...props} /> }/>)}
                     </div>
                 </div>
             </Fragment>

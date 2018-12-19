@@ -75,7 +75,7 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.plants.map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.plants.slice().splice(0,6).map(each => <ShowOffProduct {...each} key={each._id} />)}
                     </div>
                     <div className="manage-showoff" onScroll={this.handleScroll} ref={this.mySecondRef} >
                         <div className="manage-store-teller">
@@ -95,7 +95,7 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.sculptures.map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.sculptures.slice().splice(0,6).map(each => <ShowOffProduct {...each} key={each._id} />)}
                     </div>
                 </Fragment>
             </div>

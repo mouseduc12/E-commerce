@@ -36,7 +36,7 @@
     justify-content: space-between    
 }
 .options{
-    width: 200px;
+    width: 230px;
     height: 450px;
     display: flex;
     align-items: center;
@@ -52,7 +52,7 @@
     color: black;
 }
 .selects-to-choose{
-    width: 80%;
+    width: 70%;
     height: 10%;
     font-size: 17px;
 }

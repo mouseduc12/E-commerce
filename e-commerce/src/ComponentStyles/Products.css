@@ -4,8 +4,24 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    transition: all 1s;
+    animation: dropProduct 1s linear;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
-
+.product-images:hover{
+    transform: scale(1.1)
+}
+@keyframes dropProduct{
+    from{
+        opacity: 0.5;
+        transform: translateX(-30%)
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
 .each-product{
     width: 25%;
     height: 400px;
@@ -13,12 +29,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .each-product h3{
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
-    padding: 0 30px;
-    line-height: 20px
+    padding: 0 20px;
+    line-height: 25px
 }
 .each-product p {
     text-align: center;

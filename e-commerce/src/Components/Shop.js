@@ -3,6 +3,7 @@ import Products from "./Products"
 import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/Shop.css"
 import { Link } from "react-router-dom"
+import HandleMouse from "../shared/HandleMouse"
 
 class Shop extends React.Component {
     componentDidMount() {
@@ -38,7 +39,7 @@ class Shop extends React.Component {
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.data.map(each => <Products {...each} />)}
+                        {this.props.data.map(each => <HandleMouse render = {(props) => <Products {...each} {...props} /> }/>)}
                     </div>
                 </div>
             </Fragment>

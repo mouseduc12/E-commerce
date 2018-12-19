@@ -19,7 +19,7 @@ import FirePits from "./Departments/FirePits"
 import Lights from "./Departments/Lights"
 import Plants from "./Departments/Plants"
 import Sculptures from "./Departments/Sculptures"
-import HandleMouse from "../shared/HandleMouse"
+
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -71,24 +71,26 @@ class App extends React.Component {
                     )} />
                     <Route path="/login" render={(props) => (<Authentication {...props} />)} />
 
-                    <Route exact path="/shop" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<Shop {...props} {...secondprops} />)} />
-                    )} />
+                    <Route exact path="/shop"
+                        render={(props) => (
+                            <Shop {...props} />
+                        )} />
 
-                    <Route path="/shop/fire-pits" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<FirePits {...props}  {...secondprops} />)} />
-                    )} />
+                    <Route path="/shop/fire-pits"
+                        render={(props) => (
+                            <FirePits {...props} />
+                        )} />
 
                     <Route path="/shop/plants" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<Plants {...props}  {...secondprops} />)} />
+                        <Plants {...props} />
                     )} />
 
                     <Route path="/shop/lights" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<Lights {...props}  {...secondprops} />)} />
+                        <Lights {...props} />
                     )} />
-                    
+
                     <Route path="/shop/sculptures" render={(props) => (
-                        <HandleMouse render={(secondprops) => (<Sculptures {...props} {...secondprops} />)} />
+                        <Sculptures {...props} />
                     )} />
                 </Switch>
                 <Modal
