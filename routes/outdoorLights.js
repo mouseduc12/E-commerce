@@ -33,31 +33,5 @@ outdoorLightRouter.get("/:lightId" , (req, res, next) => {
     })
 })
 
-outdoorLightRouter.put("/:lightId", (req, res, next) =>{
-    OutDoorLightData.findByIdAndUpdate(
-        {_id: req.params.id}, 
-        req.body, 
-        {new: true},
-        (err, update) =>{
-            if(err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(202).send(update)
-        })
-})
-
-outdoorLightRouter.delete("/:lightId", (req, res, next) =>{
-    OutDoorLightData.findByIdAndDelete(
-        {_id: req.params.id},
-        (err, deleteData) =>{
-            if(err){
-                res.status(500)
-                return  next(err)
-            }
-            return res.status(202).send("Delete Sucessfully")
-        }
-    )
-})
 
 module.exports = outdoorLightRouter
