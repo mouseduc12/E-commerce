@@ -3,15 +3,52 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+.image-each-section{
+    background-image: url("https://images.pexels.com/photos/47313/tulips-bloom-blossom-colorful-47313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    animation: flower 2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.image-each-section h2{
+    font-size: 50px;
+    color: whitesmoke;
+    box-shadow: inset 0 0 0 1000px rgba(1, 1, 1, 0.5)
+}
+@keyframes flower{
+    from{
+        transform: scale(2)
+    }
+    to{
+        transform: scale(1)
+    }
+}
+.image-each-section-container{
+    overflow: hidden;
+}
 .products-container{
     display: flex;
     justify-content: space-between    
 }
 .options{
     width: 200px;
-    height: 450px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+}
+.options h3{
+    line-height: 30px;
+}
+.selects-to-choose{
+    width: 80%;
+    height: 5%;
+    background: rgba(1, 1, 1, 0.1)
+
 }
