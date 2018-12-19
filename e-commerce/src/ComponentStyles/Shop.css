@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin: 30px 0;
 }
 .image-each-section{
     background-image: url("https://images.pexels.com/photos/47313/tulips-bloom-blossom-colorful-47313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -13,7 +14,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
 }
 .image-each-section h2{
     font-size: 50px;

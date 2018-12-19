@@ -35,7 +35,7 @@ class Lights extends React.Component {
                             </div>
                         </div>
                         <div className="product-container">
-                            {this.props.lights.map(each => <HandleMouse render = {(props) => <Products {...each} {...props} /> }/>)}
+                            {this.props.lights.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
                         </div>
                     </div>
                 </Fragment>

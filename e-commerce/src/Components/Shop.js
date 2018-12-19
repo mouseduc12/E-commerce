@@ -39,7 +39,7 @@ class Shop extends React.Component {
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.data.map(each => <HandleMouse render = {(props) => <Products {...each} {...props} /> }/>)}
+                        {this.props.data.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
                     </div>
                 </div>
             </Fragment>

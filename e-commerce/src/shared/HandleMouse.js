@@ -53,7 +53,7 @@ class HandleMouse extends React.Component {
             this.props.render({
                 handleIconLeave: this.handleIconLeave,
                 handleIcon: this.handleIcon,
-                hanldeOver: this.hanldeOver,
+                handleOver: this.handleOver,
                 handleLeave: this.handleLeave,
                 ...this.state
             })
