@@ -81,7 +81,7 @@ class Nav extends React.Component {
                 {this.state.openNav &&
                     <ul className="second-nav-row">
                         <li onMouseOver={this.handleOnMouseOver}><Link to="/shop">Shop <FontAwesomeIcon className = "nav-arrows" icon = {!this.state.openShop ? "arrow-down" : "arrow-up"}/></Link></li>
-                        <li><Link to="/">Blog</Link></li>
+                        <li><Link to="/blog">Blog</Link></li>
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/login">Login</Link></li>
                     </ul>

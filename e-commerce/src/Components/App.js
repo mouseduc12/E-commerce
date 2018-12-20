@@ -19,7 +19,7 @@ import FirePits from "./Departments/FirePits"
 import Lights from "./Departments/Lights"
 import Plants from "./Departments/Plants"
 import Sculptures from "./Departments/Sculptures"
-import About from "./AboutUs"
+import Blog from "./Blog/Blog"
 import AboutUs from "./AboutUs";
 
 
@@ -95,6 +95,7 @@ class App extends React.Component {
                         <Sculptures {...props} />
                     )} />
                     <Route path="/about" component={AboutUs} />
+                    <Route path="/blog" component={Blog} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}

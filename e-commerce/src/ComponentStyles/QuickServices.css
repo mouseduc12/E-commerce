@@ -94,5 +94,5 @@
     background-position: center;
 }
 #img-of-about-us{
-    background-image: linear-gradient(lightblue, darkcyan)
+    background-image: linear-gradient(rgba(255,255,255,1), lightblue);
 }
