@@ -11,7 +11,7 @@ class ProductsProvider extends React.Component {
             sculptures: [],
             lights: [],
             firePits: [],
-            sortedPlant: "",
+            sortedPlants: "",
             sortedSculptures: "",
             sortedOutdoorLights: "",
             sortedFirePits: "",
