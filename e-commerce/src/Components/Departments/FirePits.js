@@ -25,7 +25,7 @@ class FirePits extends React.Component {
         return (
             <Fragment>
                 <div className="image-each-section-container">
-                    <div className="image-each-section" style={{ backgroundImage: `url("https://images.pexels.com/photos/1680165/pexels-photo-1680165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")` }}>
+                    <div className="image-each-section" style={{ backgroundImage: `url("https://images.pexels.com/photos/249614/pexels-photo-249614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")` }}>
                         <h2>Fire Pits</h2>
                     </div>
                 </div>

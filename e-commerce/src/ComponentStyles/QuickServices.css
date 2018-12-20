@@ -87,3 +87,12 @@
         width: 24%
     }
 }
+.image-of-operation{
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+#img-of-about-us{
+    background-image: linear-gradient(lightblue, darkcyan)
+}

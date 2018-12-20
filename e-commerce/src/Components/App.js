@@ -19,6 +19,8 @@ import FirePits from "./Departments/FirePits"
 import Lights from "./Departments/Lights"
 import Plants from "./Departments/Plants"
 import Sculptures from "./Departments/Sculptures"
+import About from "./AboutUs"
+import AboutUs from "./AboutUs";
 
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
@@ -92,6 +94,7 @@ class App extends React.Component {
                     <Route path="/shop/sculptures" render={(props) => (
                         <Sculptures {...props} />
                     )} />
+                    <Route path="/about" component={AboutUs} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}
