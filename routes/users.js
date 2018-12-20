@@ -10,7 +10,7 @@ authRouter.post("/signup", (req, res, next) => {
             return next(err)
         }
         if(user){
-            res.status(500)
+            res.status(400)
             return next(new Error("The Username is already taken"))
         }
         const newUser = new User(req.body)
@@ -19,8 +19,8 @@ authRouter.post("/signup", (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            const token = jwt.sign(user.toObject(), process.env.SECRET)
-            return res.status(201).send({ user: user.toObject(), token })
+            const token = jwt.sign(userData.toObject(), process.env.SECRET)
+            return res.status(201).send({ userData: userData.toObject(), token })
         })
     })
 })

@@ -20,7 +20,7 @@ class Authentication extends React.Component {
             <div className="authentication-page">
                 <div className="authenticate">
                     <div className="authenticate-title">
-                        <h1>Login</h1>
+                        {this.state.isSignedUp ? <h1>Sign Up</h1>: <h1>Log In</h1> }
                         <hr />
                     </div>
                 </div>
@@ -28,7 +28,7 @@ class Authentication extends React.Component {
                     <div className="authenticate-form-container">
                         <div className="authenticate-form-small-container">
                             <form className="authenticate-form">
-                                <input type="text" placeholder="@Email" required/>
+                                <input type="text" placeholder="UserName" required/>
                                 <input type="text" placeholder="Password" required/>
                                 <div className="authenticate-button">
                                     <button>Log In</button>
@@ -46,7 +46,7 @@ class Authentication extends React.Component {
                             <form className="authenticate-form">
                                 <input type="text" placeholder="First Name" required />
                                 <input type="text" placeholder="Last Name" />
-                                <input type="email" placeholder="@Email" required />
+                                <input type="email" placeholder="UserName" required />
                                 <input type="text" placeholder="Password" required />
                                 <div className="authenticate-button">
                                     <button>Sign Up</button>
