@@ -5,10 +5,10 @@ import { Link } from "react-router-dom"
 import HandleMouse from "../../shared/HandleMouse"
 
 class Lights extends React.Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.getOutDoorLights()
     }
-    render(){
+    render() {
         return (
             <div>
                 <Fragment>
@@ -35,7 +35,9 @@ class Lights extends React.Component {
                             </div>
                         </div>
                         <div className="product-container">
-                            {this.props.lights.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
+                            {this.props.lights.map(each =>
+                                <HandleMouse otherImages={each.otherImages}
+                                    render={(props) => <Products {...each} {...props} key ={each._id} />} />)}
                         </div>
                     </div>
                 </Fragment>

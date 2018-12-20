@@ -11,8 +11,18 @@ class ProductsProvider extends React.Component {
             sculptures: [],
             lights: [],
             firePits: [],
-
+            sortedPlant: "",
+            sortedSculptures: "",
+            sortedOutdoorLights: "",
+            sortedFirePits: "",
+            sortedData: ""
         }
+    }
+    handleChange = (e) =>{
+        const { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
     }
 
     getPlant = () => {
@@ -57,7 +67,8 @@ class ProductsProvider extends React.Component {
                     getSculptures: this.getSculptures,
                     getFirePits: this.getFirePits,
                     getOutDoorLights: this.getOutDoorLights,
-                    data: data
+                    data: data,
+                    handleChange: this.handleChange
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

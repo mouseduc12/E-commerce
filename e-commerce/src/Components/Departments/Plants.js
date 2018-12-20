@@ -35,7 +35,9 @@ class Plants extends React.Component {
                             </div>
                         </div>
                         <div className="product-container">
-                            {this.props.plants.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
+                            {this.props.plants.map(each => 
+                            <HandleMouse otherImages={each.otherImages} 
+                            render = {(props) => <Products {...each} {...props} key ={each._id}/> }/>)}
                         </div>
                     </div>
                 </Fragment>

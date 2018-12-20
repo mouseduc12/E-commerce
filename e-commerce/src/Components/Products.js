@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Products extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <LazyLoad once height={400}>
                 <div className="each-product" onMouseOver={this.props.handleIcon} onMouseLeave={this.props.handleIconLeave}>
@@ -18,7 +17,7 @@ class Products extends React.Component {
                     </div>
                     <div>
                         <h3>{this.props.headline}</h3>
-                        <p>{this.props.price}</p>
+                        <p>{this.props.price.charAt(0) === "$" ? this.props.price : "$" + this.props.price }</p>
                     </div>
                     {
                         this.props.getIcon &&

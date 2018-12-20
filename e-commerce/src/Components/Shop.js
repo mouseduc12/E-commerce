@@ -6,17 +6,30 @@ import { Link } from "react-router-dom"
 import HandleMouse from "../shared/HandleMouse"
 
 class Shop extends React.Component {
+    constructor() {
+        super()
+        this.newSortedData = []
+    }
     componentDidMount() {
         this.props.getFirePits()
         this.props.getSculptures()
         this.props.getOutDoorLights()
         this.props.getPlant()
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sortedData === "lowest") {
+            this.newSortedData = this.props.data.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => a.price - b.price)
+        } else if (nextProps.sortedData === "highest"){
+            this.newSortedData = this.props.data.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => b.price - a.price)
+        } else {
+            this.newSortedData = []
+        }
+    }
     render() {
-        console.log(this.props)
+        console.log(this.newSortedData)
         return (
             <Fragment>
-                <div className ="image-each-section-container">
+                <div className="image-each-section-container">
                     <div className="image-each-section">
                         <h2>All Products</h2>
                     </div>
@@ -31,15 +44,32 @@ class Shop extends React.Component {
                                 <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
                                 <h3><Link to="/shop/lights">Outdoor Lights</Link></h3>
                             </div>
-                            <select className="selects-to-choose">
-                                <option>Sort By</option>
-                                <option>Lowest To highest</option>
-                                <option>Highest To lowest</option>
+                            <select className="selects-to-choose" name="sortedData" onChange={this.props.handleChange}>
+                                <option value="">Sort By</option>
+                                <option value="lowest">Lowest To highest</option>
+                                <option value="highest">Highest To lowest</option>
                             </select>
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.data.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
+                        {this.newSortedData.length > 1 ?
+                            <Fragment>
+                            {this.newSortedData.map(each => 
+                                <HandleMouse
+                                 otherImages={each.otherImages} 
+                                 key={each._id} 
+                                 render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                            </Fragment>
+
+                        : 
+                            <Fragment>
+                                {this.props.data.map(each => 
+                                <HandleMouse
+                                 otherImages={each.otherImages} 
+                                 key={each._id} 
+                                 render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                            </Fragment>
+                        }
                     </div>
                 </div>
             </Fragment>
@@ -48,3 +78,9 @@ class Shop extends React.Component {
 
 }
 export default withProduct(Shop)
+
+      //    console.log(a.price.charAt(0) === "$" ? parseInt(a.price.slice(1, a.price.length)) : parseInt(a.price))
+            //    console.log(typeof a.price.charAt(0) === "$" ? parseInt(a.price.slice(1, a.price.length)) : parseInt(a.price))
+            //    console.log(b.price.charAt(0) === "$" ? parseInt(b.price.slice(1, b.price.length)) : parseInt(b.price))
+            //    console.log(typeof parseInt(a.price.slice(1, a.price.length)))
+            //    console.log(typeof parseInt(b.price.slice(1, b.price.length)))

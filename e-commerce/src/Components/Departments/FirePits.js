@@ -34,7 +34,9 @@ class FirePits extends React.Component {
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.firePits.map(each => <HandleMouse otherImages={each.otherImages} render = {(props) => <Products {...each} {...props} /> }/>)}
+                        {this.props.firePits.map(each => 
+                        <HandleMouse otherImages={each.otherImages} 
+                        render = {(props) => <Products {...each} {...props} key ={each._id}/> }/>)}
                     </div>
                 </div>
             </Fragment>
