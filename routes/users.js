@@ -1,6 +1,7 @@
 const express = require("express")
 const authRouter = express.Router()
 const User = require("../models/user")
+const jwt = require("jsonwebtoken")
 
 authRouter.post("/signup", (req, res, next) => {
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) =>{
@@ -18,7 +19,8 @@ authRouter.post("/signup", (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            return res.status(201).send(userData)
+            const token = jwt.sign(user.toObject(), process.env.SECRET)
+            return res.status(201).send({ user: user.toObject(), token })
         })
     })
 })
@@ -33,8 +35,9 @@ authRouter.post("/login", (req, res, next) =>{
             res.status(500)
             return next(new Error("The password or username is wrong"))
         }
-        return res.status(201).send(user)
-    })
+        const token = jwt.sign(user.toObject(), process.env.SECRET)
+        return res.status(201).send({ user: user.toObject(), token })
+    })  
 })
 
-module.exports = userRouter
+module.exports = authRouter
