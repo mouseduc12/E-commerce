@@ -11,6 +11,7 @@ app.use("/sculptures", require("./routes/gardenSculptures"))
 app.use("/lights", require("./routes/outdoorLights"))
 app.use("/firepits", require("./routes/firePits"))
 app.use("/articles", require("./routes/articles"))
+app.use("/user", require("./routes/users"))
 
 app.use((err, req, res, next) =>{
     return res.status(500).send({error: err.message})
