@@ -132,3 +132,13 @@
     font-size:12px;
     margin-left: 5px;
 }
+.userName-logged-in{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    cursor: pointer;
+}
+.userName-logged-in p{
+    margin-left: 10px;
+    cursor: pointer;
+}

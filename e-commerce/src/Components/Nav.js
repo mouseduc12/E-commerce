@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
+import { withAuth } from "../Context/AuthContext"
 
 class Nav extends React.Component {
     constructor() {
@@ -9,7 +10,8 @@ class Nav extends React.Component {
         this.state = {
             isScroll: false,
             openNav: true,
-            openShop: false
+            openShop: false,
+            checkLogOut: false
         }
     }
     componentDidMount() {
@@ -55,6 +57,12 @@ class Nav extends React.Component {
         })
     }
 
+    handleCheckLogOut = () =>{
+        this.setState(prevState => ({
+            checkLogOut: !prevState.checkLogOut
+        }))
+    }
+
     render() {
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
@@ -80,14 +88,22 @@ class Nav extends React.Component {
                 </div>
                 {this.state.openNav &&
                     <ul className="second-nav-row">
-                        <li onMouseOver={this.handleOnMouseOver}><Link to="/shop">Shop <FontAwesomeIcon className = "nav-arrows" icon = {!this.state.openShop ? "arrow-down" : "arrow-up"}/></Link></li>
+                        <li onMouseOver={this.handleOnMouseOver}><Link to="/shop">Shop <FontAwesomeIcon className="nav-arrows" icon={!this.state.openShop ? "arrow-down" : "arrow-up"} /></Link></li>
                         <li><Link to="/blog">Blog</Link></li>
                         <li><Link to="/about">About</Link></li>
-                        <li><Link to="/login">Login</Link></li>
+                        {this.props.user.username ?
+                            <li className = "userName-logged-in" onClick ={this.handleCheckLogOut}>
+                                <FontAwesomeIcon icon="user"/> 
+                                 <p>{this.props.user.firstName}</p>
+                                 {this.state.checkLogOut && <p onClick = {this.props.logout}>Log Out</p>}
+                                 </li>
+                            :
+                            <li><Link to="/login">Login</Link></li>
+                        }
                     </ul>
                 }
                 {this.state.openShop &&
-                    <div className = "department-container"  onMouseLeave={this.handleOnMouseLeave}>
+                    <div className="department-container" onMouseLeave={this.handleOnMouseLeave}>
                         <ul className="department">
                             <li><Link to="/shop/sculptures">Sculptures</Link></li>
                             <li><Link to="/shop/plants">Plants</Link></li>
@@ -100,4 +116,4 @@ class Nav extends React.Component {
         )
     }
 }
-export default Nav
+export default withAuth(Nav)
