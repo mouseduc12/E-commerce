@@ -6,15 +6,18 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    description: String,
+    body: {
+        type:String,
+        required: true,
+        limit: 1200
+    },
     feature_image: {
         type: String,
         required: true
     },
-    love: Number,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: "admin"
+    user: {
+        type: Type.Schema.ObjectId,
+        ref: "User"
     },
     comment: [
         {
@@ -27,4 +30,4 @@ const articleSchema = new Schema({
     ]  
 })
 
-module.exports = mongoose.model("BlogSchema", articleSchema)
+module.exports = mongoose.model("Article", articleSchema)

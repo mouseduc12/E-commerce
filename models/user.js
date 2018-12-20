@@ -12,40 +12,25 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    // In case we need to distinguish types of users in the future
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName:{
+        type: String,
+    },
+    memberSince:{
+        type: Date,
+        default: Date.now
+    },
+    faceImage: {
+        type: String
     }
 })
 
-module.exports = mongoose.model("UserSchema", userSchema);
+module.exports = mongoose.model("User", userSchema);
 
-
-get(products)
-res.send(products)
-
-            // product id
-get(reviews/35234)
-
-axios.get('/234234234/234234')
-
-reviewRouter.get('/:user/:product', (req, res) => {
-    const newReview = new Review(req.body)
-
-})
-
-
-// {
-//     text: String,
-//     _id: 234234324,
-//     user: {
-//         type: Schema.Types.ObjectId,
-//         ref: "User",
-//     },
-//     product: {
-//         type: Schema.Types.ObjectId,
-//         ref: "Plant"
-//     },
-
-// }
