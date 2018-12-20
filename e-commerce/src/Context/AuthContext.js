@@ -1,6 +1,14 @@
 import React from "react"
 import axios from "axios"
+
 const AuthContextProvider = React.createContext()
+const articleAxios = axios.create()
+
+articleAxios.interceptors.request.use((config) =>{
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 
 class AuthContext extends React.Component{
     constructor(){
@@ -13,7 +21,7 @@ class AuthContext extends React.Component{
     }
 
     signup = (userInfo) =>{
-        return axios.post("/user/signup", userInfo).then(res => {
+        return articleAxios.post("/user/signup", userInfo).then(res => {
             localStorage.setItem("user", JSON.stringify(res.data.user))
             localStorage.setItem("token", res.data.token)
             this.setState({
@@ -25,7 +33,7 @@ class AuthContext extends React.Component{
     }
 
     login = (credentials) => {
-        return axios.post("/user/login", credentials).then(res=>{
+        return articleAxios.post("/user/login", credentials).then(res=>{
             const { token, user } = res.data
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
