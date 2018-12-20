@@ -5,8 +5,22 @@ import { Link } from "react-router-dom"
 import HandleMouse from "../../shared/HandleMouse"
 
 class Lights extends React.Component {
+    constructor() {
+        super()
+        this.newSortedData = []
+    }
     componentDidMount() {
         this.props.getOutDoorLights()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sortedOutdoorLights === "lowest") {
+            this.newSortedData = this.props.lights.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => a.price - b.price)
+        } else if (nextProps.sortedOutdoorLights === "highest") {
+            this.newSortedData = this.props.lights.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => b.price - a.price)
+        } else {
+            this.newSortedData = []
+        }
     }
     render() {
         return (
@@ -27,17 +41,27 @@ class Lights extends React.Component {
                                     <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
                                     <h3><Link to="/shop/lights" style={{ color: "darkCyan" }}>Outdoor Lights</Link></h3>
                                 </div>
-                                <select className="selects-to-choose">
-                                    <option>Sort By</option>
-                                    <option>Lowest To highest</option>
-                                    <option>Highest To lowest</option>
+                                <select onChange = {this.props.handleChange} name = "sortedOutdoorLights" className="selects-to-choose">
+                                    <option value ="">Sort By Price</option>
+                                    <option value ="lowest">Lowest To highest</option>
+                                    <option value = "highest">Highest To lowest</option>
                                 </select>
                             </div>
                         </div>
                         <div className="product-container">
-                            {this.props.lights.map(each =>
-                                <HandleMouse otherImages={each.otherImages}
-                                    render={(props) => <Products {...each} {...props} key ={each._id} />} />)}
+                            {this.newSortedData.length > 1 ?
+                                <Fragment>
+                                    {this.newSortedData.map(each =>
+                                        <HandleMouse otherImages={each.otherImages}
+                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                </Fragment>
+                                :
+                                <Fragment>
+                                    {this.props.lights.map(each =>
+                                        <HandleMouse otherImages={each.otherImages}
+                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                </Fragment>
+                            }
                         </div>
                     </div>
                 </Fragment>

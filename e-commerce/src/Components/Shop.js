@@ -45,7 +45,7 @@ class Shop extends React.Component {
                                 <h3><Link to="/shop/lights">Outdoor Lights</Link></h3>
                             </div>
                             <select className="selects-to-choose" name="sortedData" onChange={this.props.handleChange}>
-                                <option value="">Sort By</option>
+                                <option value="">Sort By Price</option>
                                 <option value="lowest">Lowest To highest</option>
                                 <option value="highest">Highest To lowest</option>
                             </select>

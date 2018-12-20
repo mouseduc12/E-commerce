@@ -5,14 +5,27 @@ import Products from "../Products"
 import HandleMouse from "../../shared/HandleMouse"
 
 class FirePits extends React.Component {
+    constructor() {
+        super()
+        this.newSortedData = []
+    }
     componentDidMount() {
         this.props.getFirePits()
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sortedFirePits === "lowest") {
+            this.newSortedData = this.props.firePits.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => a.price - b.price)
+        } else if (nextProps.sortedFirePits === "highest") {
+            this.newSortedData = this.props.firePits.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => b.price - a.price)
+        } else {
+            this.newSortedData = []
+        }
     }
     render() {
         return (
             <Fragment>
                 <div className="image-each-section-container">
-                    <div className="image-each-section" style ={{backgroundImage: `url("https://images.pexels.com/photos/1680165/pexels-photo-1680165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")`}}>
+                    <div className="image-each-section" style={{ backgroundImage: `url("https://images.pexels.com/photos/1680165/pexels-photo-1680165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")` }}>
                         <h2>Fire Pits</h2>
                     </div>
                 </div>
@@ -26,17 +39,27 @@ class FirePits extends React.Component {
                                 <h3><Link to="/shop/sculptures">Garden Sculptures</Link></h3>
                                 <h3><Link to="/shop/lights">Outdoor Lights</Link></h3>
                             </div>
-                            <select className="selects-to-choose">
-                                <option>Sort By</option>
-                                <option>Lowest To highest</option>
-                                <option>Highest To lowest</option>
+                            <select name="sortedFirePits" onChange={this.props.handleChange} className="selects-to-choose">
+                                <option value="">Sort By Price</option>
+                                <option value="lowest">Lowest To highest</option>
+                                <option value="highest">Highest To lowest</option>
                             </select>
                         </div>
                     </div>
                     <div className="product-container">
-                        {this.props.firePits.map(each => 
-                        <HandleMouse otherImages={each.otherImages} 
-                        render = {(props) => <Products {...each} {...props} key ={each._id}/> }/>)}
+                        {this.newSortedData.length > 1 ?
+                            <Fragment>
+                            {this.newSortedData.map(each =>
+                                    <HandleMouse otherImages={each.otherImages}
+                                        render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                            </Fragment>
+                            :
+                            <Fragment>
+                                {this.props.firePits.map(each =>
+                                    <HandleMouse otherImages={each.otherImages}
+                                        render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                            </Fragment>
+                        }
                     </div>
                 </div>
             </Fragment>

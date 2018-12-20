@@ -43,7 +43,7 @@ class Plants extends React.Component {
                                     <h3><Link to="/shop/lights">Outdoor Lights</Link></h3>
                                 </div>
                                 <select name="sortedPlants" className="selects-to-choose" onChange = {this.props.handleChange }>
-                                    <option value="">Sort By</option>
+                                    <option value="">Sort By Price</option>
                                     <option value="lowest">Lowest To highest</option>
                                     <option value="highest">Highest To lowest</option>
                                 </select>
