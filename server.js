@@ -20,7 +20,7 @@ app.use((err, req, res, next) =>{
     if(err.name === "UnauthorizedError"){
         res.status(err.status)
     }
-    return res.send({error: err.message})
+    return res.status(500).send({error: err.message})
 })
 
 mongoose.connect("mongodb://localhost:27017/garther", {useNewUrlParser: true} ,() =>{
