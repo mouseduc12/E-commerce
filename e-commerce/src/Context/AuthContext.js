@@ -21,7 +21,7 @@ class AuthContext extends React.Component{
     }
 
     signup = (userInfo) =>{
-        return articleAxios.post("/user/signup", userInfo).then(res => {
+        return axios.post("/user/signup", userInfo).then(res => {
             localStorage.setItem("user", JSON.stringify(res.data.user))
             localStorage.setItem("token", res.data.token)
             this.setState({
@@ -33,7 +33,7 @@ class AuthContext extends React.Component{
     }
 
     login = (credentials) => {
-        return articleAxios.post("/user/login", credentials).then(res=>{
+        return axios.post("/user/login", credentials).then(res=>{
             const { token, user } = res.data
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))

@@ -74,7 +74,7 @@ class Authentication extends React.Component {
                                 required />
 
                                 <input 
-                                type="text"
+                                type="password"
                                 placeholder="Password" 
                                 required
                                 name = "lPassword" 
@@ -118,7 +118,7 @@ class Authentication extends React.Component {
                                     required />
 
                                 <input
-                                    type="text"
+                                    type="password"
                                     placeholder="Password"
                                     name="Spassword"
                                     value={this.state.Spassword}

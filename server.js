@@ -1,8 +1,8 @@
 const express = require("express")
 const app = express()
+require('dotenv').config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
-require('dotenv').config()
 const expressJwt = require("express-jwt")
 
 
@@ -12,15 +12,15 @@ app.use("/plants", require("./routes/plants"))
 app.use("/sculptures", require("./routes/gardenSculptures"))
 app.use("/lights", require("./routes/outdoorLights"))
 app.use("/firepits", require("./routes/firePits"))
-// app.use("/api", expressJwt({secret: process.env.SECRET}))
-app.use("/articles", require("./routes/articles"))
+app.use("/api", expressJwt({secret: process.env.SECRET}))
+app.use("/api/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
 
 app.use((err, req, res, next) =>{
     if(err.name === "UnauthorizedError"){
         res.status(err.status)
     }
-    return res.status(500).send({error: err.message})
+    return res.send({error: err.message})
 })
 
 mongoose.connect("mongodb://localhost:27017/garther", {useNewUrlParser: true} ,() =>{

@@ -6,11 +6,11 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    body: {
+    body: [{
         type:String,
         required: true,
         limit: 1200
-    },
+    }],
     feature_image: {
         type: String,
         required: true

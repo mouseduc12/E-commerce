@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 
 authRouter.post("/signup", (req, res, next) => {
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+        console.log(user)
         if (err) {
             res.status(500)
             return next(err)
@@ -26,27 +27,27 @@ authRouter.post("/signup", (req, res, next) => {
 })
 
 authRouter.post("/login", (req, res, next) => {
+    console.log(req.body)
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
-        if (err) return res.status(500).send(err);
-        if (!user || user.password !== req.body.password) {
-             res.status(403)
-             return next(new Error("Username or password are incorrect"))
+        console.log(user)
+        if (err) {
+            res.status(500)
+            return next(err)
         }
-       const token = jwt.sign(user.toObject(), process.env.SECRET)
-       return res.send({token: token, user: user.toObject(), success: true})
+        if (!user) {
+            res.status(403)
+            return next(new Error("Username or password are incorrect"))
+        }
+        user.checkPassword(req.body.password, (err, match) => {
+            if (err) return res.status(500).send(err)
+            if (!match) res.status(404).send({ success: false, message: "Username or password is incorrect" })
+            const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
+            return res.status(200).send({
+                token: token, user: user.withoutPassword(), success: true
+            })
+        })
     })
 })
 
 module.exports = authRouter
 
-// if (!user || user.password !== req.body.password) {
-//     return res.status(403).send({success: false, err: "Username or password are incorrect"})
-// }
-// user.checkPassword(req.body.password, (err, match) => {
-//     if (err) return res.status(500).send(err)
-//     if (!match) res.status(404).send({ success: false, message: "Username or password is incorrect" })
-//     const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
-//     return res.send({
-//         token: token, user: user.withoutPassword(), success: true
-//     })
-// })
