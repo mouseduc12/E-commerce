@@ -20,6 +20,10 @@ const articleSchema = new Schema({
         ref: "User",
         required: true
     },
+    Date: {
+        type: Date,
+        default: Date.now()
+    },
     comment: [
         {
             user: {
@@ -28,7 +32,7 @@ const articleSchema = new Schema({
             },
             text: String
         }
-    ]  
+    ]
 })
 
 module.exports = mongoose.model("Article", articleSchema)
