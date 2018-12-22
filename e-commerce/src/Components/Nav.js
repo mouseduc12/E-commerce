@@ -57,7 +57,7 @@ class Nav extends React.Component {
         })
     }
 
-    handleCheckLogOut = () =>{
+    handleCheckLogOut = () => {
         this.setState(prevState => ({
             checkLogOut: !prevState.checkLogOut
         }))
@@ -92,11 +92,12 @@ class Nav extends React.Component {
                         <li><Link to="/blog">Blog</Link></li>
                         <li><Link to="/about">About</Link></li>
                         {this.props.user.username ?
-                            <li className = "userName-logged-in" onClick ={this.handleCheckLogOut}>
-                                <FontAwesomeIcon icon="user"/> 
-                                 <p>{this.props.user.firstName}</p>
-                                 {this.state.checkLogOut && <p onClick = {this.props.logout}>Log Out</p>}
-                                 </li>
+                            <Link to="/user">
+                                <li className="userName-logged-in">
+                                    <FontAwesomeIcon icon="user" />
+                                    <p>{this.props.user.firstName}</p>
+                                </li>
+                            </Link>
                             :
                             <li><Link to="/login">Login</Link></li>
                         }
