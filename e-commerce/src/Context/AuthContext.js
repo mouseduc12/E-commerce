@@ -56,8 +56,6 @@ class AuthContext extends React.Component{
     }
 
     render(){
-        console.log(this.state.user)
-        console.log(this.state.token)
         return(
             <AuthContextProvider.Provider value ={{
                 user: this.state.user,

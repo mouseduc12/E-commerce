@@ -13,6 +13,8 @@ class Authentication extends React.Component {
             Spassword: "",
             lUserName: "",
             lPassword: "",
+            signUpErrorMessage: "",
+            loginError: ""
         }
     }
 
@@ -38,6 +40,10 @@ class Authentication extends React.Component {
         }
         this.props.signup(sendSignUp).then(() => {
             this.props.history.push("/")
+            this.clearInput()
+        }).catch(err => {
+            console.log(err.response.data.message)
+            this.setState({ signUpErrorMessage: err.response.data.message })
         })
     }
 
@@ -47,12 +53,30 @@ class Authentication extends React.Component {
             username: this.state.lUserName,
             password: this.state.lPassword
         }
-        this.props.login(sendLogin).then(() =>{
+        this.props.login(sendLogin).then(() => {
+            this.clearInput()
             this.props.history.push("/")
+        }).catch(err => {
+            console.log(err)
+            this.setState({
+                loginError: err.response.data.message
+            }) })
+    }
+    clearInput = () => {
+        this.setState({
+            SfirstName: "",
+            SlastName: "",
+            SuserName: "",
+            Spassword: "",
+            lUserName: "",
+            lPassword: "",
+            signUpErrorMessage: "",
+            loginError: ""
         })
     }
 
     render() {
+        console.log(this.state.signUpErrorMessage)
         return (
             <div className="authentication-page">
                 <div className="authenticate">
@@ -64,28 +88,31 @@ class Authentication extends React.Component {
                 {!this.state.isSignedUp ?
                     <div className="authenticate-form-container">
                         <div className="authenticate-form-small-container">
-                            <form className="authenticate-form" onSubmit = {this.handleLogin}>
-                                <input 
-                                type="text" 
-                                placeholder="UserName" 
-                                name = "lUserName" 
-                                value = {this.state.lUserName} 
-                                onChange = {this.handleChange}
-                                required />
+                            <form className="authenticate-form" onSubmit={this.handleLogin}>
+                                <input
+                                    type="text"
+                                    placeholder="UserName"
+                                    name="lUserName"
+                                    value={this.state.lUserName}
+                                    onChange={this.handleChange}
+                                    required />
 
-                                <input 
-                                type="password"
-                                placeholder="Password" 
-                                required
-                                name = "lPassword" 
-                                value = {this.state.lPassword}
-                                onChange = {this.handleChange}/>
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    required
+                                    name="lPassword"
+                                    value={this.state.lPassword}
+                                    onChange={this.handleChange} />
 
                                 <div className="authenticate-button">
                                     <button>Log In</button>
                                 </div>
                             </form>
                             <div className="switch-form">
+                                {this.state.loginError &&
+                                    <p style={{ color: "red" }}>{this.state.loginError}</p>
+                                }
                                 <h3>New Customer?</h3>
                                 <p onClick={this.handleClick}>Sign Up</p>
                             </div>
@@ -130,6 +157,9 @@ class Authentication extends React.Component {
                                 </div>
                             </form>
                             <div className="switch-form">
+                                {this.state.signUpErrorMessage &&
+                                    <p style={{ color: "red" }}>{this.state.signUpErrorMessage}</p>
+                                }
                                 <h3>Already have an account?</h3>
                                 <p onClick={this.handleClick}>Log in</p>
                             </div>

@@ -32,18 +32,25 @@ class App extends React.Component {
             modalIsOpen: false,
             count: 0,
         }
+        this.setTimeout = undefined
     }
 
     componentDidMount() {
-        !this.state.modalIsOpen &&
+        this.setTimeout = !this.state.modalIsOpen &&
             setTimeout(() => {
                 this.setState(prevState => ({
                     modalIsOpen: !prevState.modalIsOpen,
                     count: prevState.count + 1
                 }))
             }, 30000)
+        
+    
     }
 
+    componentWillUnmount(){
+        this.state.modalIsOpen &&
+        clearTimeout(this.setTimeout)
+    }
 
     closeModal = () => {
         this.setState({
@@ -52,7 +59,6 @@ class App extends React.Component {
     }
 
     render() {
-        console.log("I'm rendering")
         return (
             <div>
                 <Nav />
