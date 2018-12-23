@@ -1,0 +1,6 @@
+.infos-from-user{
+    display: flex;
+}
+.infos-from-user p{
+    margin: 5px 5px 5px 0;
+}
