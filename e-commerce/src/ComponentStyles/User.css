@@ -1,0 +1,10 @@
+.user{
+    display: flex;
+    
+}
+.user-image{
+    width: 350px;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+}
