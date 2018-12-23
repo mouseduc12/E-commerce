@@ -17,7 +17,7 @@ class User extends React.Component {
         }
     }
     componentDidMount(){
-        !this.props.user.username && this.props.history.push("/notfound")
+        !this.props.user.email && this.props.history.push("/notfound")
     }
 
     handleInfoClick = () => {
@@ -81,17 +81,17 @@ class User extends React.Component {
                         style={{ color: this.state.orders && "white", backgroundColor: this.state.orders && "#232f3e" }}>
                         <p onClick={this.handleOrders}>Ordered</p>
                     </div>
-                    <div className="log-out choose">
-                        <p onClick={this.props.logout}>Log Out</p>
-                    </div>
                     {this.props.user.isAdmin &&
                         <div
-                            className="write-article"
+                            className="write-article choose"
                             style={{ color: this.state.writeArticle && "white", backgroundColor: this.state.writeArticle && "#232f3e" }}
                         >
                             <p onClick={this.handleWriteArticle}>Write Article</p>
                         </div>
                     }
+                    <div className="log-out choose">
+                        <p onClick={this.props.logout}>Log Out</p>
+                    </div>
                 </div>
                 <div className="info-display">
                     {

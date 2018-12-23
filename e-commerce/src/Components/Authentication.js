@@ -33,7 +33,7 @@ class Authentication extends React.Component {
     handleSignUpSubmit = (e) => {
         e.preventDefault()
         const sendSignUp = {
-            username: this.state.SuserName,
+            email: this.state.SuserName,
             password: this.state.Spassword,
             firstName: this.state.SfirstName,
             lastName: this.state.SlastName
@@ -50,7 +50,7 @@ class Authentication extends React.Component {
     handleLogin = (e) => {
         e.preventDefault()
         const sendLogin = {
-            username: this.state.lUserName,
+            email: this.state.lUserName,
             password: this.state.lPassword
         }
         this.props.login(sendLogin).then(() => {
@@ -60,7 +60,8 @@ class Authentication extends React.Component {
             console.log(err)
             this.setState({
                 loginError: err.response.data.message
-            }) })
+            }) 
+        })
     }
     clearInput = () => {
         this.setState({
@@ -76,7 +77,7 @@ class Authentication extends React.Component {
     }
 
     render() {
-        console.log(this.state.signUpErrorMessage)
+        console.log(this.state.lUserName)
         return (
             <div className="authentication-page">
                 <div className="authenticate">
@@ -90,8 +91,8 @@ class Authentication extends React.Component {
                         <div className="authenticate-form-small-container">
                             <form className="authenticate-form" onSubmit={this.handleLogin}>
                                 <input
-                                    type="text"
-                                    placeholder="UserName"
+                                    type="email"
+                                    placeholder="Email"
                                     name="lUserName"
                                     value={this.state.lUserName}
                                     onChange={this.handleChange}
@@ -137,8 +138,8 @@ class Authentication extends React.Component {
                                     onChange={this.handleChange} />
 
                                 <input
-                                    type="text"
-                                    placeholder="UserName"
+                                    type="email"
+                                    placeholder="email"
                                     name="SuserName"
                                     value={this.state.SuserName}
                                     onChange={this.handleChange}

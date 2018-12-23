@@ -91,7 +91,7 @@ class Nav extends React.Component {
                         <li onMouseOver={this.handleOnMouseOver}><Link to="/shop">Shop <FontAwesomeIcon className="nav-arrows" icon={!this.state.openShop ? "arrow-down" : "arrow-up"} /></Link></li>
                         <li><Link to="/blog">Blog</Link></li>
                         <li><Link to="/about">About</Link></li>
-                        {this.props.user.username ?
+                        {this.props.user.email ?
                             <Link to="/user">
                                 <li className="userName-logged-in">
                                     <FontAwesomeIcon icon="user" />

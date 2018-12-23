@@ -7,8 +7,16 @@ class CreateBlog extends React.Component {
         super()
     }
     
+    handleBlogChange = (e) =>{
+        const { name, value } = e.target
+        this.setState({
+            
+        })
+    }
     
+    handleSubmitBlog = (e) => {
 
+    }
     render() {
         return (
             <BlogProviderContext.Provider value ={{

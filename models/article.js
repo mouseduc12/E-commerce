@@ -6,11 +6,22 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    body: [{
-        type:String,
+    firstContentImage: {
+        type: String
+    },
+    firstContent: {
+        type: String,
         required: true,
         limit: 1200
-    }],
+    },
+    secondImageContent: {
+        type: String
+    },
+    secondContent: {
+        type: String,
+        required: true,
+        limit: 1200
+    },
     feature_image: {
         type: String,
         required: true

@@ -4,7 +4,7 @@ const User = require("../models/user")
 const jwt = require("jsonwebtoken")
 
 authRouter.post("/signup", (req, res, next) => {
-    User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+    User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
         console.log(user)
         if (err) {
             res.status(500)
@@ -12,7 +12,7 @@ authRouter.post("/signup", (req, res, next) => {
         }
         if (user) {
             res.status(403)
-            return res.send({ success: false, message: "Username or password is already taken" })
+            return res.send({ success: false, message: "Email or password is already taken" })
         }
         const newUser = new User(req.body)
         newUser.save((err, userData) => {
@@ -28,7 +28,7 @@ authRouter.post("/signup", (req, res, next) => {
 
 authRouter.post("/login", (req, res, next) => {
     console.log(req.body)
-    User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+    User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
         console.log(user)
         if (err) {
             res.status(500)
@@ -36,7 +36,7 @@ authRouter.post("/login", (req, res, next) => {
         }
         if (!user) {
             res.status(403)
-            return next(new Error("Username or password is incorrect"))
+            return next(new Error("Email or password is incorrect"))
         }
         user.checkPassword(req.body.password, (err, match) => {
             if (err) return res.status(500).send(err)

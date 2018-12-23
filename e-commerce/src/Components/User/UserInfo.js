@@ -17,8 +17,8 @@ const UserInfo = (props) => {
                 </div>
             }
             <div className= "infos-from-user">
-                <p>User Name:</p>
-                <p>{props.user.username}</p>
+                <p>Email:</p>
+                <p>{props.user.email}</p>
             </div>
             <div className= "infos-from-user">
                 <p>Joined:</p>

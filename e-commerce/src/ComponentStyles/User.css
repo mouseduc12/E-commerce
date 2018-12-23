@@ -1,11 +1,15 @@
 .user{
     display: grid;
     grid-template-columns: auto 2fr;
-    grid-template-rows: auto 1fr
+    grid-template-rows: auto 1fr;
+    font-family: "Roboto"
 }
 .choose{
     cursor: pointer;
     margin-right: 20px;
+}
+.choose p{
+    font-size: 18px;
 }
 .user-image{
     grid-column: 1;

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const bcrypt = require("bcrypt")
 
 const userSchema = new Schema({
-    username: {
+    email: {
         type: String,
         required: true,
         unique: true,
@@ -30,7 +30,7 @@ const userSchema = new Schema({
     },
     faceImage: {
         type: String
-    }
+    },
 })
 
 userSchema.pre("save", function(next){
