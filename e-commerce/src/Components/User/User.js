@@ -1,6 +1,10 @@
 import React from "react"
 import { withAuth } from "../../Context/AuthContext";
 import "../../ComponentStyles/User.css"
+import ChangePassword from "./ChangePassword"
+import Orders from "./Orders"
+import UserInfo from "./UserInfo"
+import WriteArticle from "./WriteArticle"
 
 class User extends React.Component {
     constructor() {
@@ -11,6 +15,9 @@ class User extends React.Component {
             orders: false,
             writeArticle: false
         }
+    }
+    componentDidMount(){
+        !this.props.user.username && this.props.history.push("/notfound")
     }
 
     handleInfoClick = () => {
@@ -56,7 +63,7 @@ class User extends React.Component {
                     style={{ backgroundImage: this.props.user.faceImage ? `url(${this.props.user.faceImage})` : `url("https://res.cloudinary.com/hd1n2hd4y/image/upload/f_auto,q_auto,c_fill,dpr_2.0,w_512,h_512,g_face/user-default.jpg")` }}
                     className="user-image">
                 </div>
-                <div>
+                <div className="user-options">
                     <div
                         className="user-infos choose"
                         style={{ color: this.state.userInfoChecked && "white", backgroundColor: this.state.userInfoChecked && "#232f3e" }}
@@ -84,6 +91,20 @@ class User extends React.Component {
                         >
                             <p onClick={this.handleWriteArticle}>Write Article</p>
                         </div>
+                    }
+                </div>
+                <div className="info-display">
+                    {
+                        this.state.userInfoChecked && <UserInfo />
+                    }
+                    {
+                        this.state.changePassword && <ChangePassword />
+                    }
+                    {
+                        this.state.orders && <Orders />
+                    }
+                    {
+                        this.state.writeArticle && <WriteArticle />
                     }
                 </div>
             </div>

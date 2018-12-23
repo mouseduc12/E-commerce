@@ -22,6 +22,7 @@ import Sculptures from "./Departments/Sculptures"
 import Blog from "./Blog/Blog"
 import AboutUs from "./AboutUs";
 import User from "./User/User"
+import NotFound from "./NotFound";
 
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
@@ -104,6 +105,7 @@ class App extends React.Component {
                     <Route path="/about" component={AboutUs} />
                     <Route path="/blog" component={Blog} />
                     <Route path="/user" component={User} />
+                    <Route path= "/notfound" component = {NotFound} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}

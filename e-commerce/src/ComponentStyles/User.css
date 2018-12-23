@@ -5,10 +5,18 @@
 }
 .choose{
     cursor: pointer;
+    margin-right: 20px;
 }
 .user-image{
+    grid-column: 1;
+    grid-row: 1/-1;
     width: 350px;
     height: 350px;
     background-position: center;
     background-size: cover;
+}
+.user-options{
+    grid-column: 2/-1;
+    display: flex;
+    background-color: whitesmoke
 }

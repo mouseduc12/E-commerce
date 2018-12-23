@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import {withRouter} from "react-router-dom"
 
 const AuthContextProvider = React.createContext()
 const articleAxios = axios.create()
@@ -52,7 +53,7 @@ class AuthContext extends React.Component{
             user: {},
             token: "",
             article: []
-        })
+        }, this.props.history.push("/login"))
     }
 
     render(){
@@ -77,4 +78,4 @@ export const withAuth = (C) => props => (
  </AuthContextProvider.Consumer>   
 )
 
-export default AuthContext
+export default withRouter(AuthContext)
