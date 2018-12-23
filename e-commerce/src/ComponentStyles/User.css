@@ -1,6 +1,10 @@
 .user{
-    display: flex;
-    
+    display: grid;
+    grid-template-columns: auto 2fr;
+    grid-template-rows: auto 1fr
+}
+.choose{
+    cursor: pointer;
 }
 .user-image{
     width: 350px;
