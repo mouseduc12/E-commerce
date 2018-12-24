@@ -1,18 +1,13 @@
 import React from "react"
 import axios from "axios"
 
-const articleAxios = axios.create()
-articleAxios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token")
-    config.headers.Authorization = `Bearer ${token}`
-    return config
-})
-
-// articleAxios.interceptors.request.use((config) =>{
-//     const token = localStorage.getItem("token");
+// const articleAxios = axios.create()
+// articleAxios.interceptors.request.use((config) => {
+//     const token = localStorage.getItem("token")
 //     config.headers.Authorization = `Bearer ${token}`
 //     return config
 // })
+
 
 const BlogProviderContext = React.createContext()
 
@@ -37,16 +32,17 @@ class CreateBlog extends React.Component {
         })
     }
 
-    getBlogData = () => {
-        articleAxios.get("/api/articles").then(res =>{
-            console.log(res)
-            this.setState({
-                blogData: res.data
-            })
-        })
-    }
+    // getBlogData = () => {
+    //     axios.get("/articles").then(res =>{
+    //         console.log(res)
+    //         this.setState({
+    //             blogData: res.data
+    //         })
+    //     })
+    // }
 
     handleSubmitBlog = (e) => {
+        const userId = JSON.parse(localStorage.getItem("user"))
         e.preventDefault()
         const postBlog = {
             title: this.state.title,
@@ -56,13 +52,14 @@ class CreateBlog extends React.Component {
             secondContent: this.state.secondContent,
             featureImage: this.state.featureImage,
         }
-        articleAxios.post("/api/articles", postBlog).then(res => {
+        axios.post(`/articles/${userId._id}`, postBlog).then(res => {
             this.setState(prevState => ({
                 blogData: [...prevState.blogData, res.data]
             }))
         })
     }
     render() {
+        console.log(this.state.blogData)
         return (
             <BlogProviderContext.Provider value={{
                 ...this.state,

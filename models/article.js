@@ -29,6 +29,7 @@ const articleSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
+        required: true
     },
     Date: {
         type: Date,

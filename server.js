@@ -12,8 +12,7 @@ app.use("/plants", require("./routes/plants"))
 app.use("/sculptures", require("./routes/gardenSculptures"))
 app.use("/lights", require("./routes/outdoorLights"))
 app.use("/firepits", require("./routes/firePits"))
-app.use("/api", expressJwt({secret: process.env.SECRET}))
-app.use("/api/articles", require("./routes/articles"))
+app.use("/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
 
 app.use((err, req, res, next) =>{
@@ -34,7 +33,7 @@ app.listen(8000, () =>{
 
 
 
-
+//app.use("/api", expressJwt({secret: process.env.SECRET}))
 
 
 
