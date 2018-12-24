@@ -1,23 +1,54 @@
-import React from "react"
+import React, { Fragment } from "react"
+import "../../ComponentStyles/EachBlog.css"
+import moment from "moment"
 
 const EachBlog = (props) => {
     console.log(props)
-    const generateAuthoImage = () =>{
-        if(props.slot === 0){
+    const generateAuthorContainer = () => {
+        if (props.slot === 0) {
             return "new-author-post"
         }
-        else{
+        else {
             return "old-author-post"
         }
     }
-    return(
-        <div>
-            <div className = {generateAuthoImage()}>
-                <div style = {{backgroundImage: `url(${props.featureImage})`}} className = "feature-author-image"></div>
-                <h1>{props.title}</h1>
-                <p>{props.firstContent}</p>
-            </div>
-        </div>
+
+    const generateAuthorImage = () => {
+        if (props.slot === 0) {
+            return "new-author-image"
+        }
+        else {
+            return "old-author-image"
+        }
+    }
+    return (
+        <Fragment>
+            {props.slot === 0 ?
+                <div className={generateAuthorContainer()}>
+                    <div style={{ backgroundImage: `url(${props.featureImage})` }} className={`feature-author-image ${generateAuthorImage()}`}></div>
+                    <div className="content-of-image">
+                        <div className = "info-of-the-post">
+                            <h4>{moment(props.Date).format('llll')}</h4>
+                            <h1>{props.title}</h1>
+                            {
+                                props.firstContent.length > 50 ? <p>{props.firstContent.slice(0, 50) + "[...]"}</p> : <p>{props.firstContent}</p>
+                            }
+                            <div className="button-of-blog">
+                                <button>READ MORE</button>
+                            </div>
+                        </div>
+                        <div className="author-of-the-blog">
+                            <div style={{ backgroundImage: `url(${props.user.faceImage})` }} className="author-of-the-image"></div>
+                            <h3>{props.user.firstName}</h3>
+                        </div>
+                    </div>
+                </div>
+                :
+                <div>
+
+                </div>
+            }
+        </Fragment>
     )
 }
 

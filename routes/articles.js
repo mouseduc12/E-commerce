@@ -4,7 +4,7 @@ const ArticleSchema = require("../models/article")
 
 articleRouter.get("/", (req, res, next) => {
     ArticleSchema.find()
-        .populate({path: "user", select: "faceImage email"})
+        .populate({path: "user", select: "faceImage firstName"})
         .exec((err, data) => {
             if (err) {
                 res.status(500)

@@ -1,15 +1,19 @@
 import React from "react"
 import { withBlog } from "../../Context/CreateBlog"
 import EachBlog from "./EachBlog"
+import "../../ComponentStyles/Blog.css"
 
 class Blog extends React.Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.getBlogData()
     }
     render() {
         return (
-            <div className = "blog-container">
-                {this.props.blogData.map((each, id) => <EachBlog key={each._id} {...each} slot={id} />)}
+            <div className = "blogs-section">
+                <h1>Blogs</h1>
+                <div className="blog-container">
+                    {this.props.blogData.map((each, id) => <EachBlog key={each._id} {...each} slot={id} />)}
+                </div>
             </div>
         )
     }
