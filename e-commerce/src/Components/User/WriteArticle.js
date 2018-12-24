@@ -5,7 +5,7 @@ import { withBlog } from "../../Context/CreateBlog"
 const WriteArticle = (props) => {
     return (
         <div>
-            <form onSubmit = {props.handleSubmitBlog}>
+            <form onSubmit = {props.handleSubmitBlog} className = "admin-form">
                 <input
                     type="text"
                     placeholder="Title"
@@ -14,13 +14,14 @@ const WriteArticle = (props) => {
                     onChange={props.handleBlogChange}
                     required />
 
-                <input
+                <textarea
                     type="text"
                     placeholder="First Text"
                     name="firstContent"
                     value={props.firstContent}
                     onChange={props.handleBlogChange}
-                    required />
+                    required>
+                </textarea>   
 
                 <input
                     type="text"
@@ -28,13 +29,14 @@ const WriteArticle = (props) => {
                     name="firstContentImage"
                     value={props.firstContentImage}
                     onChange={props.handleBlogChange} />
-                <input
+                <textarea
                     type="text"
                     placeholder="Second Text"
                     name="secondContent"
                     value={props.secondContent}
                     onChange={props.handleBlogChange}
-                    required />
+                    required>
+                 </textarea>   
 
                 <input
                     type="text"

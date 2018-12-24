@@ -1,0 +1,17 @@
+.admin-form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-form input{
+    width: 30%;
+    font-size: 15px;
+    margin-bottom: 20px
+}
+.admin-form textarea{
+    width: 30%;
+    font-size: 15px;
+    height: 200px;
+    margin-bottom: 20px
+}

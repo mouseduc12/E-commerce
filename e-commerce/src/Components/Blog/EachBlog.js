@@ -23,31 +23,27 @@ const EachBlog = (props) => {
     }
     return (
         <Fragment>
-            {props.slot === 0 ?
-                <div className={generateAuthorContainer()}>
-                    <div style={{ backgroundImage: `url(${props.featureImage})` }} className={`feature-author-image ${generateAuthorImage()}`}></div>
-                    <div className="content-of-image">
-                        <div className = "info-of-the-post">
-                            <h4>{moment(props.Date).format('llll')}</h4>
-                            <h1>{props.title}</h1>
-                            {
-                                props.firstContent.length > 50 ? <p>{props.firstContent.slice(0, 50) + "[...]"}</p> : <p>{props.firstContent}</p>
-                            }
-                            <div className="button-of-blog">
-                                <button>READ MORE</button>
-                            </div>
-                        </div>
-                        <div className="author-of-the-blog">
-                            <div style={{ backgroundImage: `url(${props.user.faceImage})` }} className="author-of-the-image"></div>
-                            <h3>{props.user.firstName}</h3>
+
+            <div className={generateAuthorContainer()}>
+                <div style={{ backgroundImage: `url(${props.featureImage})` }} className={`feature-author-image ${generateAuthorImage()}`}></div>
+                <div className="content-of-image">
+                    <div className="info-of-the-post">
+                        <h4>{moment(props.Date).format('llll')}</h4>
+                        <h1>{props.title}</h1>
+                        {
+                            props.firstContent.length > 50 ? <p>{props.firstContent.slice(0, 50) + "[...]"}</p> : <p>{props.firstContent}</p>
+                        }
+                        <div className="button-of-blog">
+                            <button>READ MORE</button>
                         </div>
                     </div>
+                    <div className="author-of-the-blog">
+                        <div style={{ backgroundImage: `url(${props.user.faceImage})` }} className="author-of-the-image"></div>
+                        <h3>{props.user.firstName}</h3>
+                    </div>
                 </div>
-                :
-                <div>
+            </div>
 
-                </div>
-            }
         </Fragment>
     )
 }
