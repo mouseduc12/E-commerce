@@ -32,14 +32,13 @@ class CreateBlog extends React.Component {
         })
     }
 
-    // getBlogData = () => {
-    //     axios.get("/articles").then(res =>{
-    //         console.log(res)
-    //         this.setState({
-    //             blogData: res.data
-    //         })
-    //     })
-    // }
+    getBlogData = () => {
+        axios.get("/articles").then(res =>{
+            this.setState({
+                blogData: res.data
+            })
+        })
+    }
 
     handleSubmitBlog = (e) => {
         const userId = JSON.parse(localStorage.getItem("user"))
@@ -59,7 +58,6 @@ class CreateBlog extends React.Component {
         })
     }
     render() {
-        console.log(this.state.blogData)
         return (
             <BlogProviderContext.Provider value={{
                 ...this.state,
