@@ -22,14 +22,13 @@ const articleSchema = new Schema({
         required: true,
         limit: 1200
     },
-    feature_image: {
+    featureImage: {
         type: String,
         required: true
     },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true
     },
     Date: {
         type: Date,

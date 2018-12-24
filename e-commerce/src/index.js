@@ -8,6 +8,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import ProductsProvider from "./Context/ProductsProvider";
 import AuthContext from "./Context/AuthContext"
 import { BrowserRouter } from "react-router-dom";
+import CreateBlog from "./Context/CreateBlog"
 library.add(faArrowLeft, faTruck, faPlaneDeparture, faGift, faPhone, faLongArrowAltRight, faLongArrowAltLeft, faQuoteLeft, faMapMarkerAlt, faEnvelope, faArrowDown, faArrowUp, faUser, faEye, faEyeSlash)
 library.add(faArrowRight)
 library.add(faHeart)
@@ -22,7 +23,9 @@ ReactDOM.render(
     <BrowserRouter>
         <ProductsProvider>
             <AuthContext>
-                <App />
+                <CreateBlog>
+                    <App />
+                </CreateBlog>
             </AuthContext>
         </ProductsProvider>
     </BrowserRouter>

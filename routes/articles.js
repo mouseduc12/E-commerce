@@ -2,21 +2,36 @@ const express = require("express")
 const articleRouter = express.Router()
 const ArticleSchema = require("../models/article")
 
-articleRouter.get("/", (req, res, next) =>{
-    ArticleSchema.find({user: req.params.userId}, (err,data) =>{
-        if(err){
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(data)
-    })
+articleRouter.get("/", (req, res, next) => {
+    console.log(req)
+    if (req.user._id) {
+        console.log(req.user._id)
+        console.log(req)
+        ArticleSchema.find({ user: req.user._id }, (err, data) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(data)
+        })
+    }
+    else {
+        console.log(req)
+        ArticleSchema.find((err, data)=>{
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(data)
+        })
+    }
 })
 
-articleRouter.post("/", (req, res, next) =>{
+articleRouter.post("/", (req, res, next) => {
     const newPost = new ArticleSchema(req.body)
     newPost.user = req.user._id
     newPost.save((err, newpost) => {
-        if(err){
+        if (err) {
             res.status(500)
             return next(err)
         }
@@ -26,23 +41,23 @@ articleRouter.post("/", (req, res, next) =>{
 
 articleRouter.get("/:id", (req, res, next) => {
     ArticleSchema.findOne(
-        {user: req.user._id, _id: req.params.id},
-        (err,data) => {
-            if(err){
+        { user: req.user._id, _id: req.params.id },
+        (err, data) => {
+            if (err) {
                 res.status(500)
                 return next(err)
             }
             return res.status(200).send(data)
-    })
+        })
 })
 
-articleRouter.put("/:id", (req,res, next) =>{
+articleRouter.put("/:id", (req, res, next) => {
     ArticleSchema.findOneAndUpdate(
-        {user: req.user._id, _id: req.params.id}, 
+        { user: req.user._id, _id: req.params.id },
         req.body,
-        {new: true},
-        (err,data) => {
-            if(err){
+        { new: true },
+        (err, data) => {
+            if (err) {
                 res.status(500)
                 return next(err)
             }
@@ -50,11 +65,11 @@ articleRouter.put("/:id", (req,res, next) =>{
         })
 })
 
-articleRouter.delete("/:id", (req,res,next) => {
+articleRouter.delete("/:id", (req, res, next) => {
     ArticleSchema.findOneAndDelete(
-        {user: req.user._id, _id: req.params.id},
-        (err, deleteData) =>{
-            if(err){
+        { user: req.user._id, _id: req.params.id },
+        (err, deleteData) => {
+            if (err) {
                 res.status(500)
                 next(err)
             }

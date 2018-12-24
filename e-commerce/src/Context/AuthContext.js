@@ -3,13 +3,6 @@ import axios from "axios"
 import {withRouter} from "react-router-dom"
 
 const AuthContextProvider = React.createContext()
-const articleAxios = axios.create()
-
-// articleAxios.interceptors.request.use((config) =>{
-//     const token = localStorage.getItem("token");
-//     config.headers.Authorization = `Bearer ${token}`
-//     return config
-// })
 
 class AuthContext extends React.Component{
     constructor(){
