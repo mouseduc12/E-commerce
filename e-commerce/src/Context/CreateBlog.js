@@ -58,6 +58,7 @@ class CreateBlog extends React.Component {
         })
     }
     render() {
+        console.log(this.state.blogData)
         return (
             <BlogProviderContext.Provider value={{
                 ...this.state,

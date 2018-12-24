@@ -12,7 +12,10 @@ class Blog extends React.Component {
             <div className = "blogs-section">
                 <h1>Blogs</h1>
                 <div className="blog-container">
-                    {this.props.blogData.map((each, id) => <EachBlog key={each._id} {...each} slot={id} />)}
+                    {this.props.blogData.reverse().map((each, id) => <EachBlog key={each._id} {...each} slot={id} />)}
+                </div>
+                <div>
+                    <p style={{textAlign: "center"}}>1 2 3 4 5</p>
                 </div>
             </div>
         )

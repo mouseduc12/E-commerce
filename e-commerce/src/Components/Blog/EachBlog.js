@@ -8,8 +8,11 @@ const EachBlog = (props) => {
         if (props.slot === 0) {
             return "new-author-post"
         }
-        else {
+        else if(props.slot % 2 === 0) {
             return "old-author-post"
+        } 
+        else if(props.slot % 2 === 1){
+            return "older-author-post"
         }
     }
 
