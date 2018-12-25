@@ -3,15 +3,28 @@ const articleRouter = express.Router()
 const ArticleSchema = require("../models/article")
 
 articleRouter.get("/", (req, res, next) => {
-    ArticleSchema.find()
-        .populate({path: "user", select: "faceImage firstName"})
-        .exec((err, data) => {
+    console.log(req.query)
+    ArticleSchema.paginate({},
+        {
+            page: req.query.page,
+            limit: 3,
+            populate: {path: "user", select: "faceImage firstName"}
+        }, (err, data) => {
             if (err) {
                 res.status(500)
                 return next(err)
             }
             return res.status(200).send(data)
         })
+    // ArticleSchema.find()
+    //     .populate({path: "user", select: "faceImage firstName"})
+    //     .exec((err, data) => {
+    //         if (err) {
+    //             res.status(500)
+    //             return next(err)
+    //         }
+    //         return res.status(200).send(data)
+    //     })
 })
 
 articleRouter.post("/:userId", (req, res, next) => {
