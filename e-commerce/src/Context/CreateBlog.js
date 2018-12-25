@@ -24,7 +24,9 @@ class CreateBlog extends React.Component {
             blogData: [],
             page: 0,
             active: 0,
-            dataForSpecificalBlog: {}
+            dataForSpecificalBlog: {},
+            previousData: {},
+            nextData: {},
         }
     }
 
@@ -35,16 +37,31 @@ class CreateBlog extends React.Component {
         })
     }
 
-    handleSpecificalBlog = (value) =>{
-        axios.get(`/articles/${value}`).then(res=>{
+    handleSpecificalBlog = (value) => {
+        axios.get(`/articles/${value}`).then(res => {
             this.setState({
-                dataForSpecificalBlog: res.data           
+                dataForSpecificalBlog: res.data
             })
+            return axios.get(`/articles/${value}/next`)
+        }).then(res => {
+            console.log(res.data)
+            this.setState({
+                nextData: res.data
+            })
+            return axios.get(`/articles/${value}/previous`)
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                previousData: res.data
+            })
+        }).catch(err => {
+            console.log(err)
         })
     }
 
+
     getBlogData = (value, e) => {
-        axios.get(`/articles?page=${value}`).then(res =>{
+        axios.get(`/articles?page=${value}`).then(res => {
             this.setState({
                 blogData: res.data.docs,
                 page: res.data.pages,
@@ -52,6 +69,7 @@ class CreateBlog extends React.Component {
             })
         })
     }
+
 
     handleSubmitBlog = (e) => {
         const userId = JSON.parse(localStorage.getItem("user"))
@@ -71,14 +89,13 @@ class CreateBlog extends React.Component {
         })
     }
     render() {
-        console.log(this.state.blogData)
         return (
             <BlogProviderContext.Provider value={{
                 ...this.state,
                 handleBlogChange: this.handleBlogChange,
                 handleSubmitBlog: this.handleSubmitBlog,
                 getBlogData: this.getBlogData,
-                handleSpecificalBlog: this.handleSpecificalBlog
+                handleSpecificalBlog: this.handleSpecificalBlog,
             }}>
                 {this.props.children}
             </BlogProviderContext.Provider>

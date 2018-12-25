@@ -29,10 +29,31 @@
 }
 
 .contents-of-blog{
-    margin: 20px;
+    margin: 20px 0;
 }
 .contents-of-blog p{
     margin-top: 20px;
     line-height: 30px;
     font-size: 17px;
+}
+.the-author-of-the-blog{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.the-author-image-of-the-blog{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size:cover;
+    background-position: center;
+    margin-top: -40px;
+
+}
+.blog-contents-small-container hr{
+    margin-top: 50px;
+}
+.the-author-of-the-blog h3{
+    margin: 10px 0;
+    text-transform: capitalize
 }
