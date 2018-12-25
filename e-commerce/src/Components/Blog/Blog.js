@@ -5,7 +5,7 @@ import "../../ComponentStyles/Blog.css"
 
 class Blog extends React.Component {
     componentDidMount() {
-        this.props.getBlogData(2)
+        this.props.getBlogData()
     }
 
     render() {

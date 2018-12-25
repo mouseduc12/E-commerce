@@ -50,8 +50,9 @@ articleRouter.get("/:userId", (req, res, next) => {
 })
 
 articleRouter.get("/:userId/:id", (req, res, next) => {
+    console.log(req.params)
     ArticleSchema.findOne(
-        { user: req.user._id, _id: req.params.id },
+        { user: req.params.userId, _id: req.params.id },
         (err, data) => {
             if (err) {
                 res.status(500)

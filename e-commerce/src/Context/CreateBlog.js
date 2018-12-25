@@ -34,6 +34,12 @@ class CreateBlog extends React.Component {
         })
     }
 
+    handleSpecificalBlog = (value) =>{
+        axios.get(`/articles/${value}`).then(res=>{
+            console.log(res)
+        })
+    }
+
     getBlogData = (value, e) => {
         axios.get(`/articles?page=${value}`).then(res =>{
             this.setState({
@@ -68,7 +74,8 @@ class CreateBlog extends React.Component {
                 ...this.state,
                 handleBlogChange: this.handleBlogChange,
                 handleSubmitBlog: this.handleSubmitBlog,
-                getBlogData: this.getBlogData
+                getBlogData: this.getBlogData,
+                handleSpecificalBlog: this.handleSpecificalBlog
             }}>
                 {this.props.children}
             </BlogProviderContext.Provider>

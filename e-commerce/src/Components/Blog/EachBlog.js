@@ -1,16 +1,17 @@
 import React, { Fragment } from "react"
 import "../../ComponentStyles/EachBlog.css"
 import moment from "moment"
+import { Link } from 'react-router-dom'
 
 const EachBlog = (props) => {
     const generateAuthorContainer = () => {
         if (props.slot === 0) {
             return "new-author-post"
         }
-        else if(props.slot % 2 === 0) {
+        else if (props.slot % 2 === 0) {
             return "older-author-post"
-        } 
-        else if(props.slot % 2 === 1){
+        }
+        else if (props.slot % 2 === 1) {
             return "old-author-post"
         }
     }
@@ -25,7 +26,6 @@ const EachBlog = (props) => {
     }
     return (
         <Fragment>
-
             <div className={generateAuthorContainer()}>
                 <div style={{ backgroundImage: `url(${props.featureImage})` }} className={`feature-author-image ${generateAuthorImage()}`}></div>
                 <div className="content-of-image">
@@ -36,7 +36,9 @@ const EachBlog = (props) => {
                             props.firstContent.length > 50 ? <p>{props.firstContent.slice(0, 50) + "[...]"}</p> : <p>{props.firstContent}</p>
                         }
                         <div className="button-of-blog">
-                            <button>READ MORE</button>
+                            <Link to = {`/blog/${props.user._id}/${props._id}`}>
+                                <button>READ MORE</button>
+                            </Link>
                         </div>
                     </div>
                     <div className="author-of-the-blog">
@@ -45,7 +47,6 @@ const EachBlog = (props) => {
                     </div>
                 </div>
             </div>
-
         </Fragment>
     )
 }
