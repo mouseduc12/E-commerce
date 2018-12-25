@@ -13,7 +13,7 @@ class Blog extends React.Component {
         for (let i = 0; i < this.props.page; i++) {
             data.push(i + 1)
         }
-        console.log(this.props)
+        console.log(this.props.active)
         return (
             <div className="blogs-section">
                 <h1>Blogs</h1>
@@ -21,8 +21,11 @@ class Blog extends React.Component {
                     {this.props.blogData.reverse().map((each, id) => <EachBlog key={each._id} {...each} slot={id} />)}
                 </div>
                 <div className="page">
-                    {
-                        data.map(each => <p onClick={() => this.props.getBlogData(each)}>{each}</p>)
+                    { data &&
+                        data.map((each,id) => <p 
+                        onClick={() => this.props.getBlogData(each, id)} 
+                        style = {{color: this.props.active === id && "darkcyan"}}
+                        >{each}</p>)
                     }
                 </div>
             </div>

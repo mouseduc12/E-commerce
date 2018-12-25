@@ -22,7 +22,8 @@ class CreateBlog extends React.Component {
             secondContent: "",
             featureImage: "",
             blogData: [],
-            page: 0
+            page: 0,
+            active: 0
         }
     }
 
@@ -33,13 +34,12 @@ class CreateBlog extends React.Component {
         })
     }
 
-    getBlogData = (value) => {
+    getBlogData = (value, e) => {
         axios.get(`/articles?page=${value}`).then(res =>{
-            console.log(res);
-            console.log(res.docs)
             this.setState({
                 blogData: res.data.docs,
-                page: res.data.pages
+                page: res.data.pages,
+                active: e ? e : 0
             })
         })
     }
