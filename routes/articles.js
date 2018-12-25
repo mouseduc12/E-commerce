@@ -76,7 +76,6 @@ articleRouter.get("/:userId/:id/next", (req, res, next) => {
 })
 
 articleRouter.get("/:userId/:id/previous", (req,res, next) => {
-    console.log(req.params.id)
     ArticleSchema.findOne({_id: { $lt: req.params.id}})
     .sort({_id: -1})
     .exec((err, data) =>{

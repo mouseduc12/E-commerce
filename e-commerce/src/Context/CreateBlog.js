@@ -44,13 +44,11 @@ class CreateBlog extends React.Component {
             })
             return axios.get(`/articles/${value}/next`)
         }).then(res => {
-            console.log(res.data)
             this.setState({
                 nextData: res.data
             })
             return axios.get(`/articles/${value}/previous`)
         }).then(res => {
-            console.log(res)
             this.setState({
                 previousData: res.data
             })

@@ -1,26 +1,32 @@
-.feature-image-of-one-blog{
+.feature-image-of-one-blog {
     display: flex;
     height: 500px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-.title-of-blog h2{
+
+.title-of-blog h2 {
     text-align: center;
     font-size: 30px;
     margin: 20px 0;
 }
-.blog-contents-container{
+
+.blog-contents-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
-.blog-contents-small-container{
+
+.blog-contents-small-container {
     display: flex;
     flex-direction: column;
     width: 50%;
     font-family: "Roboto"
 }
-.content-images{
+
+.content-images {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,32 +34,76 @@
     width: 100%;
 }
 
-.contents-of-blog{
+.contents-of-blog {
     margin: 20px 0;
 }
-.contents-of-blog p{
+
+.contents-of-blog p {
     margin-top: 20px;
     line-height: 30px;
     font-size: 17px;
 }
-.the-author-of-the-blog{
+
+.the-author-of-the-blog {
     display: flex;
     flex-direction: column;
     align-items: center
 }
-.the-author-image-of-the-blog{
+
+.the-author-image-of-the-blog {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     margin-top: -40px;
 
 }
-.blog-contents-small-container hr{
+
+.blog-contents-small-container hr {
     margin-top: 50px;
 }
-.the-author-of-the-blog h3{
+
+.the-author-of-the-blog h3 {
     margin: 10px 0;
     text-transform: capitalize
+}
+
+.show-related-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.image-of-the-next-post {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    box-shadow: inset 0 0 0 500px rgba(1,1,1,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+.post__post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-column-1 {
+    grid-column: 1
+}
+
+.grid-column-2 {
+    grid-column: 2
+}
+.image-of-the-next-post p{
+    font-size: 20px;
+}
+.post__post a{
+    width: 100%;
 }
