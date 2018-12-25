@@ -5,7 +5,7 @@ import "../../ComponentStyles/Blog.css"
 
 class Blog extends React.Component {
     componentDidMount() {
-        this.props.getBlogData()
+        this.props.getBlogData(2)
     }
 
     render() {
@@ -13,6 +13,7 @@ class Blog extends React.Component {
         for (let i = 0; i < this.props.page; i++) {
             data.push(i + 1)
         }
+        console.log(this.props)
         return (
             <div className="blogs-section">
                 <h1>Blogs</h1>

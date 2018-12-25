@@ -16,3 +16,13 @@
     grid-auto-rows: 1fr;
     grid-gap: 15px;
 }
+.page{
+    margin: 10px 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.page p{
+    margin: 0 10px;
+    cursor: pointer;
+}
