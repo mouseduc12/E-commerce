@@ -50,16 +50,15 @@ articleRouter.get("/:userId", (req, res, next) => {
 })
 
 articleRouter.get("/:userId/:id", (req, res, next) => {
-    console.log(req.params)
-    ArticleSchema.findOne(
-        { user: req.params.userId, _id: req.params.id },
-        (err, data) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(data)
-        })
+    ArticleSchema.findOne({ user: req.params.userId, _id: req.params.id })
+    .populate({path: "user", select: "faceImage firstName"})
+    .exec((err,data) =>{
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(data)
+    })
 })
 
 articleRouter.put("/:id", (req, res, next) => {

@@ -1,0 +1,38 @@
+.feature-image-of-one-blog{
+    display: flex;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.title-of-blog h2{
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+}
+.blog-contents-container{
+    display: flex;
+    justify-content: center;
+}
+.blog-contents-small-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-family: "Roboto"
+}
+.content-images{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 250px;
+    width: 100%;
+}
+
+.contents-of-blog{
+    margin: 20px;
+}
+.contents-of-blog p{
+    margin-top: 20px;
+    line-height: 30px;
+    font-size: 17px;
+}

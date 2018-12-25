@@ -23,7 +23,8 @@ class CreateBlog extends React.Component {
             featureImage: "",
             blogData: [],
             page: 0,
-            active: 0
+            active: 0,
+            dataForSpecificalBlog: {}
         }
     }
 
@@ -36,7 +37,9 @@ class CreateBlog extends React.Component {
 
     handleSpecificalBlog = (value) =>{
         axios.get(`/articles/${value}`).then(res=>{
-            console.log(res)
+            this.setState({
+                dataForSpecificalBlog: res.data           
+            })
         })
     }
 
