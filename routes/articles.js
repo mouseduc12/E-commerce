@@ -40,13 +40,15 @@ articleRouter.post("/:userId", (req, res, next) => {
 })
 
 articleRouter.get("/:userId", (req, res, next) => {
-    ArticleSchema.find({ user: req.params.userId }, (err, data) => {
-        if (err) {
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(data)
-    })
+    ArticleSchema.find({ user: req.params.userId })
+        .populate({ path: "user", select: "faceImage firstName" })
+        .exec((err, data) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(data)
+        })
 })
 
 articleRouter.get("/:userId/:id", (req, res, next) => {
@@ -75,16 +77,16 @@ articleRouter.get("/:userId/:id/next", (req, res, next) => {
         })
 })
 
-articleRouter.get("/:userId/:id/previous", (req,res, next) => {
-    ArticleSchema.findOne({_id: { $lt: req.params.id}})
-    .sort({_id: -1})
-    .exec((err, data) =>{
-        if(err){
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(data)
-    })
+articleRouter.get("/:userId/:id/previous", (req, res, next) => {
+    ArticleSchema.findOne({ _id: { $lt: req.params.id } })
+        .sort({ _id: -1 })
+        .exec((err, data) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(data)
+        })
 })
 
 articleRouter.put("/:id", (req, res, next) => {

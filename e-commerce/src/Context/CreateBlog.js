@@ -27,6 +27,7 @@ class CreateBlog extends React.Component {
             dataForSpecificalBlog: {},
             previousData: {},
             nextData: {},
+            aboutAuthorData: []
         }
     }
 
@@ -69,6 +70,14 @@ class CreateBlog extends React.Component {
     }
 
 
+    handleAuthorInfos = (userId) =>{
+        axios.get(`/articles/${userId}`).then(res => {
+            this.setState({
+                aboutAuthorData: res.data
+            })
+        })
+    }
+
     handleSubmitBlog = (e) => {
         const userId = JSON.parse(localStorage.getItem("user"))
         e.preventDefault()
@@ -94,6 +103,7 @@ class CreateBlog extends React.Component {
                 handleSubmitBlog: this.handleSubmitBlog,
                 getBlogData: this.getBlogData,
                 handleSpecificalBlog: this.handleSpecificalBlog,
+                handleAuthorInfos: this.handleAuthorInfos
             }}>
                 {this.props.children}
             </BlogProviderContext.Provider>
