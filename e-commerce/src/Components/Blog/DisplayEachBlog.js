@@ -1,9 +1,10 @@
-import React from "react"
+import React, { Fragment } from "react"
 import "../../ComponentStyles/DisplayEachBlog.css"
 import { withBlog } from "../../Context/CreateBlog"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom"
 import moment from "moment"
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon } from "react-share"
 
 class DisplayEachBlog extends React.Component {
     componentDidMount() {
@@ -38,7 +39,7 @@ class DisplayEachBlog extends React.Component {
                     <div className="blog-contents-small-container">
                         <div className="title-of-blog">
                             <h2>{this.props.dataForSpecificalBlog.title}</h2>
-                            <h4 style ={{textAlign: "center"}}>{moment(this.props.dataForSpecificalBlog.Date).format("llll")}</h4>
+                            <h4 style={{ textAlign: "center" }}>{moment(this.props.dataForSpecificalBlog.Date).format("llll")}</h4>
                         </div>
                         <div className="contents-of-blog" >
                             {
@@ -57,12 +58,42 @@ class DisplayEachBlog extends React.Component {
                         </div>
                         <hr />
                         {this.props.dataForSpecificalBlog.user &&
-                            <div className="the-author-of-the-blog">
-                                <Link to = {`/author/${this.props.dataForSpecificalBlog.user._id}`}>
-                                    <div style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.user.faceImage})` }} className="the-author-image-of-the-blog"></div>
-                                </Link>
-                                <h3>{this.props.dataForSpecificalBlog.user.firstName}</h3>
-                            </div>
+                            <Fragment>
+                                <div className="the-author-of-the-blog">
+                                    <Link to={`/author/${this.props.dataForSpecificalBlog.user._id}`}>
+                                        <div style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.user.faceImage})` }} className="the-author-image-of-the-blog"></div>
+                                    </Link>
+                                    <h3>{this.props.dataForSpecificalBlog.user.firstName}</h3>
+                                </div>
+                                <div className = "sharing-icons">
+                                    <FacebookShareButton
+                                        url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
+                                        quote={this.props.dataForSpecificalBlog.title}
+                                        className = "sharing-icon"
+                                    >
+                                        <FacebookIcon size={32} 
+                                        round={true} />
+                                    </FacebookShareButton>
+                                    <TwitterShareButton
+                                        url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
+                                        title={this.props.dataForSpecificalBlog.title}
+                                        className = "sharing-icon"
+                                    >
+                                        <TwitterIcon size={32}
+                                         round={true} 
+                                         />
+                                    </TwitterShareButton>
+                                    <LinkedinShareButton
+                                        url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
+                                        title={this.props.dataForSpecificalBlog.title}
+                                        className = "sharing-icon"
+                                    >
+                                        <LinkedinIcon size={32} 
+                                        round={true}
+                                        />
+                                    </LinkedinShareButton>
+                                </div>
+                            </Fragment>
                         }
                     </div>
                     <div className="show-related-data">

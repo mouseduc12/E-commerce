@@ -107,3 +107,12 @@
 .post__post a{
     width: 100%;
 }
+.sharing-icon{
+    cursor: pointer;
+    margin-right: 10px;
+}
+.sharing-icons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
