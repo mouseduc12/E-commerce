@@ -57,6 +57,12 @@ class ProductsProvider extends React.Component {
         })
     }
 
+    getCollectionData = () =>{
+        axios.get("/productCollections").then(res =>{
+            console.log(res)
+        })
+    } 
+
     render() {
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
@@ -68,7 +74,8 @@ class ProductsProvider extends React.Component {
                     getFirePits: this.getFirePits,
                     getOutDoorLights: this.getOutDoorLights,
                     data: data,
-                    handleChange: this.handleChange
+                    handleChange: this.handleChange,
+                    getCollectionData: this.getCollectionData
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

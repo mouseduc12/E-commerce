@@ -14,6 +14,7 @@ app.use("/lights", require("./routes/outdoorLights"))
 app.use("/firepits", require("./routes/firePits"))
 app.use("/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
+app.use("/productCollections", require("./routes/productCollections"))
 
 app.use((err, req, res, next) =>{
     if(err.name === "UnauthorizedError"){

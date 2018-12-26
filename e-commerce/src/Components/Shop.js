@@ -11,10 +11,11 @@ class Shop extends React.Component {
         this.newSortedData = []
     }
     componentDidMount() {
-        this.props.getFirePits()
-        this.props.getSculptures()
-        this.props.getOutDoorLights()
-        this.props.getPlant()
+        // this.props.getFirePits()
+        // this.props.getSculptures()
+        // this.props.getOutDoorLights()
+        // this.props.getPlant()
+        this.props.getCollectionData()
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedData === "lowest") {
