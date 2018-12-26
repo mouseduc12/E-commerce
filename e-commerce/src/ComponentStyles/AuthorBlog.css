@@ -1,0 +1,26 @@
+.feature-of-author-each-blog{
+    width: 100%;
+    margin-bottom: 20px;
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.feature-content-of-author-blog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Roboto"
+}
+.feature-content-of-author-blog h2{
+    margin: 20px 0;
+}
+.feature-content-of-author-blog p{
+    margin: 15px 0;
+}
+.feature-image-of-each-blog{
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 5px;
+}
