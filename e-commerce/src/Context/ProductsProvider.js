@@ -62,12 +62,21 @@ class ProductsProvider extends React.Component {
     }
 
     getCollectionData = (e) =>{
-        axios.get(`/productCollections?page=${e}`).then(res =>{
+        axios.get(`/productCollections/pag?page=${e}`).then(res =>{
             console.log(res)
             this.setState({
                 dataCollection: res.data.docs,
                 allProductPage: res.data.pages,
                 activeNumber: e 
+            })
+        })
+    }
+
+    getAllCollectionData = (e) =>{
+        axios.get("/productCollections").then(res =>{
+            console.log(res)
+            this.setState({
+                dataCollection: res.data
             })
         })
     }
@@ -85,6 +94,7 @@ class ProductsProvider extends React.Component {
                     data: data,
                     handleChange: this.handleChange,
                     getCollectionData: this.getCollectionData,
+                    getAllCollectionData: this.getAllCollectionData
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

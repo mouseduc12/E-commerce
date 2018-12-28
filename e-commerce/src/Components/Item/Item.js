@@ -1,17 +1,19 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { withProduct } from "../../Context/ProductsProvider"
+import "../../ComponentStyles/Item.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Item extends React.Component {
-    constructor(){
+    constructor() {
         super()
         this.dataOfProduct = undefined
     }
-    componentDidMount(){
-      this.props.getCollectionData()
+    componentDidMount() {
+        this.props.getAllCollectionData()
     }
 
-    componentWillReceiveProps(nextProps){
-       this.dataOfProduct = nextProps.dataCollection.filter(each => each.products._id === this.props.match.params.id) 
+    componentWillReceiveProps(nextProps) {
+        this.dataOfProduct = nextProps.dataCollection.filter(each => each.products._id === this.props.match.params.id)
     }
 
     render() {
@@ -19,7 +21,36 @@ class Item extends React.Component {
         console.log(this.dataOfProduct)
         return (
             <div>
-                <h1>Hello There Welcome to the Item</h1>
+                <Fragment>
+                    {this.dataOfProduct &&
+                        <div className = "product-itself">
+                            <div className = "specific-product-image-container">
+                                <div className="specific-product-other-image-container">
+                                    {this.dataOfProduct[0].products.otherImages.map(each =>
+                                        <div className="specific-product-other-image"
+                                            style={{ backgroundImage: `url(${each})` }}>
+                                        </div>
+                                        )}
+                                </div>
+                                <div className="specific-product-image"
+                                    style={{ backgroundImage: `url(${this.dataOfProduct[0].products.image})` }}>
+                                </div>
+                            </div>
+
+                            <div className = "specific-product-text-container">
+                                <h1>{this.dataOfProduct[0].products.headline}</h1>
+                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3>{this.dataOfProduct[0].products.price}</h3> :<h3>${this.dataOfProduct[0].products.price}</h3>}
+                                <form className="quantity">
+                                    <input type="number"/>
+                                    <button>Add To Cart</button> 
+                                </form>
+                                <div className = "specific-product-descriptions">
+                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon = "circle"/>{each}</p>)}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </Fragment>
             </div>
         )
     }

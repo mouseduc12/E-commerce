@@ -6,7 +6,7 @@ const Plants = require("../models/plant");
 const GardenSculpture = require("../models/gardenSculpture")
 const ProductCollection = require("../models/productCollection")
 
-productRouter.get("/", (req, res, next) => {
+productRouter.get("/pag", (req, res, next) => {
     ProductCollection.paginate({}, {
         page: req.query.page,
         limit: 12,
@@ -19,6 +19,15 @@ productRouter.get("/", (req, res, next) => {
     })
 })
 
+productRouter.get("/", (req, res, next) =>{
+    ProductCollection.find((err,data) =>{
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(data)
+    })
+})
 
 // var product = "products._id"
 // productRouter.get("/:id",(req,res, next) =>{
