@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+const paginate = require("mongoose-paginate")
 
 
 const firePitSchema = new Schema({
@@ -24,4 +25,5 @@ const firePitSchema = new Schema({
     }
 })
 
+firePitSchema.plugin(paginate);
 module.exports = mongoose.model("FirePitSchema", firePitSchema)

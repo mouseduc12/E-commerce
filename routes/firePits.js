@@ -3,7 +3,10 @@ const firePitRouter = express.Router()
 const FirePitSchema = require("../models/firePit")
 
 firePitRouter.get("/", (req, res, next) => {
-    FirePitSchema.find((err, data) => {
+    FirePitSchema.paginate({}, {
+        page: req.query.page,
+        limit: 12,
+    }, (err, data) => {
         if (err) {
             res.status(500)
             return next(err)
