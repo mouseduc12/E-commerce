@@ -20,6 +20,18 @@ productRouter.get("/", (req, res, next) => {
 })
 
 
+// var product = "products._id"
+// productRouter.get("/:id",(req,res, next) =>{
+//     ProductCollection.findById({ product_id: req.params.id}, (err, data)=>{
+//         console.log("I'm hitting")
+//         if(err){
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(200).send(data)
+//     })
+// })
+
 // productRouter.post("/", async (req, res, next) => {
 //     let pits;
 //     let lights;
@@ -49,10 +61,3 @@ productRouter.get("/", (req, res, next) => {
 // })
 
 module.exports = productRouter
-
-// {
-//     plants: plants,
-//     outdoorLights: lights,
-//     firePits: pits,
-//     gardenSculptures: gardenSculptures
-// }

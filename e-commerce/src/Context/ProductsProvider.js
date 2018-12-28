@@ -62,8 +62,8 @@ class ProductsProvider extends React.Component {
     }
 
     getCollectionData = (e) =>{
-        console.log(e)
         axios.get(`/productCollections?page=${e}`).then(res =>{
+            console.log(res)
             this.setState({
                 dataCollection: res.data.docs,
                 allProductPage: res.data.pages,
@@ -85,7 +85,6 @@ class ProductsProvider extends React.Component {
                     data: data,
                     handleChange: this.handleChange,
                     getCollectionData: this.getCollectionData,
-
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>
