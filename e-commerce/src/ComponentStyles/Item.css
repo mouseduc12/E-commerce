@@ -1,6 +1,7 @@
 .product-itself-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
 }
 .product-itself{
     grid-column: 1/-1;
@@ -68,4 +69,18 @@
     background: black;
     color: white;
     font-size: 15px;
+}
+.specific-customer-reviews-container{
+    grid-column: 2
+}
+.check-customer-is-review{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 20px;
+    cursor: pointer;
+}
+.customer-arrows{
+    margin-right: 20px;
+    font-size: 20px;
 }

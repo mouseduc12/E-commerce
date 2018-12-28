@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Item extends React.Component {
     constructor() {
         super()
+        this.state = {
+            isReviewing: false
+        }
         this.dataOfProduct = undefined
     }
     componentDidMount() {
@@ -16,11 +19,17 @@ class Item extends React.Component {
         this.dataOfProduct = nextProps.dataCollection.filter(each => each.products._id === this.props.match.params.id)
     }
 
+    handleReview = () => {
+        this.setState(prevState => ({
+            isReviewing: !prevState.isReviewing
+        }))
+    }
+
     render() {
         console.log(this.props)
         console.log(this.dataOfProduct)
         return (
-            <div className = "product-itself-container">
+            <div className="product-itself-container">
                 <Fragment>
                     {this.dataOfProduct &&
                         <div className="product-itself">
@@ -44,18 +53,32 @@ class Item extends React.Component {
 
                             <div className="specific-product-text-container">
                                 <h1>{this.dataOfProduct[0].products.headline}</h1>
-                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className ="specific-product-price">{this.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.dataOfProduct[0].products.price}</h3>}
+                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className="specific-product-price">{this.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.dataOfProduct[0].products.price}</h3>}
                                 <form className="quantity">
                                     <input type="number" />
                                     <button>Add To Cart</button>
                                 </form>
                                 <div className="specific-product-descriptions">
-                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons"/>{each}</p>)}
+                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons" />{each}</p>)}
                                 </div>
                             </div>
                         </div>
                     }
                 </Fragment>
+                <div className="specific-customer-reviews-container">
+                    <div className ="check-customer-is-review" onClick={this.handleReview}> 
+                        <p>Customer Review: 5 stars</p>
+                        <FontAwesomeIcon className="customer-arrows" icon={!this.state.isReviewing ? "arrow-down" : "arrow-up"} />
+                    </div>
+                    {this.state.isReviewing &&
+                        <form>
+                            <input placeholder="Name" />
+                            <input placeholder="Name" />
+                            <input placeholder="Name" />
+                            <input placeholder="Name" />
+                        </form>
+                    }
+                </div>
             </div>
         )
     }
