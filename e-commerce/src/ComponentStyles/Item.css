@@ -18,7 +18,8 @@
 }
 .specific-product-other-image-container{
     grid-column: 1;
-    overflow-y: scroll
+    overflow-y: scroll;
+    cursor: pointer;
 }
 .specific-product-other-image{
     width: 80px;
@@ -26,7 +27,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0 10px 20px 10px;
+    margin: 10px 10px 20px 10px;
 }
 
 .specific-product-image{
@@ -36,19 +37,32 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transition: all 0.5s ease-in-out;
+    animation: product-image-move 1s cubic-bezier(0.075, 0.82, 0.165, 1) 
+}
+@keyframes product-image-move{
+    0%{
+        transform: translateX(500px) 
+    }
+    75%{
+        transform: translateX(-100px)
+    }
+    100%{
+        transform: translateX(0)
+    }
 }
 
 .specific-product-text-container{
     width: 50%;
     font-family: "Roboto"
 }
-.specific-product-text-container .circle-icons{
+.specific-product-descriptions .circle-icons{
     font-size: 6px;
     margin-right: 5px;
 }
-.specific-product-text-container p {
+.specific-product-descriptions p {
     margin: 20px 0;
-    line-height: 20px;
+    line-height: 25px;
     font-size: 17px;
 }
 .specific-product-price{

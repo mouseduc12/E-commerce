@@ -8,7 +8,9 @@ class Item extends React.Component {
         super()
         this.state = {
             isCheckingReview: false,
-            isReviewing: false
+            isReviewing: false,
+            watchingImage: "",
+            activeImage: 1
         }
         this.dataOfProduct = undefined
     }
@@ -33,9 +35,16 @@ class Item extends React.Component {
             isCheckingReview: !prevState.isCheckingReview
         }))
     }
+
+    handleChangeImage = (image, id) => {
+        this.setState({
+            watchingImage: image,
+            activeImage: id
+        })
+    }
     render() {
-        console.log(this.props)
-        console.log(this.dataOfProduct)
+        console.log(this.state.activeImage)
+        const firstId = 1
         return (
             <div className="product-itself-container">
                 <Fragment>
@@ -43,19 +52,28 @@ class Item extends React.Component {
                         <div className="product-itself">
                             <div className="specific-product-image-container">
                                 <div className="specific-product-other-image-container">
-                                    {this.dataOfProduct[0].products.otherImages.map(each =>
+                                    <div className="specific-product-other-image"
+                                        onClick={() => this.handleChangeImage(this.dataOfProduct[0].products.image, firstId)}
+                                        style={{
+                                            backgroundImage: `url(${this.dataOfProduct[0].products.image})`,
+                                            border: this.state.activeImage === firstId && "2px solid darkCyan"
+                                        }}>
+                                    </div>
+                                    {this.dataOfProduct[0].products.otherImages.map((each, id) =>
                                         <Fragment>
                                             <div className="specific-product-other-image"
-                                                style={{ backgroundImage: `url(${this.dataOfProduct[0].products.image})` }}>
-                                            </div>
-                                            <div className="specific-product-other-image"
-                                                style={{ backgroundImage: `url(${each})` }}>
+                                                id={id + 2}
+                                                onClick={() => this.handleChangeImage(each, id+2)}
+                                                style={{
+                                                    backgroundImage: `url(${each})`,
+                                                    border: this.state.activeImage === id+2 && "2px solid darkCyan"
+                                                }}>
                                             </div>
                                         </Fragment>
                                     )}
                                 </div>
                                 <div className="specific-product-image"
-                                    style={{ backgroundImage: `url(${this.dataOfProduct[0].products.image})` }}>
+                                    style={{ backgroundImage: !this.state.watchingImage ? `url(${this.dataOfProduct[0].products.image})` : `url(${this.state.watchingImage})` }}>
                                 </div>
                             </div>
 
@@ -83,12 +101,12 @@ class Item extends React.Component {
                             this.state.isCheckingReview && <button className="write-a-review-button" onClick={this.handleReview}>Write A Review</button>
                         }
                         {this.state.isReviewing && this.state.isCheckingReview &&
-                            <form className = "customer-is-reviewing-section">
-                                <input placeholder="Name" type="text"/>
-                                <input placeholder="Email" type="email"/>
+                            <form className="customer-is-reviewing-section">
+                                <input placeholder="Name" type="text" />
+                                <input placeholder="Email" type="email" />
                                 <textarea placeholder="Review" type="text"></textarea>
                                 <div>
-                                <button>Submit</button>
+                                    <button>Submit</button>
                                 </div>
                             </form>
                         }
