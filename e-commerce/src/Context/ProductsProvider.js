@@ -53,8 +53,9 @@ class ProductsProvider extends React.Component {
     }
     getFirePits = () => {
         axios.get("/firepits").then(res => {
+            console.log(res)
             this.setState(prevState => ({
-                firePits: res.data,
+                firePits: res.data.docs,
 
             }))
         })

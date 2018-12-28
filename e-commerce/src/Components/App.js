@@ -25,6 +25,7 @@ import User from "./User/User"
 import NotFound from "./NotFound";
 import AuthorBlogs from "./Blog/AuthorBlogs"
 import DisplayEachBlog from "./Blog/DisplayEachBlog"
+import Item from "./Item/Item"
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -103,6 +104,7 @@ class App extends React.Component {
                     <Route path="/shop/sculptures" render={(props) => (
                         <Sculptures {...props} />
                     )} />
+                    <Route exact path="/item/:id" render = {(props) => (<Item {...props}/>)}/>
                     <Route path="/author/:userId" component= {AuthorBlogs} />
                     <Route path="/blog/:userId/:id" component = {DisplayEachBlog}/>
                     <Route path="/about" component={AboutUs} />

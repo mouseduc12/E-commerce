@@ -15,9 +15,9 @@ class Shop extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedData === "lowest") {
-            this.newSortedData = this.props.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => a.price - b.price)
+            this.newSortedData = nextProps.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => a.price - b.price)
         } else if (nextProps.sortedData === "highest") {
-            this.newSortedData = this.props.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => b.price - a.price)
+            this.newSortedData = nextProps.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => b.price - a.price)
         } else {
             this.newSortedData = []
         }
