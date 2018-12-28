@@ -79,8 +79,56 @@
     justify-content: space-between;
     font-size: 20px;
     cursor: pointer;
+    height: 50px;
+    align-items: center;
+    background-color: rgba(1,1,1,0.3)   
+}
+.check-customer-is-review p {
+    margin-left:20px;
 }
 .customer-arrows{
     margin-right: 20px;
     font-size: 20px;
+}
+
+.write-a-review-button{
+    height: 30px;
+    margin: 20px 0;
+    border: none;
+    background: black;
+    color: white;
+    width: 150px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.customer-is-reviewing-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.customer-is-reviewing-section input{
+    width: 35%;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid black;
+    padding: 0 10px; 
+}
+.customer-is-reviewing-section textarea{
+    width: 100%;
+    height: 100px;
+    margin: 20px 0;
+    font-size: 15px;
+    border: 1px solid black;
+    padding: 0 10px; 
+}
+
+.customer-is-reviewing-section > div button{
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    background: rgba(37, 116, 169, 1);
+    border: none;
+    color: white;
 }

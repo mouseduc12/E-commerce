@@ -7,6 +7,7 @@ class Item extends React.Component {
     constructor() {
         super()
         this.state = {
+            isCheckingReview: false,
             isReviewing: false
         }
         this.dataOfProduct = undefined
@@ -20,11 +21,18 @@ class Item extends React.Component {
     }
 
     handleReview = () => {
-        this.setState(prevState => ({
-            isReviewing: !prevState.isReviewing
-        }))
+        if (this.state.isCheckingReview) {
+            this.setState(prevState => ({
+                isReviewing: !prevState.isReviewing
+            }))
+        }
     }
 
+    handleCheckingReview = () => {
+        this.setState(prevState => ({
+            isCheckingReview: !prevState.isCheckingReview
+        }))
+    }
     render() {
         console.log(this.props)
         console.log(this.dataOfProduct)
@@ -55,7 +63,7 @@ class Item extends React.Component {
                                 <h1>{this.dataOfProduct[0].products.headline}</h1>
                                 {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className="specific-product-price">{this.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.dataOfProduct[0].products.price}</h3>}
                                 <form className="quantity">
-                                    <input type="number" />
+                                    <input type="number" defaultValue={1} />
                                     <button>Add To Cart</button>
                                 </form>
                                 <div className="specific-product-descriptions">
@@ -66,18 +74,28 @@ class Item extends React.Component {
                     }
                 </Fragment>
                 <div className="specific-customer-reviews-container">
-                    <div className ="check-customer-is-review" onClick={this.handleReview}> 
+                    <div className="check-customer-is-review" onClick={this.handleCheckingReview}>
                         <p>Customer Review: 5 stars</p>
-                        <FontAwesomeIcon className="customer-arrows" icon={!this.state.isReviewing ? "arrow-down" : "arrow-up"} />
+                        <FontAwesomeIcon className="customer-arrows" icon={!this.state.isCheckingReview ? "arrow-down" : "arrow-up"} />
                     </div>
-                    {this.state.isReviewing &&
-                        <form>
-                            <input placeholder="Name" />
-                            <input placeholder="Name" />
-                            <input placeholder="Name" />
-                            <input placeholder="Name" />
-                        </form>
-                    }
+                    <div className="write-a-review">
+                        {
+                            this.state.isCheckingReview && <button className="write-a-review-button" onClick={this.handleReview}>Write A Review</button>
+                        }
+                        {this.state.isReviewing && this.state.isCheckingReview &&
+                            <form className = "customer-is-reviewing-section">
+                                <input placeholder="Name" type="text"/>
+                                <input placeholder="Email" type="email"/>
+                                <textarea placeholder="Review" type="text"></textarea>
+                                <div>
+                                <button>Submit</button>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                    <div>
+                        {this.state.isCheckingReview && <p>I Love It, Over Quality</p>}
+                    </div>
                 </div>
             </div>
         )
