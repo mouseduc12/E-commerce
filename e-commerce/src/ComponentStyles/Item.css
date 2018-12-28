@@ -38,7 +38,14 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.5s ease-in-out;
-    animation: product-image-move 1s cubic-bezier(0.075, 0.82, 0.165, 1) 
+    animation: product-image-move 1s cubic-bezier(0.075, 0.82, 0.165, 1) ;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end
+}
+.specific-product-image .icon-plus{
+    font-size: 15px;
+    cursor: pointer;
 }
 @keyframes product-image-move{
     0%{
@@ -145,4 +152,10 @@
     background: rgba(37, 116, 169, 1);
     border: none;
     color: white;
+}
+
+.you-might-also-like-container{
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
 }

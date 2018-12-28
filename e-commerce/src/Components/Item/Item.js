@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { withProduct } from "../../Context/ProductsProvider"
 import "../../ComponentStyles/Item.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import YouMightLike from "./YouMightLike"
 
 class Item extends React.Component {
     constructor() {
@@ -10,17 +11,18 @@ class Item extends React.Component {
             isCheckingReview: false,
             isReviewing: false,
             watchingImage: "",
-            activeImage: 1
+            activeImage: 1,
         }
+        this.myNewRef = React.createRef()
         this.dataOfProduct = undefined
     }
     componentDidMount() {
-        this.props.getAllCollectionData()
+        this.props.getAllCollectionData().then(res =>{
+            this.dataOfProduct = res.data.filter(each => each.products._id === this.props.match.params.id)
+            this.props.getRandomCollection(this.dataOfProduct[0]._id)
+        })
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.dataOfProduct = nextProps.dataCollection.filter(each => each.products._id === this.props.match.params.id)
-    }
 
     handleReview = () => {
         if (this.state.isCheckingReview) {
@@ -42,8 +44,8 @@ class Item extends React.Component {
             activeImage: id
         })
     }
+
     render() {
-        console.log(this.state.activeImage)
         const firstId = 1
         return (
             <div className="product-itself-container">
@@ -63,10 +65,10 @@ class Item extends React.Component {
                                         <Fragment>
                                             <div className="specific-product-other-image"
                                                 id={id + 2}
-                                                onClick={() => this.handleChangeImage(each, id+2)}
+                                                onClick={() => this.handleChangeImage(each, id + 2)}
                                                 style={{
                                                     backgroundImage: `url(${each})`,
-                                                    border: this.state.activeImage === id+2 && "2px solid darkCyan"
+                                                    border: this.state.activeImage === id + 2 && "2px solid darkCyan"
                                                 }}>
                                             </div>
                                         </Fragment>
@@ -114,6 +116,9 @@ class Item extends React.Component {
                     <div>
                         {this.state.isCheckingReview && <p>I Love It, Over Quality</p>}
                     </div>
+                </div>
+                <div className = "you-might-also-like-container">
+                    {this.props.randomData.map(each => <YouMightLike {...each}/> )}
                 </div>
             </div>
         )

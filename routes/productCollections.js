@@ -19,14 +19,29 @@ productRouter.get("/pag", (req, res, next) => {
     })
 })
 
-productRouter.get("/", (req, res, next) =>{
-    ProductCollection.find((err,data) =>{
-        if(err){
+productRouter.get("/", (req, res, next) => {
+    ProductCollection.find((err, data) => {
+        if (err) {
             res.status(500)
             return next(err)
         }
         return res.status(200).send(data)
     })
+})
+
+
+productRouter.get("/random/:id", (req, res, next) => {
+    console.log(req.params)
+    ProductCollection.find({}, { _id: !req.params.id })
+        .limit(4)
+        .exec((err, data) => {
+            console.log("Im runiing")
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(data)
+        })
 })
 
 // var product = "products._id"

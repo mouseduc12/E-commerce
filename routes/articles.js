@@ -53,7 +53,7 @@ articleRouter.get("/:userId/:id", (req, res, next) => {
             return res.status(200).send(data)
         })
 
-})
+})  
 
 articleRouter.get("/:userId/:id/next", (req, res, next) => {
     ArticleSchema.findOne({ _id: { $gt: req.params.id } })

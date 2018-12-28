@@ -19,6 +19,7 @@ class ProductsProvider extends React.Component {
             dataCollection: [],
             allProductPage: "",
             activeNumber: 1,
+            randomData: []
         }
     }
     handleChange = (e) =>{
@@ -53,7 +54,6 @@ class ProductsProvider extends React.Component {
     }
     getFirePits = () => {
         axios.get("/firepits").then(res => {
-            console.log(res)
             this.setState(prevState => ({
                 firePits: res.data.docs,
 
@@ -63,7 +63,6 @@ class ProductsProvider extends React.Component {
 
     getCollectionData = (e) =>{
         axios.get(`/productCollections/pag?page=${e}`).then(res =>{
-            console.log(res)
             this.setState({
                 dataCollection: res.data.docs,
                 allProductPage: res.data.pages,
@@ -73,15 +72,23 @@ class ProductsProvider extends React.Component {
     }
 
     getAllCollectionData = (e) =>{
-        axios.get("/productCollections").then(res =>{
-            console.log(res)
+        return axios.get("/productCollections").then(res =>{
             this.setState({
                 dataCollection: res.data
+            })
+            return res
+        })
+    }
+
+    getRandomCollection = (id) =>{
+        axios.get(`/productCollections/random/${id}`).then(res =>{
+            this.setState({
+                randomData: res.data
             })
         })
     }
 
-    render() {
+     render() {
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
             <ProductProviderContext.Provider
@@ -94,7 +101,8 @@ class ProductsProvider extends React.Component {
                     data: data,
                     handleChange: this.handleChange,
                     getCollectionData: this.getCollectionData,
-                    getAllCollectionData: this.getAllCollectionData
+                    getAllCollectionData: this.getAllCollectionData,
+                    getRandomCollection: this.getRandomCollection
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>
