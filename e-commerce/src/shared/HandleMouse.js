@@ -27,7 +27,7 @@ class HandleMouse extends React.Component {
                         mouseLeave: false
                     }))
                 }
-            }, 2000)
+            }, 1500)
     }
 
     handleLeave = () => {

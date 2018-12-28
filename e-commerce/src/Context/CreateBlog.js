@@ -61,7 +61,6 @@ class CreateBlog extends React.Component {
 
     getBlogData = (value, e) => {
         axios.get(`/articles?page=${value}`).then(res => {
-            console.log(res)
             this.setState({
                 blogData: res.data.docs,
                 page: res.data.pages,

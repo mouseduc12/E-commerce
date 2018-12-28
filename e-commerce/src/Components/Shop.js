@@ -71,7 +71,10 @@ class Shop extends React.Component {
                             </Fragment>
                         }
                         <div className = "all-product-page">
-                            {pageData.map(each => <p onClick={() => this.props.getCollectionData(each)}>{each}</p>)}
+                            {pageData.map(each => <p 
+                            onClick={() => this.props.getCollectionData(each)}
+                            style ={{color: this.props.activeNumber === each && "darkCyan"}}
+                            >{each}</p>)}
                         </div>
                     </div>
                 </div>

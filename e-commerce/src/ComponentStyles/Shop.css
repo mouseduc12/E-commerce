@@ -69,3 +69,13 @@
     background: rgba(255,255,255,0.1);
     padding: 0 20px;
 }
+.all-product-page{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.all-product-page p {
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
