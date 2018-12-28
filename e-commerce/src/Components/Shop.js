@@ -11,23 +11,22 @@ class Shop extends React.Component {
         this.newSortedData = []
     }
     componentDidMount() {
-        // this.props.getFirePits()
-        // this.props.getSculptures()
-        // this.props.getOutDoorLights()
-        // this.props.getPlant()
-        this.props.getCollectionData()
+        this.props.getCollectionData(1)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedData === "lowest") {
-            this.newSortedData = this.props.data.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => a.price - b.price)
-        } else if (nextProps.sortedData === "highest"){
-            this.newSortedData = this.props.data.map(each => each.price[0] === "$" ? { ...each, price: each.price.slice(1) } : each).sort((a, b) => b.price - a.price)
+            this.newSortedData = this.props.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => a.price - b.price)
+        } else if (nextProps.sortedData === "highest") {
+            this.newSortedData = this.props.dataCollection.map(each => each.products.price[0] === "$" ? { ...each.products, price: each.products.price.slice(1) } : each.products).sort((a, b) => b.price - a.price)
         } else {
             this.newSortedData = []
         }
     }
     render() {
-        console.log(this.newSortedData)
+        const pageData = []
+        for (let i = 1; i <= this.props.allProductPage; i++) {
+            pageData.push(i)
+        }
         return (
             <Fragment>
                 <div className="image-each-section-container">
@@ -55,33 +54,29 @@ class Shop extends React.Component {
                     <div className="product-container">
                         {this.newSortedData.length > 1 ?
                             <Fragment>
-                            {this.newSortedData.map(each => 
-                                <HandleMouse
-                                 otherImages={each.otherImages} 
-                                 key={each._id} 
-                                 render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                {this.newSortedData.map(each =>
+                                    <HandleMouse
+                                        otherImages={each.otherImages}
+                                        key={each._id}
+                                        render={(props) => <Products {...each} {...props} key={each._id} />} />)}
                             </Fragment>
 
-                        : 
+                            :
                             <Fragment>
-                                {this.props.data.map(each => 
-                                <HandleMouse
-                                 otherImages={each.otherImages} 
-                                 key={each._id} 
-                                 render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                {this.props.dataCollection.map(each =>
+                                    <HandleMouse
+                                        otherImages={each.products.otherImages}
+                                        key={each._id}
+                                        render={(props) => <Products {...each.products} {...props} key={each._id} />} />)}
                             </Fragment>
                         }
+                        <div className = "all-product-page">
+                            {pageData.map(each => <p onClick={() => this.props.getCollectionData(each)}>{each}</p>)}
+                        </div>
                     </div>
                 </div>
             </Fragment>
         )
     }
-
 }
 export default withProduct(Shop)
-
-      //    console.log(a.price.charAt(0) === "$" ? parseInt(a.price.slice(1, a.price.length)) : parseInt(a.price))
-            //    console.log(typeof a.price.charAt(0) === "$" ? parseInt(a.price.slice(1, a.price.length)) : parseInt(a.price))
-            //    console.log(b.price.charAt(0) === "$" ? parseInt(b.price.slice(1, b.price.length)) : parseInt(b.price))
-            //    console.log(typeof parseInt(a.price.slice(1, a.price.length)))
-            //    console.log(typeof parseInt(b.price.slice(1, b.price.length)))

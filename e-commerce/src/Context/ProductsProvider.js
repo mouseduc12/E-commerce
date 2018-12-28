@@ -15,7 +15,9 @@ class ProductsProvider extends React.Component {
             sortedSculptures: "",
             sortedOutdoorLights: "",
             sortedFirePits: "",
-            sortedData: ""
+            sortedData: "",
+            dataCollection: [],
+            allProductPage: "",
         }
     }
     handleChange = (e) =>{
@@ -57,11 +59,16 @@ class ProductsProvider extends React.Component {
         })
     }
 
-    getCollectionData = () =>{
-        axios.get("/productCollections").then(res =>{
-            console.log(res)
+    getCollectionData = (e) =>{
+        axios.get(`/productCollections?page=${e}`).then(res =>{
+            console.log(res.data.docs)
+            console.log(res.data)
+            this.setState({
+                dataCollection: res.data.docs,
+                allProductPage: res.data.pages  
+            })
         })
-    } 
+    }
 
     render() {
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
@@ -75,7 +82,9 @@ class ProductsProvider extends React.Component {
                     getOutDoorLights: this.getOutDoorLights,
                     data: data,
                     handleChange: this.handleChange,
-                    getCollectionData: this.getCollectionData
+                    getCollectionData: this.getCollectionData,
+                    dataCollection: this.state.dataCollection,
+                    allProductPage: this.state.allProductPage
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

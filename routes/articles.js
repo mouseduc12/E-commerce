@@ -16,15 +16,6 @@ articleRouter.get("/", (req, res, next) => {
             }
             return res.status(200).send(data)
         })
-    // ArticleSchema.find()
-    //     .populate({path: "user", select: "faceImage firstName"})
-    //     .exec((err, data) => {
-    //         if (err) {
-    //             res.status(500)
-    //             return next(err)
-    //         }
-    //         return res.status(200).send(data)
-    //     })
 })
 
 articleRouter.post("/:userId", (req, res, next) => {
@@ -65,7 +56,6 @@ articleRouter.get("/:userId/:id", (req, res, next) => {
 })
 
 articleRouter.get("/:userId/:id/next", (req, res, next) => {
-    console.log("Hit 1")
     ArticleSchema.findOne({ _id: { $gt: req.params.id } })
         .sort({ _id: 1 })
         .exec((err, docs) => {
