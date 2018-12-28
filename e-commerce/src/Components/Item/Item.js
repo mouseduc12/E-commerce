@@ -20,32 +20,37 @@ class Item extends React.Component {
         console.log(this.props)
         console.log(this.dataOfProduct)
         return (
-            <div>
+            <div className = "product-itself-container">
                 <Fragment>
                     {this.dataOfProduct &&
-                        <div className = "product-itself">
-                            <div className = "specific-product-image-container">
+                        <div className="product-itself">
+                            <div className="specific-product-image-container">
                                 <div className="specific-product-other-image-container">
                                     {this.dataOfProduct[0].products.otherImages.map(each =>
-                                        <div className="specific-product-other-image"
-                                            style={{ backgroundImage: `url(${each})` }}>
-                                        </div>
-                                        )}
+                                        <Fragment>
+                                            <div className="specific-product-other-image"
+                                                style={{ backgroundImage: `url(${this.dataOfProduct[0].products.image})` }}>
+                                            </div>
+                                            <div className="specific-product-other-image"
+                                                style={{ backgroundImage: `url(${each})` }}>
+                                            </div>
+                                        </Fragment>
+                                    )}
                                 </div>
                                 <div className="specific-product-image"
                                     style={{ backgroundImage: `url(${this.dataOfProduct[0].products.image})` }}>
                                 </div>
                             </div>
 
-                            <div className = "specific-product-text-container">
+                            <div className="specific-product-text-container">
                                 <h1>{this.dataOfProduct[0].products.headline}</h1>
-                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3>{this.dataOfProduct[0].products.price}</h3> :<h3>${this.dataOfProduct[0].products.price}</h3>}
+                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className ="specific-product-price">{this.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.dataOfProduct[0].products.price}</h3>}
                                 <form className="quantity">
-                                    <input type="number"/>
-                                    <button>Add To Cart</button> 
+                                    <input type="number" />
+                                    <button>Add To Cart</button>
                                 </form>
-                                <div className = "specific-product-descriptions">
-                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon = "circle"/>{each}</p>)}
+                                <div className="specific-product-descriptions">
+                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons"/>{each}</p>)}
                                 </div>
                             </div>
                         </div>

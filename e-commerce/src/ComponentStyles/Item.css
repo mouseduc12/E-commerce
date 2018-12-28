@@ -1,0 +1,71 @@
+.product-itself-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.product-itself{
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-between;    
+}
+.specific-product-image-container{
+    display: grid;
+    grid-template-columns: auto 2fr; 
+    height: 400px;
+    width: 50%;
+    justify-items: center;
+    overflow: hidden
+}
+.specific-product-other-image-container{
+    grid-column: 1;
+    overflow-y: scroll
+}
+.specific-product-other-image{
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 10px 20px 10px;
+}
+
+.specific-product-image{
+    grid-column: 2;
+    width: 400px;
+    height: 400px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.specific-product-text-container{
+    width: 50%;
+    font-family: "Roboto"
+}
+.specific-product-text-container .circle-icons{
+    font-size: 6px;
+    margin-right: 5px;
+}
+.specific-product-text-container p {
+    margin: 20px 0;
+    line-height: 20px;
+    font-size: 17px;
+}
+.specific-product-price{
+    margin: 10px 0
+}
+.quantity input{
+    width: 50px;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+    background: rgba(1,1,1,0.1);
+    border: none;
+}
+.quantity button{
+    height: 40px;
+    width: 200px;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 15px;
+}
