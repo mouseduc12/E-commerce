@@ -12,20 +12,37 @@ class Item extends React.Component {
             isReviewing: false,
             watchingImage: "",
             activeImage: 1,
+            alreadyRun: false
         }
+        this.randomData = []
         this.myNewRef = React.createRef()
     }
     componentDidMount() {
         this.props.getAllCollectionData(this.props.match.params.id)
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.randomData.length > 1 && !this.state.alreadyRun){
+            for (let i = 0; i < 4; i++) {
+                let randomNumber = Math.floor(Math.random() * nextProps.randomData.length)
+                this.randomData.push(nextProps.randomData[randomNumber])
+            }
+            this.setState({
+                alreadyRun: true
+            })
+        }
+        
+    }
+
     shouldComponentUpdate(nextProps){
-        if(nextProps.match.params.id !== this.props.match.params.id ){
-            this.props.getAllCollectionData(nextProps.match.params.id)
+        if(nextProps.match.params.id !== this.props.match.params.id){
+            this.props.getAllCollectionData(this.props.match.params.id)
             return true
-        } else if (nextProps.match.params.id === this.props.match.params.id){
+        }
+        else if(nextProps.match.params.id === this.props.match.params.id){
             return true
-        } else{
+        }
+        else{
             return false
         }
     }
@@ -52,8 +69,7 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log("AM I RUNNING")
-        console.log(this.props.dataOfProduct)
+        console.log(this.randomData)
         const firstId = 1
         return (
             <div className="product-itself-container">
@@ -125,9 +141,11 @@ class Item extends React.Component {
                         {this.state.isCheckingReview && <p>I Love It, Over Quality</p>}
                     </div>
                 </div>
-                <div className = "you-might-also-like-container">
-                    {this.props.randomData.map(each => <YouMightLike {...each}/> )}
+                {this.randomData && 
+                <div className="you-might-also-like-container">
+                    {this.randomData.map(each => <YouMightLike {...each} />)}
                 </div>
+                }
             </div>
         )
     }

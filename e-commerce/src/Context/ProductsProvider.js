@@ -77,14 +77,9 @@ class ProductsProvider extends React.Component {
             this.setState({
                 dataCollection: res.data
             }, () => this.setState({
-                dataOfProduct: this.state.dataCollection.filter(each => each.products._id === id)
+                dataOfProduct: this.state.dataCollection.filter(each => each.products._id === id),
+                randomData: this.state.dataCollection.filter(each => each.products._id !== id) 
             }))
-            return axios.get(`/productCollections/random`)
-        }).then(res => {
-            console.log(res)
-            this.setState({
-                randomData: res.data
-            })
         }).catch(err => {
             console.log(err)
         })
