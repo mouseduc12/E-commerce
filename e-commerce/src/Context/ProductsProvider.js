@@ -20,8 +20,10 @@ class ProductsProvider extends React.Component {
             allProductPage: "",
             activeNumber: 1,
             randomData: [],
-            dataOfProduct: []
-        }
+            dataOfProduct: [],
+            newRandon: []
+        };
+        this.newRandom = []
     }
     handleChange = (e) => {
         const { name, value } = e.target
@@ -78,7 +80,17 @@ class ProductsProvider extends React.Component {
                 dataCollection: res.data
             }, () => this.setState({
                 dataOfProduct: this.state.dataCollection.filter(each => each.products._id === id),
-                randomData: this.state.dataCollection.filter(each => each.products._id !== id) 
+                randomData: this.state.dataCollection.filter(each => each.products._id !== id)
+            }, () => {
+                for (let i = 0; i < 4; i++) {
+                    let randomNumber = Math.floor(Math.random() * this.state.randomData.length)
+                    this.newRandom.push(...this.state.randomData.splice([randomNumber], 1))
+                }
+                this.setState({
+                    newRandom: this.newRandom    
+                }, () => {
+                    this.newRandom = []
+                })
             }))
         }).catch(err => {
             console.log(err)
@@ -101,7 +113,7 @@ class ProductsProvider extends React.Component {
                     handleChange: this.handleChange,
                     getCollectionData: this.getCollectionData,
                     getAllCollectionData: this.getAllCollectionData,
-                    getRandomCollection: this.getRandomCollection
+                    getRandomCollection: this.getRandomCollection,
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

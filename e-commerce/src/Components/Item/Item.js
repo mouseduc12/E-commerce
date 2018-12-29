@@ -16,7 +16,6 @@ class Item extends React.Component {
             alreadyRun: false
         }
         this.checkIfAlreadyExisted = []
-        this.randomData = []
         this.myNewRef = React.createRef()
     }
     componentDidMount() {
@@ -24,30 +23,15 @@ class Item extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.randomData.length > 1 && !this.state.alreadyRun) {
-            for (let i = 0; i < 4; i++) {
-                let randomNumber = Math.floor(Math.random() * nextProps.randomData.length)
-                this.randomData.push(nextProps.randomData[randomNumber])
-            }
+        if (nextProps.match.params.id !== this.props.match.params.id) {
+            this.props.getAllCollectionData(nextProps.match.params.id);
             this.setState({
-                alreadyRun: true
+                watchingImage: false,
+                activeImage: 1
             })
         }
-
     }
-
-    shouldComponentUpdate(nextProps) {
-        if (nextProps.match.params.id !== this.props.match.params.id) {
-            this.props.getAllCollectionData(this.props.match.params.id)
-            return true
-        }
-        else if (nextProps.match.params.id === this.props.match.params.id) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
+   
 
     handleReview = () => {
         if (this.state.isCheckingReview) {
@@ -71,7 +55,7 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log(this.randomData)
+        console.log(this.props.newRandom)
         const firstId = 1
         return (
             <div className="product-itself-container">
@@ -143,11 +127,11 @@ class Item extends React.Component {
                         {this.state.isCheckingReview && <p>I Love It, Over Quality</p>}
                     </div>
                 </div>
-                {this.randomData &&
+                {this.props.newRandom &&
                     <div className="you-might-also-like-container">
                         <h2 className="you-might-like-title">You Might Also Like:</h2>
                         <div className="you-might-also-like-small-container">
-                            {this.randomData.map(each => <HandleMouse
+                            {this.props.newRandom.map(each => <HandleMouse
                                 otherImages={each.products.otherImages}
                                 render={(props) => <YouMightLike {...props} {...each} />} />)}
                         </div>
