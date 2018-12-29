@@ -63,7 +63,7 @@ class Nav extends React.Component {
     handleFilter = (value) => {
         let output = this.state.productData.filter(each => each.products.headline.toLowerCase().indexOf(value) > -1)
         let articleOutput = this.state.articleData.filter(each => each.title.toLowerCase().indexOf(value) > -1)
-        
+
         this.setState({
             output,
             articleOutput
@@ -100,7 +100,7 @@ class Nav extends React.Component {
         })
     }
 
-    handleReset = () =>{
+    handleReset = () => {
         this.setState({
             search: "",
             isSearching: false
@@ -134,24 +134,29 @@ class Nav extends React.Component {
                         <h1><Link to="/" style={{ color: "yellow" }}>DECOR<i>'s</i></Link></h1>
                     </div>
                     <form className="search-shop">
-                        <div 
-                        className="search-shop-div"
-                        style = {{marginTop: this.state.isSearching && 20}}>
+                        <div
+                            className="search-shop-div"
+                            style={{
+                                marginTop: this.state.isSearching && 20,
+                                borderBottom: this.state.isSearching && "1px solid black"
+                            }}>
                             <input
                                 type="text"
                                 name="search"
                                 value={this.state.search}
-                                onChange={this.handleSearchBar} />
-                            <button><FontAwesomeIcon icon="search" /></button>
+                                onChange={this.handleSearchBar}
+                                style={{
+                                    borderBottomLeftRadius: this.state.isSearching && 0,
+                                }} />
+                            <button style={{ borderBottomRightRadius: this.state.isSearching && 0, }}><FontAwesomeIcon icon="search" /></button>
                         </div>
                         {this.state.isSearching &&
                             <div className="search-blog-item-container">
                                 <div className="searh-items-container">
-                                    <h3>Items:</h3>
                                     {this.state.output.length >= 1 ?
-                                        this.state.output.map(each => {
+                                        this.state.output.slice().splice(0, 5).map(each => {
                                             return (
-                                                <Link to={`/item/${each.products._id}`} onClick = {this.handleReset}>
+                                                <Link to={`/item/${each.products._id}`} onClick={this.handleReset}>
                                                     <div className="search-items-small-container">
                                                         <div
                                                             className="search-item-image"
@@ -167,7 +172,7 @@ class Nav extends React.Component {
                                         })
                                         :
                                         <div>
-                                            <h4>No Results Found</h4>
+                                            <h4 style ={{color: "black", textAlign: "center"}}>No Results Found</h4>
                                         </div>
                                     }
                                 </div>
@@ -177,7 +182,7 @@ class Nav extends React.Component {
                                     {this.state.articleOutput.length >= 1 ?
                                         this.state.articleOutput.map(each => {
                                             return (
-                                                <Link to={`/blog/${each.user}/${each._id}`} onClick = {this.handleReset}>
+                                                <Link to={`/blog/${each.user}/${each._id}`} onClick={this.handleReset}>
                                                     <p>{each.title}</p>
                                                 </Link>
                                             )
