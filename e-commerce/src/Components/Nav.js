@@ -63,6 +63,7 @@ class Nav extends React.Component {
     handleFilter = (value) => {
         let output = this.state.productData.filter(each => each.products.headline.toLowerCase().indexOf(value) > -1)
         let articleOutput = this.state.articleData.filter(each => each.title.toLowerCase().indexOf(value) > -1)
+        
         this.setState({
             output,
             articleOutput
@@ -99,6 +100,13 @@ class Nav extends React.Component {
         })
     }
 
+    handleReset = () =>{
+        this.setState({
+            search: "",
+            isSearching: false
+        })
+    }
+
     handleOnMouseLeave = () => {
         this.setState({
             openShop: false
@@ -112,7 +120,6 @@ class Nav extends React.Component {
     }
 
     render() {
-        console.log(this.state.isScroll)
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
                 <div className="first-nav-row">
@@ -127,7 +134,9 @@ class Nav extends React.Component {
                         <h1><Link to="/" style={{ color: "yellow" }}>DECOR<i>'s</i></Link></h1>
                     </div>
                     <form className="search-shop">
-                        <div className="search-shop-div">
+                        <div 
+                        className="search-shop-div"
+                        style = {{marginTop: this.state.isSearching && 20}}>
                             <input
                                 type="text"
                                 name="search"
@@ -138,15 +147,15 @@ class Nav extends React.Component {
                         {this.state.isSearching &&
                             <div className="search-blog-item-container">
                                 <div className="searh-items-container">
+                                    <h3>Items:</h3>
                                     {this.state.output.length >= 1 ?
                                         this.state.output.map(each => {
                                             return (
-                                                <Link to={`/item/${each.products._id}`}>
-                                                    <div
-                                                        className="search-items-small-container">
+                                                <Link to={`/item/${each.products._id}`} onClick = {this.handleReset}>
+                                                    <div className="search-items-small-container">
                                                         <div
                                                             className="search-item-image"
-                                                            style={{ backgroundImage: each.products.image }}>
+                                                            style={{ backgroundImage: `url(${each.products.image})` }}>
                                                         </div>
                                                         <div className="search-item-infos">
                                                             <h3>{each.products.headline}</h3>
@@ -158,23 +167,24 @@ class Nav extends React.Component {
                                         })
                                         :
                                         <div>
-                                            <h2>No Results Found</h2>
+                                            <h4>No Results Found</h4>
                                         </div>
                                     }
                                 </div>
 
                                 <div className="search-article-container">
+                                    <h3>Blogs:</h3>
                                     {this.state.articleOutput.length >= 1 ?
                                         this.state.articleOutput.map(each => {
                                             return (
-                                                <Link to={`/item/${each._id}`}>
+                                                <Link to={`/blog/${each.user}/${each._id}`} onClick = {this.handleReset}>
                                                     <p>{each.title}</p>
                                                 </Link>
                                             )
                                         })
                                         :
                                         <div>
-                                            <h2>No results found</h2>
+                                            <h4>No results found</h4>
                                         </div>}
                                 </div>
                             </div>

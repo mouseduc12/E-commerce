@@ -108,7 +108,7 @@ class App extends React.Component {
                     <Route path="/author/:userId" component= {AuthorBlogs} />
                     <Route path="/blog/:userId/:id" component = {DisplayEachBlog}/>
                     <Route path="/about" component={AboutUs} />
-                    <Route path="/blog" component={Blog} />
+                    <Route exact path="/blog" component={Blog} />
                     <Route path="/user" component={User} />
                     <Route path= "/notfound" component = {NotFound} />
                 </Switch>
