@@ -2,7 +2,9 @@ import React, { Fragment } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
-import { withAuth } from "../Context/AuthContext"
+import { withAuth } from "../Context/AuthContext";
+import axios from "axios"
+
 
 class Nav extends React.Component {
     constructor() {
@@ -11,11 +13,25 @@ class Nav extends React.Component {
             isScroll: false,
             openNav: true,
             openShop: false,
-            checkLogOut: false
+            checkLogOut: false,
+            articleData: [],
+            productData: [],
         }
     }
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
+        axios.get("/articles/all").then(res => {
+            this.setState({
+                articleData: res.data
+            })
+            return axios.get("/productCollections")
+        }).then(res => {
+            this.setState({
+                productData: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     componentWillUnmount() {
@@ -23,13 +39,14 @@ class Nav extends React.Component {
     }
 
     handleScroll = () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 100 && !this.state.isScroll) {
+            console.log("Im making u run son")
             this.setState({
                 isScroll: true,
                 openNav: false
             })
         }
-        else {
+        else if(window.scrollY < 30 && this.state.isScroll){
             this.setState({
                 isScroll: false,
                 openNav: true
@@ -64,6 +81,7 @@ class Nav extends React.Component {
     }
 
     render() {
+       console.log(this.state.isScroll)
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
                 <div className="first-nav-row">
@@ -78,8 +96,41 @@ class Nav extends React.Component {
                         <h1><Link to="/" style={{ color: "yellow" }}>DECOR<i>'s</i></Link></h1>
                     </div>
                     <form className="search-shop">
-                        <input type="text" />
-                        <button><FontAwesomeIcon icon="search" /></button>
+                        <div className = "search-shop-div">
+                            <input type="text" />
+                            <button><FontAwesomeIcon icon="search" /></button>
+                        </div>
+                        <div className="search-blog-item-container">
+                            <div className="searh-items-container">
+                                {this.state.productData.map(each => {
+                                    return (
+                                        <Link to = {`/item/${each.products._id}`}>
+                                            <div 
+                                                className="search-items-small-container"
+                                                style ={{display: "none"}}>
+                                                <div
+                                                    className="search-item-image"
+                                                    style={{ backgroundImage: each.products.image}}>
+                                                </div>
+                                                <div className="search-item-infos">
+                                                    <h3>{each.products.headline}</h3>
+                                                    <p>{each.products.price}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                            <div className="search-article-container">
+                                {this.state.articleData.map(each => {
+                                    return (
+                                        <Link to = {`/item/${each._id}`}>
+                                        <p>{each.title}</p>
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        </div>
                     </form>
                     <div className="cart">
                         <button><FontAwesomeIcon icon="heart" /></button>

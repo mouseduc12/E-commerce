@@ -18,6 +18,16 @@ articleRouter.get("/", (req, res, next) => {
         })
 })
 
+articleRouter.get("/all", (req, res, next) =>{
+    ArticleSchema.find((err, data) =>{
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(data)
+    })
+})
+
 articleRouter.post("/:userId", (req, res, next) => {
     const newPost = new ArticleSchema(req.body)
     newPost.user = req.params.userId

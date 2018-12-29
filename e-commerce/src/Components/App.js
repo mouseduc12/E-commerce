@@ -104,7 +104,7 @@ class App extends React.Component {
                     <Route path="/shop/sculptures" render={(props) => (
                         <Sculptures {...props} />
                     )} />
-                    <Route path="/item/:id" render = {(props) => (<Item {...props}/>)}/>
+                    <Route exact path="/item/:id" render = {(props) => (<Item {...props}/>)}/>
                     <Route path="/author/:userId" component= {AuthorBlogs} />
                     <Route path="/blog/:userId/:id" component = {DisplayEachBlog}/>
                     <Route path="/about" component={AboutUs} />

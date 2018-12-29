@@ -21,39 +21,34 @@ class GeneralShop extends React.Component {
         this.props.getSculptures();
     }
 
-    // shouldComponentUpdate(){
-    //     if(this.state.toggle === false){
-    //         this.setState({
-    //             toggle: true
-    //         }, () => false)
-    //     }
-    // }
 
     handleScroll = () => {
         const manageShowOff = this.myRef.current
         const manageNewShowOff = this.mySecondRef.current
-        if (manageShowOff.scrollLeft > 100 ) {
+        if (manageShowOff.scrollLeft > 100 && !this.state.scrollX) {
+            console.log("I'm mkaing you run")
             this.setState({
                 scrollX: true,
                 scrollNewX: true
             })
-        } else {
+        } else if (manageShowOff.scrollLeft < 100 && this.state.scrollX){
             this.setState({
                 scrollX: false
             })
         }
-        if (manageNewShowOff.scrollLeft > 100) {
+        
+        if (manageNewShowOff.scrollLeft > 100 && !this.state.scrollNewX) {
+            console.log("I'm mkaing you run again")
             this.setState({
                 scrollNewX: true
             })
-        } else {
+        } else if (manageNewShowOff.scrollLeft < 100 && this.state.scrollNewX) {
             this.setState({
                 scrollNewX: false
             })
         }
     }
     render() {
-        console.log("I'm running again WTF by some how")
         return (
             <div>
                 <Fragment>
@@ -75,7 +70,7 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.plants.slice().splice(0,6).map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.plants.slice().splice(0, 6).map(each => <ShowOffProduct {...each} key={each._id} />)}
                     </div>
                     <div className="manage-showoff" onScroll={this.handleScroll} ref={this.mySecondRef} >
                         <div className="manage-store-teller">
@@ -95,7 +90,7 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.sculptures.slice().splice(0,6).map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.sculptures.slice().splice(0, 6).map(each => <ShowOffProduct {...each} key={each._id} />)}
                     </div>
                 </Fragment>
             </div>

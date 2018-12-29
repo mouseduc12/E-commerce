@@ -55,7 +55,7 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log(this.props.newRandom)
+        console.log(this.props)
         const firstId = 1
         return (
             <div className="product-itself-container">

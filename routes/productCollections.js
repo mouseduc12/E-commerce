@@ -29,7 +29,6 @@ productRouter.get("/", (req, res, next) =>{
     })
 })
 
-
 // productRouter.get("/random/:id", (req, res, next) =>{
 //     ProductCollection.aggregate([{$sample: {size: 4}}, {$project: {_id: {ne: []}}}], (err,data) =>{
 //         if(err){
