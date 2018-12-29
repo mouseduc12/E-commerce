@@ -19,10 +19,11 @@ class ProductsProvider extends React.Component {
             dataCollection: [],
             allProductPage: "",
             activeNumber: 1,
-            randomData: []
+            randomData: [],
+            dataOfProduct: []
         }
     }
-    handleChange = (e) =>{
+    handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
             [name]: value
@@ -61,34 +62,37 @@ class ProductsProvider extends React.Component {
         })
     }
 
-    getCollectionData = (e) =>{
-        axios.get(`/productCollections/pag?page=${e}`).then(res =>{
+    getCollectionData = (e) => {
+        axios.get(`/productCollections/pag?page=${e}`).then(res => {
             this.setState({
                 dataCollection: res.data.docs,
                 allProductPage: res.data.pages,
-                activeNumber: e 
+                activeNumber: e
             })
         })
     }
 
-    getAllCollectionData = (e) =>{
-        return axios.get("/productCollections").then(res =>{
+    getAllCollectionData = (id) => {
+        axios.get("/productCollections").then(res => {
             this.setState({
                 dataCollection: res.data
-            })
-            return res
-        })
-    }
-
-    getRandomCollection = (id) =>{
-        axios.get(`/productCollections/random/${id}`).then(res =>{
+            }, () => this.setState({
+                dataOfProduct: this.state.dataCollection.filter(each => each.products._id === id)
+            }))
+            return axios.get(`/productCollections/random`)
+        }).then(res => {
+            console.log(res)
             this.setState({
                 randomData: res.data
             })
+        }).catch(err => {
+            console.log(err)
         })
     }
 
-     render() {
+
+
+    render() {
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
             <ProductProviderContext.Provider

@@ -14,15 +14,21 @@ class Item extends React.Component {
             activeImage: 1,
         }
         this.myNewRef = React.createRef()
-        this.dataOfProduct = undefined
     }
     componentDidMount() {
-        this.props.getAllCollectionData().then(res =>{
-            this.dataOfProduct = res.data.filter(each => each.products._id === this.props.match.params.id)
-            this.props.getRandomCollection(this.dataOfProduct[0]._id)
-        })
+        this.props.getAllCollectionData(this.props.match.params.id)
     }
 
+    shouldComponentUpdate(nextProps){
+        if(nextProps.match.params.id !== this.props.match.params.id ){
+            this.props.getAllCollectionData(nextProps.match.params.id)
+            return true
+        } else if (nextProps.match.params.id === this.props.match.params.id){
+            return true
+        } else{
+            return false
+        }
+    }
 
     handleReview = () => {
         if (this.state.isCheckingReview) {
@@ -46,22 +52,24 @@ class Item extends React.Component {
     }
 
     render() {
+        console.log("AM I RUNNING")
+        console.log(this.props.dataOfProduct)
         const firstId = 1
         return (
             <div className="product-itself-container">
                 <Fragment>
-                    {this.dataOfProduct &&
+                    {this.props.dataOfProduct.length >= 1 &&
                         <div className="product-itself">
                             <div className="specific-product-image-container">
                                 <div className="specific-product-other-image-container">
                                     <div className="specific-product-other-image"
-                                        onClick={() => this.handleChangeImage(this.dataOfProduct[0].products.image, firstId)}
+                                        onClick={() => this.handleChangeImage(this.props.dataOfProduct[0].products.image, firstId)}
                                         style={{
-                                            backgroundImage: `url(${this.dataOfProduct[0].products.image})`,
+                                            backgroundImage: `url(${this.props.dataOfProduct[0].products.image})`,
                                             border: this.state.activeImage === firstId && "2px solid darkCyan"
                                         }}>
                                     </div>
-                                    {this.dataOfProduct[0].products.otherImages.map((each, id) =>
+                                    {this.props.dataOfProduct[0].products.otherImages.map((each, id) =>
                                         <Fragment>
                                             <div className="specific-product-other-image"
                                                 id={id + 2}
@@ -75,19 +83,19 @@ class Item extends React.Component {
                                     )}
                                 </div>
                                 <div className="specific-product-image"
-                                    style={{ backgroundImage: !this.state.watchingImage ? `url(${this.dataOfProduct[0].products.image})` : `url(${this.state.watchingImage})` }}>
+                                    style={{ backgroundImage: !this.state.watchingImage ? `url(${this.props.dataOfProduct[0].products.image})` : `url(${this.state.watchingImage})` }}>
                                 </div>
                             </div>
 
                             <div className="specific-product-text-container">
-                                <h1>{this.dataOfProduct[0].products.headline}</h1>
-                                {this.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className="specific-product-price">{this.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.dataOfProduct[0].products.price}</h3>}
+                                <h1>{this.props.dataOfProduct[0].products.headline}</h1>
+                                {this.props.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className="specific-product-price">{this.props.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.props.dataOfProduct[0].products.price}</h3>}
                                 <form className="quantity">
                                     <input type="number" defaultValue={1} />
                                     <button>Add To Cart</button>
                                 </form>
                                 <div className="specific-product-descriptions">
-                                    {this.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons" />{each}</p>)}
+                                    {this.props.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons" />{each}</p>)}
                                 </div>
                             </div>
                         </div>
