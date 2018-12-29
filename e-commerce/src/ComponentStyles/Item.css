@@ -157,5 +157,16 @@
 .you-might-also-like-container{
     grid-column: 1/-1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin: 50px 0
+}
+
+.you-might-also-like-small-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.you-might-also-like-container .you-might-like-title{
+    margin: 20px 0;
 }

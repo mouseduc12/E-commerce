@@ -3,6 +3,7 @@ import { withProduct } from "../../Context/ProductsProvider"
 import "../../ComponentStyles/Item.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import YouMightLike from "./YouMightLike"
+import HandleMouse from "../../shared/HandleMouse"
 
 class Item extends React.Component {
     constructor() {
@@ -14,6 +15,7 @@ class Item extends React.Component {
             activeImage: 1,
             alreadyRun: false
         }
+        this.checkIfAlreadyExisted = []
         this.randomData = []
         this.myNewRef = React.createRef()
     }
@@ -21,8 +23,8 @@ class Item extends React.Component {
         this.props.getAllCollectionData(this.props.match.params.id)
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.randomData.length > 1 && !this.state.alreadyRun){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.randomData.length > 1 && !this.state.alreadyRun) {
             for (let i = 0; i < 4; i++) {
                 let randomNumber = Math.floor(Math.random() * nextProps.randomData.length)
                 this.randomData.push(nextProps.randomData[randomNumber])
@@ -31,18 +33,18 @@ class Item extends React.Component {
                 alreadyRun: true
             })
         }
-        
+
     }
 
-    shouldComponentUpdate(nextProps){
-        if(nextProps.match.params.id !== this.props.match.params.id){
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.match.params.id !== this.props.match.params.id) {
             this.props.getAllCollectionData(this.props.match.params.id)
             return true
         }
-        else if(nextProps.match.params.id === this.props.match.params.id){
+        else if (nextProps.match.params.id === this.props.match.params.id) {
             return true
         }
-        else{
+        else {
             return false
         }
     }
@@ -141,10 +143,15 @@ class Item extends React.Component {
                         {this.state.isCheckingReview && <p>I Love It, Over Quality</p>}
                     </div>
                 </div>
-                {this.randomData && 
-                <div className="you-might-also-like-container">
-                    {this.randomData.map(each => <YouMightLike {...each} />)}
-                </div>
+                {this.randomData &&
+                    <div className="you-might-also-like-container">
+                        <h2 className="you-might-like-title">You Might Also Like:</h2>
+                        <div className="you-might-also-like-small-container">
+                            {this.randomData.map(each => <HandleMouse
+                                otherImages={each.products.otherImages}
+                                render={(props) => <YouMightLike {...props} {...each} />} />)}
+                        </div>
+                    </div>
                 }
             </div>
         )

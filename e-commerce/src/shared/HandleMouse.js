@@ -49,6 +49,7 @@ class HandleMouse extends React.Component {
         })
     }
     render() {
+        console.log(this.props.otherImages)
         return (
             this.props.render({
                 handleIconLeave: this.handleIconLeave,
