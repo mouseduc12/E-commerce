@@ -106,8 +106,7 @@ class Nav extends React.Component {
                                     return (
                                         <Link to = {`/item/${each.products._id}`}>
                                             <div 
-                                                className="search-items-small-container"
-                                                style ={{display: "none"}}>
+                                                className="search-items-small-container">
                                                 <div
                                                     className="search-item-image"
                                                     style={{ backgroundImage: each.products.image}}>
