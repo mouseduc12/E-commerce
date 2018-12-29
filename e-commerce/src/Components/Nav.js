@@ -16,6 +16,10 @@ class Nav extends React.Component {
             checkLogOut: false,
             articleData: [],
             productData: [],
+            search: "",
+            isSearching: false,
+            output: [],
+            articleOutput: []
         }
     }
     componentDidMount() {
@@ -38,6 +42,33 @@ class Nav extends React.Component {
         window.removeEventListener("scroll", this.handleScroll)
     }
 
+    handleSearchBar = (e) => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value,
+        }, () => {
+            if (this.state.search === "" && this.state.isSearching) {
+                this.setState({
+                    isSearching: false
+                })
+            } else if (this.state.search.length >= 0) {
+                this.setState({
+                    isSearching: true
+                })
+                this.handleFilter(this.state.search.toLowerCase())
+            }
+        })
+    }
+
+    handleFilter = (value) => {
+        let output = this.state.productData.filter(each => each.products.headline.toLowerCase().indexOf(value) > -1)
+        let articleOutput = this.state.articleData.filter(each => each.title.toLowerCase().indexOf(value) > -1)
+        this.setState({
+            output,
+            articleOutput
+        })
+    }
+
     handleScroll = () => {
         if (window.scrollY > 100 && !this.state.isScroll) {
             console.log("Im making u run son")
@@ -46,7 +77,7 @@ class Nav extends React.Component {
                 openNav: false
             })
         }
-        else if(window.scrollY < 30 && this.state.isScroll){
+        else if (window.scrollY < 30 && this.state.isScroll) {
             this.setState({
                 isScroll: false,
                 openNav: true
@@ -81,7 +112,7 @@ class Nav extends React.Component {
     }
 
     render() {
-       console.log(this.state.isScroll)
+        console.log(this.state.isScroll)
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
                 <div className="first-nav-row">
@@ -96,40 +127,58 @@ class Nav extends React.Component {
                         <h1><Link to="/" style={{ color: "yellow" }}>DECOR<i>'s</i></Link></h1>
                     </div>
                     <form className="search-shop">
-                        <div className = "search-shop-div">
-                            <input type="text" />
+                        <div className="search-shop-div">
+                            <input
+                                type="text"
+                                name="search"
+                                value={this.state.search}
+                                onChange={this.handleSearchBar} />
                             <button><FontAwesomeIcon icon="search" /></button>
                         </div>
-                        <div className="search-blog-item-container">
-                            <div className="searh-items-container">
-                                {this.state.productData.map(each => {
-                                    return (
-                                        <Link to = {`/item/${each.products._id}`}>
-                                            <div 
-                                                className="search-items-small-container">
-                                                <div
-                                                    className="search-item-image"
-                                                    style={{ backgroundImage: each.products.image}}>
-                                                </div>
-                                                <div className="search-item-infos">
-                                                    <h3>{each.products.headline}</h3>
-                                                    <p>{each.products.price}</p>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )
-                                })}
+                        {this.state.isSearching &&
+                            <div className="search-blog-item-container">
+                                <div className="searh-items-container">
+                                    {this.state.output.length >= 1 ?
+                                        this.state.output.map(each => {
+                                            return (
+                                                <Link to={`/item/${each.products._id}`}>
+                                                    <div
+                                                        className="search-items-small-container">
+                                                        <div
+                                                            className="search-item-image"
+                                                            style={{ backgroundImage: each.products.image }}>
+                                                        </div>
+                                                        <div className="search-item-infos">
+                                                            <h3>{each.products.headline}</h3>
+                                                            <p>{each.products.price}</p>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            )
+                                        })
+                                        :
+                                        <div>
+                                            <h2>No Results Found</h2>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div className="search-article-container">
+                                    {this.state.articleOutput.length >= 1 ?
+                                        this.state.articleOutput.map(each => {
+                                            return (
+                                                <Link to={`/item/${each._id}`}>
+                                                    <p>{each.title}</p>
+                                                </Link>
+                                            )
+                                        })
+                                        :
+                                        <div>
+                                            <h2>No results found</h2>
+                                        </div>}
+                                </div>
                             </div>
-                            <div className="search-article-container">
-                                {this.state.articleData.map(each => {
-                                    return (
-                                        <Link to = {`/item/${each._id}`}>
-                                        <p>{each.title}</p>
-                                        </Link>
-                                    )
-                                })}
-                            </div>
-                        </div>
+                        }
                     </form>
                     <div className="cart">
                         <button><FontAwesomeIcon icon="heart" /></button>

@@ -53,11 +53,8 @@
 
 .search-shop {
     width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
     position: relative;
-    height: 100%
 }
 
 .search-shop-div {
@@ -69,23 +66,31 @@
 }
 
 .search-blog-item-container {
-    position: relative;
+    position: relative; 
     width: 100%;
+    display: grid;
+    grid-auto-rows: auto;
+}
+
+.searh-items-container {
     display: flex;
-    justify-content: space-between;
-}
-.searh-items-container{
-    position: absolute;
-}
-.search-items-small-container{
-    display: block;
-}
-.search-article-container a{
-    display: block;
-}
-.search-article-container{
+    flex-direction: column;
+    justify-content: space-evenly;
     position: absolute
 }
+
+.search-items-small-container {
+    /* position: absolute; */
+}
+
+.search-article-container a {
+    display: flex;
+}
+
+.search-article-container {
+    position: absolute;
+}
+
 .cart {
     width: 10%;
     display: flex;
