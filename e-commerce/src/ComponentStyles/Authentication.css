@@ -78,6 +78,10 @@
     outline-style: solid;
     outline-color: darkcyan;
 }
+.authenticate-form input:focus{
+    outline-style: solid;
+    outline-color: darkcyan;
+}
 .authenticate-form .authenticate-button{
     display: flex;
     justify-content: center;

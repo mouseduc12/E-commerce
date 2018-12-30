@@ -4,6 +4,8 @@ require('dotenv').config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
+const passport = require("passport")
+const GoogleStrategy = require("passport-google-oauth20").Strategy
 
 
 app.use(express.json())
@@ -15,20 +17,22 @@ app.use("/firepits", require("./routes/firePits"))
 app.use("/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
 app.use("/productCollections", require("./routes/productCollections"))
+app.use("/auth", require("./routes/googleRoute"))
 
-app.use((err, req, res, next) =>{
-    if(err.name === "UnauthorizedError"){
+
+app.use((err, req, res, next) => {
+    if (err.name === "UnauthorizedError") {
         res.status(err.status)
     }
-    return res.send({error: err.message})
+    return res.send({ error: err.message })
 })
 
-mongoose.connect("mongodb://localhost:27017/garther", {useNewUrlParser: true} ,() =>{
+mongoose.connect("mongodb://localhost:27017/garther", { useNewUrlParser: true }, () => {
     console.log("I'm connected")
 })
 
 
-app.listen(8000, () =>{
+app.listen(8000, () => {
     console.log("Working")
 })
 
@@ -58,7 +62,7 @@ app.listen(8000, () =>{
 //         ref: "Boots"
 //     }],
 //     shirts: [{
-        
+
 //     }]
 // })
 
