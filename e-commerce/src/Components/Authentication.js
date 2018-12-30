@@ -42,7 +42,6 @@ class Authentication extends React.Component {
             this.props.history.push("/")
             this.clearInput()
         }).catch(err => {
-            console.log(err.response.data.message)
             this.setState({ signUpErrorMessage: err.response.data.message })
         })
     }
@@ -57,9 +56,8 @@ class Authentication extends React.Component {
             this.clearInput()
             this.props.history.push("/")
         }).catch(err => {
-            console.log(err)
             this.setState({
-                loginError: err.response.data.message
+                loginError: err.response.data.error
             }) 
         })
     }
@@ -77,7 +75,8 @@ class Authentication extends React.Component {
     }
 
     render() {
-        console.log(this.state.lUserName)
+        console.log(this.state.loginError)
+        console.log(this.state.signUpErrorMessage)
         return (
             <div className="authentication-page">
                 <div className="authenticate">
