@@ -17,7 +17,6 @@ class QuickServices extends React.Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         if (nextProps.match.params.name === "faq" || nextProps.match.params.name === "return" || nextProps.match.params.name === "shipping" || nextProps.match.params.name === "privacy") {
             this.setState({
                 notFound: false,

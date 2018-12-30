@@ -2,6 +2,7 @@ import React from "react"
 import "../ComponentStyles/ShowOffProduct.css"
 import LazyLoad from "react-lazyload"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from "react-router-dom"
 
 class ShowOffProduct extends React.Component {
     constructor() {
@@ -58,12 +59,14 @@ class ShowOffProduct extends React.Component {
             <LazyLoad height={400} once throttle={1000}>
                 <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>
                     <div className="manage-front-inside">
-                        <div
-                            onMouseEnter={this.handleOver}
-                            onMouseLeave={this.handleLeave}
-                            style={{ backgroundImage: this.state.mouseEnter ? `url(${this.props.otherImages[this.state.slideOver]})` : `url(${this.props.image})` }}
-                            className="product-image">
-                        </div>
+                        <Link to = {`/item/${this.props._id}`}>
+                            <div
+                                onMouseEnter={this.handleOver}
+                                onMouseLeave={this.handleLeave}
+                                style={{ backgroundImage: this.state.mouseEnter ? `url(${this.props.otherImages[this.state.slideOver]})` : `url(${this.props.image})` }}
+                                className="product-image">
+                            </div>
+                        </Link>
                         <div className="product-image-text">
                             <h3>{this.props.headline}</h3>
                             <p>{this.props.price}</p>

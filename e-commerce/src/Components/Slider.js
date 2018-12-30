@@ -2,6 +2,7 @@ import React from "react"
 import "../ComponentStyles/Slider.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import LazyLoad from "react-lazyload"
+import { Link } from "react-router-dom"
 
 class Slider extends React.Component {
     generatorClass = () => {
@@ -56,10 +57,10 @@ class Slider extends React.Component {
                                     }
                                 </div>
                                 <div className="shop-button">
-                                    {this.props.slide === 0 && <button>Shop Garden Decoration</button>}
-                                    {this.props.slide === 1 && <button>Shop Fire Pits</button>}
-                                    {this.props.slide === 2 && <button>Shop Outdoor Light</button>}
-                                    {this.props.slide === 3 && <button>Shop Plants</button>}
+                                    {this.props.slide === 0 && <Link to = "/shop/sculptures" ><button style ={{cursor: "pointer"}}>Shop Garden Decoration</button></Link>}
+                                    {this.props.slide === 1 && <Link to = "/shop/fire-pits" ><button style ={{cursor: "pointer"}}>Shop Fire Pits</button></Link>}
+                                    {this.props.slide === 2 && <Link to = "/shop/lights" ><button style ={{cursor: "pointer"}}>Shop Outdoor Light</button></Link>}
+                                    {this.props.slide === 3 && <Link to = "/shop/plants" ><button style ={{cursor: "pointer"}}>Shop Plants</button></Link>}
                                 </div>
                             </div>
                             <FontAwesomeIcon icon="arrow-right" className="arrow" onClick={this.props.handleSlideRight} />
