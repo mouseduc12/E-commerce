@@ -8,6 +8,8 @@ const passport = require("passport")
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json())
 app.use(morgan("dev"))
 app.use("/plants", require("./routes/plants"))

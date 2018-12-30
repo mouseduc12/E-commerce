@@ -1,6 +1,7 @@
 import React from "react"
 import "../../ComponentStyles/WriteArticle.css"
 import { withBlog } from "../../Context/CreateBlog"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const WriteArticle = (props) => {
     return (
