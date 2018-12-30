@@ -4,36 +4,25 @@ import { withBlog } from "../../Context/CreateBlog"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom"
 import moment from "moment"
+import LazyLoad from "react-lazyload"
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon } from "react-share"
 
 class DisplayEachBlog extends React.Component {
     componentDidMount() {
         this.props.handleSpecificalBlog(this.props.match.params.userId + "/" + this.props.match.params.id)
-        console.log(this.props.match.params.userId)
-        console.log(this.props.match.params.id)
     }
-
-    // shouldComponentUpdate(nextProps) {
-    //     if(nextProps.match.params.userId !== this.props.match.params.userId){
-    //         console.log("Im running")
-    //         this.props.handleSpecificalBlog(nextProps.match.params.userId + "/" + nextProps.match.params.id)
-    //         return true
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.match.params.id !== this.props.match.params.id) {
-            console.log("Im running")
             this.props.handleSpecificalBlog(nextProps.match.params.userId + "/" + nextProps.match.params.id)
         }
     }
     render() {
         return (
             <div>
-                <div className="feature-image-of-one-blog" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.featureImage})` }}>
+                <div className="image-feature-of-blog-container">
+                    <div className="feature-image-of-one-blog" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.featureImage})` }}>
+                    </div>
                 </div>
                 <div className="blog-contents-container">
                     <div className="blog-contents-small-container">
@@ -41,21 +30,25 @@ class DisplayEachBlog extends React.Component {
                             <h2>{this.props.dataForSpecificalBlog.title}</h2>
                             <h4 style={{ textAlign: "center" }}>{moment(this.props.dataForSpecificalBlog.Date).format("llll")}</h4>
                         </div>
-                        <div className="contents-of-blog" >
-                            {
-                                this.props.dataForSpecificalBlog.firstContentImage &&
-                                <div className="content-images" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.firstContentImage})` }} >
-                                </div>
-                            }
-                            <p>{this.props.dataForSpecificalBlog.firstContent}</p>
-                        </div>
-                        <div className="contents-of-blog">
-                            {
-                                this.props.dataForSpecificalBlog.secondImageContent &&
-                                <div className="content-images" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.secondImageContent})` }}></div>
-                            }
-                            <p>{this.props.dataForSpecificalBlog.secondContent}</p>
-                        </div>
+                        <LazyLoad height= {500}>
+                            <div className="contents-of-blog" >
+                                {
+                                    this.props.dataForSpecificalBlog.firstContentImage &&
+                                    <div className="content-images" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.firstContentImage})` }} >
+                                    </div>
+                                }
+                                <p>{this.props.dataForSpecificalBlog.firstContent}</p>
+                            </div>
+                        </LazyLoad>
+                        <LazyLoad height ={500}>
+                            <div className="contents-of-blog">
+                                {
+                                    this.props.dataForSpecificalBlog.secondImageContent &&
+                                    <div className="content-images" style={{ backgroundImage: `url(${this.props.dataForSpecificalBlog.secondImageContent})` }}></div>
+                                }
+                                <p>{this.props.dataForSpecificalBlog.secondContent}</p>
+                            </div>
+                        </LazyLoad>
                         <hr />
                         {this.props.dataForSpecificalBlog.user &&
                             <Fragment>
@@ -65,31 +58,31 @@ class DisplayEachBlog extends React.Component {
                                     </Link>
                                     <h3>{this.props.dataForSpecificalBlog.user.firstName}</h3>
                                 </div>
-                                <div className = "sharing-icons">
+                                <div className="sharing-icons">
                                     <FacebookShareButton
                                         url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
                                         quote={this.props.dataForSpecificalBlog.title}
-                                        className = "sharing-icon"
+                                        className="sharing-icon"
                                     >
-                                        <FacebookIcon size={32} 
-                                        round={true} />
+                                        <FacebookIcon size={32}
+                                            round={true} />
                                     </FacebookShareButton>
                                     <TwitterShareButton
                                         url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
                                         title={this.props.dataForSpecificalBlog.title}
-                                        className = "sharing-icon"
+                                        className="sharing-icon"
                                     >
                                         <TwitterIcon size={32}
-                                         round={true} 
-                                         />
+                                            round={true}
+                                        />
                                     </TwitterShareButton>
                                     <LinkedinShareButton
                                         url={`http://localhost:3000/blog/${this.props.dataForSpecificalBlog.user._id}/${this.props.dataForSpecificalBlog._id}`}
                                         title={this.props.dataForSpecificalBlog.title}
-                                        className = "sharing-icon"
+                                        className="sharing-icon"
                                     >
-                                        <LinkedinIcon size={32} 
-                                        round={true}
+                                        <LinkedinIcon size={32}
+                                            round={true}
                                         />
                                     </LinkedinShareButton>
                                 </div>

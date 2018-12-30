@@ -3,15 +3,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  
 }
 .admin-form input{
-    width: 30%;
+    width: 40%;
     font-size: 15px;
     margin-bottom: 20px
 }
 .admin-form textarea{
-    width: 30%;
+    width: 40%;
     font-size: 15px;
     height: 200px;
     margin-bottom: 20px
+}
+.admin-form button{
+    width: 40%;
+    height: 30px;
+    margin: 20px 0;
+    background: #232f3e;
+    color: white;
+    font-size: 18px;
 }

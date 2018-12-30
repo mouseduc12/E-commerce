@@ -27,9 +27,9 @@ class ChangePassword extends React.Component {
                     </div>
                 </form>
                 {this.state.isVisible ?
-                    <p onClick = {this.handleVisible}><FontAwesomeIcon icon="eye" /></p>
+                    <p onClick = {this.handleVisible}><FontAwesomeIcon icon="eye" className = "eyes-slash"/></p>
                     :
-                    <p onClick = {this.handleVisible}><FontAwesomeIcon icon="eye-slash" /></p>
+                    <p onClick = {this.handleVisible}><FontAwesomeIcon icon="eye-slash" className = "eyes-slash"/></p>
                 }
             </div>
         )

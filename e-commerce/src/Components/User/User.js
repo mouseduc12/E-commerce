@@ -16,7 +16,7 @@ class User extends React.Component {
             writeArticle: false
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         !this.props.user.email && this.props.history.push("/notfound")
     }
 
@@ -60,7 +60,11 @@ class User extends React.Component {
         return (
             <div className="user">
                 <div
-                    style={{ backgroundImage: this.props.user.faceImage ? `url(${this.props.user.faceImage})` : `url("https://res.cloudinary.com/hd1n2hd4y/image/upload/f_auto,q_auto,c_fill,dpr_2.0,w_512,h_512,g_face/user-default.jpg")` }}
+                    style={{
+                        backgroundImage: this.props.user.faceImage ? `url(${this.props.user.faceImage})` : `url("https://res.cloudinary.com/hd1n2hd4y/image/upload/f_auto,q_auto,c_fill,dpr_2.0,w_512,h_512,g_face/user-default.jpg")`,
+                        height: this.state.writeArticle && "100%",
+                        width: this.state.writeArticle && 500 
+                    }}
                     className="user-image">
                 </div>
                 <div className="user-options">

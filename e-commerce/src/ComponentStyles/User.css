@@ -22,5 +22,8 @@
 .user-options{
     grid-column: 2/-1;
     display: flex;
-    background-color: whitesmoke
+    background-color: wheat
+}
+.info-display{
+    background: whitesmoke;
 }
