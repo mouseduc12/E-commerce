@@ -22,7 +22,7 @@
 .user-options{
     grid-column: 2/-1;
     display: flex;
-    background-color: wheat
+    background-color: rgb(192,192,192)
 }
 .info-display{
     background: whitesmoke;

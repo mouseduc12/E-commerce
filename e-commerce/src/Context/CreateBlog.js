@@ -1,14 +1,6 @@
 import React from "react"
 import axios from "axios"
 
-// const articleAxios = axios.create()
-// articleAxios.interceptors.request.use((config) => {
-//     const token = localStorage.getItem("token")
-//     config.headers.Authorization = `Bearer ${token}`
-//     return config
-// })
-
-
 const BlogProviderContext = React.createContext()
 
 class CreateBlog extends React.Component {
@@ -27,7 +19,8 @@ class CreateBlog extends React.Component {
             dataForSpecificalBlog: {},
             previousData: {},
             nextData: {},
-            aboutAuthorData: []
+            aboutAuthorData: [],
+            postSuccessfully: false
         }
     }
 
@@ -91,7 +84,7 @@ class CreateBlog extends React.Component {
         }
         axios.post(`/articles/${userId._id}`, postBlog).then(res => {
             this.setState(prevState => ({
-                blogData: [...prevState.blogData, res.data]
+                // blogData: [...prevState.blogData, res.data]
             }))
         })
     }
