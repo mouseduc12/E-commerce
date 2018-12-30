@@ -19,7 +19,8 @@ app.use("/firepits", require("./routes/firePits"))
 app.use("/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
 app.use("/productCollections", require("./routes/productCollections"))
-app.use("/auth", require("./routes/googleRoute"))
+app.use("/auth", require("./routes/googleRoute"));
+app.use("/cart", require("./routes/cart"))
 
 
 app.use((err, req, res, next) => {

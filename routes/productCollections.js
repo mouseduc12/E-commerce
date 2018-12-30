@@ -58,6 +58,7 @@ productRouter.get("/", (req, res, next) =>{
 //     const products = [...pits, ...lights, ...gardenSculptures, ...plants]
 //     for (let each of products) {
 //         let newProducts = new ProductCollection({products: each})
+//         newProducts._id = each._id
 //         newProducts.save((err, data) => {
 //             if (err) {
 //                 res.status(500)
