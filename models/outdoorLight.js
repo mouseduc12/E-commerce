@@ -21,7 +21,12 @@ const outdoorSchema = new Schema({
         type: [{
             type: Object 
         }]
-    }
+    },
+    quantity: {
+        type: Number,
+        default: 1,
+        min: 1
+    } 
 })
 
 module.exports = mongoose.model("OutDoor", outdoorSchema)

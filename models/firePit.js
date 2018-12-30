@@ -22,7 +22,12 @@ const firePitSchema = new Schema({
         type: [{
             type: Object 
         }]
-    }
+    },
+    quantity: {
+        type: Number,
+        default: 1,
+        min: 1
+    } 
 })
 
 firePitSchema.plugin(paginate);

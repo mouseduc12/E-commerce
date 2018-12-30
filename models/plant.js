@@ -21,9 +21,9 @@ const plantSchema = new Schema({
             type: Object 
         }]
     },
-    reviews: {
+    quantity: {
         type: Number,
-        max: 5,
+        default: 1,
         min: 1
     } 
 }) 
