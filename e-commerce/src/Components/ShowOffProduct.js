@@ -54,7 +54,6 @@ class ShowOffProduct extends React.Component {
     }
 
     render() {
-        console.log("I'm running again WTF")
         return (
             <LazyLoad height={400} once throttle={1000}>
                 <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>
@@ -74,7 +73,7 @@ class ShowOffProduct extends React.Component {
                         {this.state.getIcon &&
                             <div className="product-buttons">
                                 <button className="product-heart-button"><FontAwesomeIcon icon="heart" /></button>
-                                <button className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
+                                <button onClick = {()=> this.props.handleNoUserCart(this.props._id)} className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
                             </div>
                         }
                     </div>

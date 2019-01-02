@@ -21,7 +21,8 @@ class ProductsProvider extends React.Component {
             activeNumber: 1,
             randomData: [],
             dataOfProduct: [],
-            newRandon: []
+            newRandon: [],
+            cartData: localStorage.getItem("myCart") || [],
         };
         this.newRandom = []
     }
@@ -74,6 +75,15 @@ class ProductsProvider extends React.Component {
         })
     }
 
+    handleNoUserCart = (id) => {
+        let newData = this.state.dataCollection.find(each => each._id === id)
+        this.setState(prevState => ({
+            cartData: [...prevState.cartData, newData]
+        })
+        )
+        localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
+    }
+
     getAllCollectionData = (id) => {
         axios.get("/productCollections").then(res => {
             this.setState({
@@ -87,7 +97,7 @@ class ProductsProvider extends React.Component {
                     this.newRandom.push(...this.state.randomData.splice([randomNumber], 1))
                 }
                 this.setState({
-                    newRandom: this.newRandom    
+                    newRandom: this.newRandom
                 }, () => {
                     this.newRandom = []
                 })
@@ -114,6 +124,7 @@ class ProductsProvider extends React.Component {
                     getCollectionData: this.getCollectionData,
                     getAllCollectionData: this.getAllCollectionData,
                     getRandomCollection: this.getRandomCollection,
+                    handleNoUserCart: this.handleNoUserCart
                 }}>
                 {this.props.children}
             </ProductProviderContext.Provider>

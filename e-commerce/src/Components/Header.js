@@ -34,6 +34,7 @@ class Header extends React.Component {
             }, 10000
         )
     }
+    
     componentWillUnmount() {
         clearInterval(this.setIntervalId)
     }

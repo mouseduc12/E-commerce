@@ -55,3 +55,20 @@ cartRouter.delete("/:userId/:id", (req, res, next) =>{
 })
 
 module.exports = cartRouter
+
+
+
+
+// Cart.find((err, cart))
+    // see if item id of what user clicked on is already in the cart..
+        // map through current cart, 
+            // cart.map(product => product.id === req.params.id ? { productId: product.productId, quantity: product.quantity++ } : product)
+    // if it is, in the response.data, send back an array of objects of products,
+    // that array should look like this:
+    // [
+    //     {       
+    //         productId: '282394823984234',
+    //         quantity: 1
+    //   }
+        
+    // }

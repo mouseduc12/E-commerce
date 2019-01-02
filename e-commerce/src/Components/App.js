@@ -25,7 +25,8 @@ import User from "./User/User"
 import NotFound from "./NotFound";
 import AuthorBlogs from "./Blog/AuthorBlogs"
 import DisplayEachBlog from "./Blog/DisplayEachBlog"
-import Item from "./Item/Item"
+import Item from "./Item/Item";
+import Cart from "./Cart"
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
@@ -110,6 +111,7 @@ class App extends React.Component {
                     <Route path="/about" component={AboutUs} />
                     <Route exact path="/blog" component={Blog} />
                     <Route path="/user" component={User} />
+                    <Route path="/mycart" component ={Cart} />
                     <Route path= "/notfound" component = {NotFound} />
                 </Switch>
                 <Modal

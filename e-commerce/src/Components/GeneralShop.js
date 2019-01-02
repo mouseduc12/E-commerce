@@ -19,6 +19,7 @@ class GeneralShop extends React.Component {
     componentDidMount() {
         this.props.getPlant();
         this.props.getSculptures();
+        this.props.getAllCollectionData();
     }
 
 
@@ -31,12 +32,12 @@ class GeneralShop extends React.Component {
                 scrollX: true,
                 scrollNewX: true
             })
-        } else if (manageShowOff.scrollLeft < 100 && this.state.scrollX){
+        } else if (manageShowOff.scrollLeft < 100 && this.state.scrollX) {
             this.setState({
                 scrollX: false
             })
         }
-        
+
         if (manageNewShowOff.scrollLeft > 100 && !this.state.scrollNewX) {
             console.log("I'm mkaing you run again")
             this.setState({
@@ -70,7 +71,11 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.plants.slice().splice(0, 6).map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.plants.slice().splice(0, 6).map(each => <ShowOffProduct
+                            {...each}
+                            key={each._id}
+                            handleNoUserCart={this.props.handleNoUserCart}
+                        />)}
                     </div>
                     <div className="manage-showoff" onScroll={this.handleScroll} ref={this.mySecondRef} >
                         <div className="manage-store-teller">
@@ -90,7 +95,11 @@ class GeneralShop extends React.Component {
                                 }
                             </div>
                         </div>
-                        {this.props.sculptures.slice().splice(0, 6).map(each => <ShowOffProduct {...each} key={each._id} />)}
+                        {this.props.sculptures.slice().splice(0, 6).map(each => <ShowOffProduct
+                            {...each}
+                            key={each._id}
+                            handleNoUserCart={this.props.handleNoUserCart}
+                        />)}
                     </div>
                 </Fragment>
             </div>
@@ -99,4 +108,3 @@ class GeneralShop extends React.Component {
 }
 
 export default withProduct(GeneralShop);
-//style={{ flexDirection: "row-reverse" }}

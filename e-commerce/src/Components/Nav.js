@@ -197,7 +197,9 @@ class Nav extends React.Component {
                     </form>
                     <div className="cart">
                         <button><FontAwesomeIcon icon="heart" /></button>
+                        <Link to = "/mycart">
                         <button><FontAwesomeIcon icon="shopping-cart" /></button>
+                        </Link>
                     </div>
                 </div>
                 {this.state.openNav &&
