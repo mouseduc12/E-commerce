@@ -7,7 +7,7 @@ class Cart extends React.Component {
     render() {
         console.log(this.props.cartData)
         return (
-            <div>
+            <div className = "cart-item-container">
                 {
                     this.props.cartData.map(each => <CartItems {...each}/>)
                 }

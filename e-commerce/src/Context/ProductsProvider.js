@@ -78,10 +78,16 @@ class ProductsProvider extends React.Component {
 
     handleNoUserCart = (id) => {
         let newData = this.state.dataCollection.find(each => each._id === id)
-        newData.quantity = 1
+        if(newData.quantity){
+            console.log("Already existed!")
+        } else {
+            newData.quantity = 1
+            newData.total = parseFloat(newData.products.price.slice(1))  * newData.quantity
+        }
+        // console.log(parseFloat(newData.products.price.slice(0)))
         if (this.state.cartData.some(each => each._id === newData._id)) {
             this.setState(prevState => ({
-                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1 } : each)
+                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1, total:  each.products.price.charAt(0) === "$" ?  parseFloat(each.products.price.slice(1))+ parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
             }))
             console.log(this.state.cartData)
         }
@@ -153,3 +159,6 @@ export const withProduct = (C) => props =>
     )
 
 export default ProductsProvider
+
+// : 
+// 
