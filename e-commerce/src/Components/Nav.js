@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
 import { withAuth } from "../Context/AuthContext";
+import { withProduct } from "../Context/ProductsProvider"
 import axios from "axios"
 
 
@@ -172,7 +173,7 @@ class Nav extends React.Component {
                                         })
                                         :
                                         <div>
-                                            <h4 style ={{color: "black", textAlign: "center"}}>No Results Found</h4>
+                                            <h4 style={{ color: "black", textAlign: "center" }}>No Results Found</h4>
                                         </div>
                                     }
                                 </div>
@@ -197,8 +198,13 @@ class Nav extends React.Component {
                     </form>
                     <div className="cart">
                         <button><FontAwesomeIcon icon="heart" /></button>
-                        <Link to = "/mycart">
-                        <button><FontAwesomeIcon icon="shopping-cart" /></button>
+                        <Link to="/mycart">
+                            <button>
+                                <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity ? "darkCyan" : "white" }} />
+                                {this.props.totalQuantity !== 0 && 
+                                <p className= {`${this.props.totalQuantity && "total-quantity"}`}>{this.props.totalQuantity}</p>
+                                }
+                                </button>
                         </Link>
                     </div>
                 </div>
@@ -233,4 +239,4 @@ class Nav extends React.Component {
         )
     }
 }
-export default withAuth(Nav)
+export default withAuth(withProduct(Nav))

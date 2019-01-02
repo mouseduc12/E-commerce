@@ -23,7 +23,8 @@ class ProductsProvider extends React.Component {
             dataOfProduct: [],
             newRandon: [],
             cartData: JSON.parse(localStorage.getItem("myCart")) || [],
-            totalPriceOfProducts: JSON.parse(localStorage.getItem("totalPrice")) && JSON.parse(localStorage.getItem("totalPrice")).total || 0
+            totalPriceOfProducts: JSON.parse(localStorage.getItem("totalPrice")).total || [],
+            totalQuantity: JSON.parse(localStorage.getItem("quantity")).quantity || []
         };
         this.newRandom = [];
         this.cartRemoveDuplicateData = []
@@ -84,18 +85,21 @@ class ProductsProvider extends React.Component {
         } else {
             newData.quantity = 1
         }
+
         if (this.state.cartData.some(each => each._id === newData._id)) {
             this.setState(prevState => ({
                 cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1, total: each.products.price.charAt(0) === "$" ? parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
             }), () => {
                 this.setState({
                     totalPriceOfProducts: this.state.cartData.reduce((accumulator, currentIndex) => {
-                        console.log(accumulator)
-                        console.log(currentIndex.total)
                         return accumulator.total + currentIndex.total
+                    }),
+                    totalQuantity: this.state.cartData.reduce((accumulator, currentValue) => {
+                        return accumulator.quantity + currentValue.quantity
                     })
                 })
             })
+            localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
             localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
             localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
         }
@@ -106,9 +110,13 @@ class ProductsProvider extends React.Component {
                 this.setState({
                     totalPriceOfProducts: this.state.cartData.reduce((accumulator, currentIndex) => {
                         return accumulator.total + currentIndex.total
+                    }),
+                    totalQuantity: this.state.cartData.reduce((accumulator, currentValue) => {
+                        return accumulator.quantity + currentValue.quantity
                     })
                 })
             })
+            localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
             localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
             localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
         }
@@ -140,7 +148,9 @@ class ProductsProvider extends React.Component {
 
 
     render() {
+        console.log(this.state.totalQuantity)
         console.log(this.state.cartData)
+        console.log(this.state.totalPriceOfProducts)
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
             <ProductProviderContext.Provider

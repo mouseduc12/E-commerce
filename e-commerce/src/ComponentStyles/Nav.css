@@ -132,6 +132,25 @@
     align-items: center;
     justify-content: space-evenly;
 }
+.cart button{
+    position: relative;
+}
+.cart button .total-quantity{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 15px;
+    animation: reverseTurn 5s linear infinite;
+    color: red;
+}
+@keyframes reverseTurn{
+    from{
+        transform: rotateZ(0deg)
+    }
+    to{
+        transform: rotateZ(720deg)
+    }
+}
 
 .search-shop input {
     height: 40px;
