@@ -23,6 +23,7 @@ class ProductsProvider extends React.Component {
             dataOfProduct: [],
             newRandon: [],
             cartData: JSON.parse(localStorage.getItem("myCart")) || [],
+            totalPriceOfProducts: JSON.parse(localStorage.getItem("totalPrice")) && JSON.parse(localStorage.getItem("totalPrice")).total || 0
         };
         this.newRandom = [];
         this.cartRemoveDuplicateData = []
@@ -78,25 +79,38 @@ class ProductsProvider extends React.Component {
 
     handleNoUserCart = (id) => {
         let newData = this.state.dataCollection.find(each => each._id === id)
-        if(newData.quantity){
+        if (newData.quantity) {
             console.log("Already existed!")
         } else {
             newData.quantity = 1
-            newData.total = parseFloat(newData.products.price.slice(1))  * newData.quantity
         }
-        // console.log(parseFloat(newData.products.price.slice(0)))
         if (this.state.cartData.some(each => each._id === newData._id)) {
             this.setState(prevState => ({
-                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1, total:  each.products.price.charAt(0) === "$" ?  parseFloat(each.products.price.slice(1))+ parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
-            }))
-            console.log(this.state.cartData)
+                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1, total: each.products.price.charAt(0) === "$" ? parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
+            }), () => {
+                this.setState({
+                    totalPriceOfProducts: this.state.cartData.reduce((accumulator, currentIndex) => {
+                        console.log(accumulator)
+                        console.log(currentIndex.total)
+                        return accumulator.total + currentIndex.total
+                    })
+                })
+            })
+            localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
+            localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
         }
         else {
             this.setState(prevState => ({
                 cartData: [...prevState.cartData, newData]
-            }))
+            }), () => {
+                this.setState({
+                    totalPriceOfProducts: this.state.cartData.reduce((accumulator, currentIndex) => {
+                        return accumulator.total + currentIndex.total
+                    })
+                })
+            })
+            localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
             localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
-            console.log(newData)
         }
     }
 
@@ -159,6 +173,3 @@ export const withProduct = (C) => props =>
     )
 
 export default ProductsProvider
-
-// : 
-// 

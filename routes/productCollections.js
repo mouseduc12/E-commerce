@@ -29,6 +29,16 @@ productRouter.get("/", (req, res, next) =>{
     })
 })
 
+productRouter.put("/:id", (req,res ,next) =>{
+    ProductCollection.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err,data) =>{
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(data)
+    })
+})
+
 // productRouter.get("/random/:id", (req, res, next) =>{
 //     ProductCollection.aggregate([{$sample: {size: 4}}, {$project: {_id: {ne: []}}}], (err,data) =>{
 //         if(err){
