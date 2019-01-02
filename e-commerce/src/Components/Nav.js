@@ -200,12 +200,17 @@ class Nav extends React.Component {
                     <div className="cart">
                         <button><FontAwesomeIcon icon="heart" /></button>
                         <Link to="/mycart">
-                            <button>
-                                <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity && this.props.totalQuantity.quantity ? "darkCyan" : "white" }} />
-                                {this.props.totalQuantity.quantity !== 0 && 
-                                <p className= {`${this.props.totalQuantity.quantity && "total-quantity"}`}> {this.props.totalQuantity.quantity}</p>
-                                }
+                            {typeof this.props.totalQuantity === "object" ?
+                                <button>
+                                    <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity.quantity && this.props.totalQuantity.quantity ? "darkCyan" : "white" }} />
+                                    <p className={`${this.props.totalQuantity.quantity && "total-quantity"}`}> {this.props.totalQuantity.quantity}</p>
                                 </button>
+                                :
+                                <button>
+                                    <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity && this.props.totalQuantity ? "darkCyan" : "white" }} />
+                                    <p className={`${this.props.totalQuantity && "total-quantity"}`}> {this.props.totalQuantity}</p>
+                                </button>
+                        }
                         </Link>
                     </div>
                 </div>

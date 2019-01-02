@@ -137,9 +137,9 @@
 }
 .cart button .total-quantity{
     position: absolute;
-    top: 0;
+    top: -10px;
     right: 0;
-    font-size: 15px;
+    font-size: 20px;
     animation: reverseTurn 5s linear infinite;
     color: red;
 }

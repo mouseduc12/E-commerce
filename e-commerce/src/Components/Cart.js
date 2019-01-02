@@ -5,11 +5,15 @@ import CartItems from "./CartItems"
 
 class Cart extends React.Component {
     render() {
-        console.log(this.props.cartData)
         return (
             <Fragment>
-                {!this.props.totalPriceOfProducts ? 
-                    <h1>YOU HAVE AN EMPTY CART</h1>
+                {typeof this.props.totalPriceOfProducts === "object" ?
+                    <div className="cart-item-container">
+                        {
+                            this.props.cartData.map(each => <CartItems {...each} />)
+                        }
+                        <h2>Total Price: ${this.props.totalPriceOfProducts.total}</h2>
+                    </div>
                     :
                     <div className="cart-item-container">
                         {
@@ -17,6 +21,7 @@ class Cart extends React.Component {
                         }
                         <h2>Total Price: ${this.props.totalPriceOfProducts}</h2>
                     </div>
+
                 }
             </Fragment>
         )
@@ -24,3 +29,4 @@ class Cart extends React.Component {
 }
 
 export default withProduct(Cart);
+
