@@ -1,6 +1,7 @@
 import React from "react"
 
 const CartItems = (props) => {
+    console.log(props)
     return (
         <div>
             <div
@@ -10,7 +11,7 @@ const CartItems = (props) => {
             <div>
                 <h3>{props.products.headline}</h3>
                 <p>{props.products.price}</p>
-                <p>quantity</p>
+                <p>Quantity:{props.quantity}</p>
             </div>
         </div>
     )

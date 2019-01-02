@@ -24,7 +24,8 @@ class ProductsProvider extends React.Component {
             newRandon: [],
             cartData: JSON.parse(localStorage.getItem("myCart")) || [],
         };
-        this.newRandom = []
+        this.newRandom = [];
+        this.cartRemoveDuplicateData = []
     }
     handleChange = (e) => {
         const { name, value } = e.target
@@ -77,11 +78,20 @@ class ProductsProvider extends React.Component {
 
     handleNoUserCart = (id) => {
         let newData = this.state.dataCollection.find(each => each._id === id)
-        this.setState(prevState => ({
-            cartData: [...prevState.cartData, newData]
-        })
-        )
-        localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
+        newData.quantity = 1
+        if (this.state.cartData.some(each => each._id === newData._id)) {
+            this.setState(prevState => ({
+                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1 } : each)
+            }))
+            console.log(this.state.cartData)
+        }
+        else {
+            this.setState(prevState => ({
+                cartData: [...prevState.cartData, newData]
+            }))
+            localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
+            console.log(newData)
+        }
     }
 
     getAllCollectionData = (id) => {
@@ -110,6 +120,7 @@ class ProductsProvider extends React.Component {
 
 
     render() {
+        console.log(this.state.cartData)
         const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
         return (
             <ProductProviderContext.Provider
