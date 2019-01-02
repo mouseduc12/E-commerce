@@ -121,6 +121,7 @@ class Nav extends React.Component {
     }
 
     render() {
+        console.log(this.props.totalQuantity)
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
                 <div className="first-nav-row">
@@ -200,9 +201,9 @@ class Nav extends React.Component {
                         <button><FontAwesomeIcon icon="heart" /></button>
                         <Link to="/mycart">
                             <button>
-                                <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity ? "darkCyan" : "white" }} />
-                                {this.props.totalQuantity !== 0 && 
-                                <p className= {`${this.props.totalQuantity && "total-quantity"}`}>{this.props.totalQuantity}</p>
+                                <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity && this.props.totalQuantity.quantity ? "darkCyan" : "white" }} />
+                                {this.props.totalQuantity.quantity !== 0 && 
+                                <p className= {`${this.props.totalQuantity.quantity && "total-quantity"}`}> {this.props.totalQuantity.quantity}</p>
                                 }
                                 </button>
                         </Link>
