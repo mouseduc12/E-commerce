@@ -27,7 +27,6 @@ class GeneralShop extends React.Component {
         const manageShowOff = this.myRef.current
         const manageNewShowOff = this.mySecondRef.current
         if (manageShowOff.scrollLeft > 100 && !this.state.scrollX) {
-            console.log("I'm mkaing you run")
             this.setState({
                 scrollX: true,
                 scrollNewX: true
@@ -39,7 +38,6 @@ class GeneralShop extends React.Component {
         }
 
         if (manageNewShowOff.scrollLeft > 100 && !this.state.scrollNewX) {
-            console.log("I'm mkaing you run again")
             this.setState({
                 scrollNewX: true
             })

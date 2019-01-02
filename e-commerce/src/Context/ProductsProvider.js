@@ -22,7 +22,7 @@ class ProductsProvider extends React.Component {
             randomData: [],
             dataOfProduct: [],
             newRandon: [],
-            cartData: localStorage.getItem("myCart") || [],
+            cartData: JSON.parse(localStorage.getItem("myCart")) || [],
         };
         this.newRandom = []
     }
