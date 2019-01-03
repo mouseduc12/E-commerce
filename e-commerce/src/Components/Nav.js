@@ -197,7 +197,9 @@ class Nav extends React.Component {
                         }
                     </form>
                     <div className="cart">
+                        <Link to = "/wishlist">
                         <button><FontAwesomeIcon icon="heart" /></button>
+                        </Link>
                         <Link to="/mycart">
                             {typeof this.props.totalQuantity === "object" ?
                                 <button>

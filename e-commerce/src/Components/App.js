@@ -26,7 +26,8 @@ import NotFound from "./NotFound";
 import AuthorBlogs from "./Blog/AuthorBlogs"
 import DisplayEachBlog from "./Blog/DisplayEachBlog"
 import Item from "./Item/Item";
-import Cart from "./Cart"
+import Cart from "./Cart";
+import WishList from "./WishList"
 
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
@@ -114,6 +115,7 @@ class App extends React.Component {
                     <Route path="/user" component={User} />
                     <Route path="/mycart" component ={Cart} />
                     <Route path= "/notfound" component = {NotFound} />
+                    <Route path= "/wishList" component = {WishList} />
                 </Switch>
                 <Modal
                     ariaHideApp={false}

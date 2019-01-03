@@ -58,7 +58,8 @@
     font-size: 15px;
     margin-left: 10px;
     border-radius: 5px;
-    border: none;
+    box-shadow: 0 0 1px 1px rgba(1,1,1,0.5);
+    padding: 0 2px;
 }
 
 .cart-quantities p{

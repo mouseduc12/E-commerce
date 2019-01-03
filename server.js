@@ -21,7 +21,7 @@ app.use("/user", require("./routes/users"))
 app.use("/productCollections", require("./routes/productCollections"))
 app.use("/auth", require("./routes/googleRoute"));
 app.use("/cart", require("./routes/cart"))
-
+app.use("/wishList", require("./routes/wishLists"))
 
 app.use((err, req, res, next) => {
     if (err.name === "UnauthorizedError") {

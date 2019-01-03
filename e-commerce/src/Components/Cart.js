@@ -26,7 +26,7 @@ class Cart extends React.Component {
                                 this.props.cartData.map(each => <CartItems {...each} />)
                             }
                             {this.props.totalPriceOfProducts.total > 0 && 
-                            <h2>Total Price: ${this.props.totalPriceOfProducts.total}</h2>
+                            <h2>Total Price: ${parseFloat(this.props.totalPriceOfProducts.total)}</h2>
                             }
                         </div>
                         {this.props.totalPriceOfProducts.total > 0 && 
@@ -44,7 +44,7 @@ class Cart extends React.Component {
                                 this.props.cartData.map(each => <CartItems {...each} />)
                             }
                             {this.props.totalPriceOfProducts.total > 0 ?
-                            <h2>Total Price: ${this.props.totalPriceOfProducts}</h2>
+                            <h2>Total Price: ${parseFloat(this.props.totalPriceOfProducts)}</h2>
                             :
                             <h2>You have an empty cart!</h2>
                             }
