@@ -1,23 +1,26 @@
 import React from "react"
 import { withAuth } from "../Context/AuthContext"
+import { withWishList } from "../Context/WishListProvider"
+import WishListItem from "./WishListItem"
+import "../ComponentStyles/WishList.css"
 
 class WishList extends React.Component{
     componentDidMount(){
         if(!this.props.user.email){
             this.props.history.push("/login")
-        } else if(this.props.WishList){
-            
+        } else {
+           this.props.getAllWishList(this.props.user._id)   
         } 
     }
 
     render(){
-        console.log(this.props)
+        console.log(this.props.wishList)
         return(
-            <div>
-                <h1>Your Wish List is empty</h1>
+            <div className = "wish-list-container">
+                {this.props.wishList.map(each => <WishListItem {...each}/>)}
             </div>
         )
     }
 }
 
-export default withAuth(WishList);
+export default withWishList(withAuth(WishList));

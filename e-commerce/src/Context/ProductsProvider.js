@@ -26,7 +26,7 @@ class ProductsProvider extends React.Component {
             cartData: JSON.parse(localStorage.getItem("myCart")) || [],
             totalPriceOfProducts: JSON.parse(localStorage.getItem("totalPrice")) || 0,
             totalQuantity: JSON.parse(localStorage.getItem("quantity")) || 0,
-            isInCart: false
+            isInCart: false,
         };
         this.newRandom = [];
         this.cartRemoveDuplicateData = []

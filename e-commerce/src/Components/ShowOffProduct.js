@@ -3,6 +3,8 @@ import "../ComponentStyles/ShowOffProduct.css"
 import LazyLoad from "react-lazyload"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
+import { withWishList } from "../Context/WishListProvider"
+import { withAuth } from "../Context/AuthContext"
 
 class ShowOffProduct extends React.Component {
     constructor() {
@@ -14,6 +16,10 @@ class ShowOffProduct extends React.Component {
             getIcon: false
         }
         this.intervalId = undefined
+    }
+
+    componentDidMount(){
+        this.props.getAllWishList(this.props.user._id)
     }
 
     handleOver = () => {
@@ -54,6 +60,7 @@ class ShowOffProduct extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <LazyLoad height={400} once throttle={1000}>
                 <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>
@@ -72,7 +79,7 @@ class ShowOffProduct extends React.Component {
                         </div>
                         {this.state.getIcon &&
                             <div className="product-buttons">
-                                <button className="product-heart-button"><FontAwesomeIcon icon="heart" /></button>
+                                <button onClick = {() => this.props.createProductOfWishList(this.props._id)} className="product-heart-button"><FontAwesomeIcon icon="heart" /></button>
                                 <button onClick = {()=> this.props.handleNoUserCart(this.props._id)} className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
                             </div>
                         }
@@ -82,4 +89,4 @@ class ShowOffProduct extends React.Component {
         )
     }
 }
-export default ShowOffProduct   
+export default withWishList(withAuth(ShowOffProduct))   

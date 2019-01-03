@@ -9,6 +9,7 @@ import ProductsProvider from "./Context/ProductsProvider";
 import AuthContext from "./Context/AuthContext"
 import { BrowserRouter } from "react-router-dom";
 import CreateBlog from "./Context/CreateBlog";
+import WishListProvider from "./Context/WishListProvider"
 library.add(faArrowLeft, faTruck, faPlaneDeparture, faGift, faPhone, faLongArrowAltRight, faLongArrowAltLeft, faQuoteLeft, faMapMarkerAlt, faEnvelope, faArrowDown, faArrowUp, faUser, faEye, faEyeSlash, faSignal, faCircle, faSearchPlus, faCheckCircle, faSortDown, faSortUp, faCheck)
 library.add(faArrowRight)
 library.add(faHeart)
@@ -22,11 +23,13 @@ library.add(faCircle)
 ReactDOM.render(
     <BrowserRouter>
         <ProductsProvider>
-            <AuthContext>
-                <CreateBlog>
-                    <App />
-                </CreateBlog>
-            </AuthContext>
+            <WishListProvider>
+                <AuthContext>
+                    <CreateBlog>
+                        <App />
+                    </CreateBlog>
+                </AuthContext>
+            </WishListProvider>
         </ProductsProvider>
     </BrowserRouter>
     , document.getElementById("root"))

@@ -1,9 +1,20 @@
 const express = require("express")
 const wishListRouter = express.Router()
 const WishListSchema = require("../models/wishList")
+const ProductCollection = require("../models/productCollection")
+
+wishListRouter.get("/", (req, res, next) =>{
+    WishListSchema.find((err, data) =>{
+        if(err){
+            res.status(500);
+            return next(err)
+        }
+        return res.status(200).send(data)
+    })
+})
 
 wishListRouter.get("/:userId", (req, res, next) => {
-    WishListSchema.find({ user: req.params.userId }, (err, data) => {
+    WishListSchema.findOne({ user: req.params.userId }, (err, data) => {
         if (err) {
             res.status(500)
             return next(err)
