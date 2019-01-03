@@ -8,6 +8,11 @@ class Cart extends React.Component {
 
     componentDidMount() {
         this.props.getAllCollectionData()
+        this.props.handleNotNotifying()
+    }
+    
+    componentWillUnmount(){
+        this.props.handleNotNotifying()
     }
 
     render() {

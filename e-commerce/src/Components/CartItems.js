@@ -29,6 +29,7 @@ class CartItems extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className="cart-items">
                 <div className="cart-items-small-container">
@@ -51,7 +52,7 @@ class CartItems extends React.Component {
                                 max="500"
                                 min="1"
                                 onChange={this.handleChangeQuantity} /></p>
-                        <p>Price: ${parseFloat(this.props.total)}</p>
+                        <p>Price: ${parseFloat(this.props.total.toFixed(2))}</p>
                     </div>
                     <div className="cancel-item">
                         <p onClick={() => this.handleDeleteItem(this.props._id)}>X</p>

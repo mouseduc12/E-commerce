@@ -26,7 +26,7 @@ class Products extends React.Component {
                         this.props.getIcon &&
                         <div className="product-buttons">
                             <button className="product-heart-button"><FontAwesomeIcon icon="heart" /></button>
-                            <button className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
+                            <button onClick = {()=> this.props.handleNoUserCart(this.props._id)} className="product-cart-button"><FontAwesomeIcon icon="shopping-cart" /></button>
                         </div>
                     }
                 </div>

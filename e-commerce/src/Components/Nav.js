@@ -4,6 +4,7 @@ import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
 import { withAuth } from "../Context/AuthContext";
 import { withProduct } from "../Context/ProductsProvider"
+import { withRouter } from "react-router-dom"
 import axios from "axios"
 
 
@@ -73,7 +74,6 @@ class Nav extends React.Component {
 
     handleScroll = () => {
         if (window.scrollY > 100 && !this.state.isScroll) {
-            console.log("Im making u run son")
             this.setState({
                 isScroll: true,
                 openNav: false
@@ -121,7 +121,6 @@ class Nav extends React.Component {
     }
 
     render() {
-        console.log(this.props.totalQuantity)
         return (
             <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
                 <div className="first-nav-row">
@@ -210,7 +209,7 @@ class Nav extends React.Component {
                                     <FontAwesomeIcon icon="shopping-cart" style={{ color: this.props.totalQuantity && this.props.totalQuantity ? "darkCyan" : "white" }} />
                                     {this.props.totalQuantity > 0 && <p className={`${this.props.totalQuantity && "total-quantity"}`}> {this.props.totalQuantity}</p>}
                                 </button>
-                        }
+                            }
                         </Link>
                     </div>
                 </div>
@@ -241,8 +240,14 @@ class Nav extends React.Component {
                         </ul>
                     </div>
                 }
+                {this.props.isNotifying &&
+                    <div className = "add-to-cart-container">
+                        <p className ="check-item-container"><FontAwesomeIcon icon = "check" className = "check-item"/></p>
+                        <h3>Add to cart successfully</h3>
+                    </div>
+                }
             </div>
         )
     }
 }
-export default withAuth(withProduct(Nav))
+export default withRouter(withAuth(withProduct(Nav)))

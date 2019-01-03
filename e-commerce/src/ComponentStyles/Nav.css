@@ -251,3 +251,37 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+.add-to-cart-container{
+    display: flex;
+    width: 100%;
+}
+
+.check-item-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    transition: all 1s linear;
+    animation: dropDownCartCheck 0.5s ease-out
+}
+@keyframes dropDownCartCheck{
+    from{
+        height: 0
+    }
+    to{
+        height: 50px
+    }
+}
+
+.check-item{
+    font-size: 30px;
+    color: #00C851;
+}
+.add-to-cart-container h3{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

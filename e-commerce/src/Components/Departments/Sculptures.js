@@ -11,6 +11,7 @@ class Sculptures extends React.Component {
     }
     componentDidMount() {
         this.props.getSculptures()
+        this.props.getAllCollectionData()
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedSculptures === "lowest") {
@@ -52,13 +53,13 @@ class Sculptures extends React.Component {
                                 <Fragment>
                                     {this.newSortedData.map(each =>
                                         <HandleMouse otherImages={each.otherImages}
-                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                            render={(props) => <Products handleNoUserCart = {this.props.handleNoUserCart} {...each} {...props} key={each._id} />} />)}
                                 </Fragment>
                                 :
                                 <Fragment>
                                     {this.props.sculptures.map(each =>
                                         <HandleMouse otherImages={each.otherImages}
-                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                            render={(props) => <Products handleNoUserCart = {this.props.handleNoUserCart} {...each} {...props} key={each._id} />} />)}
                                 </Fragment>
                             }
                         </div>

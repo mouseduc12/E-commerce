@@ -28,6 +28,7 @@ import DisplayEachBlog from "./Blog/DisplayEachBlog"
 import Item from "./Item/Item";
 import Cart from "./Cart"
 
+
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(1,1,1,0.4)';
 Modal.defaultStyles.overlay.zIndex = 100
 class App extends React.Component {

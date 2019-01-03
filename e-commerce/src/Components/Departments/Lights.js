@@ -11,6 +11,7 @@ class Lights extends React.Component {
     }
     componentDidMount() {
         this.props.getOutDoorLights()
+        this.props.getAllCollectionData()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -53,13 +54,13 @@ class Lights extends React.Component {
                                 <Fragment>
                                     {this.newSortedData.map(each =>
                                         <HandleMouse otherImages={each.otherImages}
-                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                            render={(props) => <Products {...each} {...props} handleNoUserCart = {this.props.handleNoUserCart} key={each._id} />} />)}
                                 </Fragment>
                                 :
                                 <Fragment>
                                     {this.props.lights.map(each =>
                                         <HandleMouse otherImages={each.otherImages}
-                                            render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                            render={(props) => <Products {...each} {...props} handleNoUserCart = {this.props.handleNoUserCart} key={each._id} />} />)}
                                 </Fragment>
                             }
                         </div>

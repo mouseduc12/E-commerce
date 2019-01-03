@@ -58,7 +58,7 @@ class Shop extends React.Component {
                                     <HandleMouse
                                         otherImages={each.otherImages}
                                         key={each._id}
-                                        render={(props) => <Products {...each} {...props} key={each._id} />} />)}
+                                        render={(props) => <Products handleNoUserCart = {this.props.handleNoUserCart} {...each} {...props} key={each._id} />} />)}
                             </Fragment>
 
                             :
@@ -67,7 +67,7 @@ class Shop extends React.Component {
                                     <HandleMouse
                                         otherImages={each.products.otherImages}
                                         key={each._id}
-                                        render={(props) => <Products {...each.products} {...props} key={each._id} />} />)}
+                                        render={(props) => <Products handleNoUserCart = {this.props.handleNoUserCart} {...each.products} {...props} key={each._id} />} />)}
                             </Fragment>
                         }
                         <div className = "all-product-page">
