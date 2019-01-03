@@ -10,6 +10,8 @@ class WishListProvider extends React.Component{
             wishList: [],
             allWishList: [],
             saveUserId: "",
+            isWishList: false,
+            isNotifyingWishList: false,
         }
     }
 
@@ -38,8 +40,20 @@ class WishListProvider extends React.Component{
         }) 
     }
 
+    handleNotifyingWishList = () => {
+        this.setState({
+            isNotifyingWishList: true
+        }, () => {
+            setTimeout(() => {
+                this.setState({
+                    isNotifyingWishList: false 
+                })
+            }, 4000)
+        })
+    }
 
     createProductOfWishList = (id) => {
+        this.handleNotifyingWishList()
         axios.post(`/wishList/${this.state.saveUserId}/${id}`).then(res =>{
             console.log(res)
             return this.getWishList(this.state.saveUserId)
@@ -52,14 +66,25 @@ class WishListProvider extends React.Component{
         })
     }
 
+    deleteWishListItem = (id) => {
+        console.log(id)
+        axios.put(`/wishList/${this.state.saveUserId}/${id}`).then(res => {
+            console.log(res)
+            // return this.getAllWishList(this.state.saveUserId)
+        })
+    }
+
     render(){
+        console.log(this.state.wishList)
         return(
             <WishListProviderContext.Provider
             value ={{
                 ...this.state,
                 getWishList: this.getWishList,
                 getAllWishList: this.getAllWishList,
-                createProductOfWishList: this.createProductOfWishList
+                createProductOfWishList: this.createProductOfWishList,
+                deleteWishListItem: this.deleteWishListItem,
+                handleNotifyingWishList: this.handleNotifyingWishList
             }}>
                 {this.props.children}
             </WishListProviderContext.Provider>

@@ -3,6 +3,7 @@ import { withProduct } from "../../Context/ProductsProvider"
 import { Link } from "react-router-dom"
 import Products from "../Products"
 import HandleMouse from "../../shared/HandleMouse"
+// import { withWishList } from "../Context/WishListProvider"
 
 class FirePits extends React.Component {
     constructor() {
@@ -12,6 +13,7 @@ class FirePits extends React.Component {
     componentDidMount() {
         this.props.getFirePits()
         this.props.getAllCollectionData()
+        this.props.getAllWishList(this.props.user._id)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedFirePits === "lowest") {

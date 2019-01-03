@@ -3,9 +3,9 @@ const wishListRouter = express.Router()
 const WishListSchema = require("../models/wishList")
 const ProductCollection = require("../models/productCollection")
 
-wishListRouter.get("/", (req, res, next) =>{
-    WishListSchema.find((err, data) =>{
-        if(err){
+wishListRouter.get("/", (req, res, next) => {
+    WishListSchema.find((err, data) => {
+        if (err) {
             res.status(500);
             return next(err)
         }
@@ -54,14 +54,16 @@ wishListRouter.post("/:userId/:id", async (req, res, next) => {
     }
 })
 
-wishListRouter.delete("/:userId/:id", (req, res, next) =>{
-    WishListSchema.update({user: req.params.userId}, { $pull: {products: {_id: req.params.id}}}, (err, data) =>{
-        if(err){
+wishListRouter.put("/:userId/:id", (req, res, next) => {
+    WishListSchema.findOne({ user: req.params.userId}, (err, data) => {
+        if(err) {
             res.status(500)
             return next(err)
         }
-        return res.status(202).send("Data deleted!")
-    }) 
+        const data1 = data.toObject()
+        const found = data1.products.filter(prod => prod._id.toString() !== req.params.id.toString())
+        return res.status(201).send(found)
+    })
 })
 
 module.exports = wishListRouter

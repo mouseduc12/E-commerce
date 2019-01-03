@@ -4,7 +4,8 @@ import "../ComponentStyles/Nav.css"
 import { Link } from "react-router-dom"
 import { withAuth } from "../Context/AuthContext";
 import { withProduct } from "../Context/ProductsProvider"
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
+import { withWishList } from "../Context/WishListProvider"
 import axios from "axios"
 
 
@@ -26,6 +27,7 @@ class Nav extends React.Component {
     }
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
+        this.props.getAllWishList(this.props.user._id)
         axios.get("/articles/all").then(res => {
             this.setState({
                 articleData: res.data
@@ -197,8 +199,11 @@ class Nav extends React.Component {
                         }
                     </form>
                     <div className="cart">
-                        <Link to = "/wishlist">
-                        <button><FontAwesomeIcon icon="heart" /></button>
+                        <Link to="/wishlist">
+                            <button>
+                                <FontAwesomeIcon icon="heart" className={ this.props.wishList.length >= 1 ? "active-heart" : ""} />
+                                {this.props.wishList.length >= 1 && <FontAwesomeIcon icon="exclamation" className="exclamation-mark" />}
+                            </button>
                         </Link>
                         <Link to="/mycart">
                             {typeof this.props.totalQuantity === "object" ?
@@ -243,13 +248,19 @@ class Nav extends React.Component {
                     </div>
                 }
                 {this.props.isNotifying &&
-                    <div className = "add-to-cart-container">
-                        <p className ="check-item-container"><FontAwesomeIcon icon = "check" className = "check-item"/></p>
+                    <div className="add-to-cart-container">
+                        <p className="check-item-container"><FontAwesomeIcon icon="check" className="check-item" /></p>
                         <h3>Add to cart successfully</h3>
+                    </div>
+                }
+                {this.props.isNotifyingWishList &&
+                    <div className="add-to-cart-container">
+                        <p className="check-item-container"><FontAwesomeIcon icon="check" className="check-item" /></p>
+                        <h3>Add to wish list successfully</h3>
                     </div>
                 }
             </div>
         )
     }
 }
-export default withRouter(withAuth(withProduct(Nav)))
+export default withRouter(withWishList(withAuth(withProduct(Nav))))

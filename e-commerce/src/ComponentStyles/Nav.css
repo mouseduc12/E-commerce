@@ -285,3 +285,47 @@
     justify-content: center;
     align-items: center;
 }
+
+.active-heart{
+    color: red;
+    transition: all 0.5 linear;
+    animation: UpAndDown 2s linear infinite
+}
+
+@keyframes UpAndDown{
+    25%{
+        transform: translateY(-3px)
+    }
+    50%{
+        transform: translateY(3px);
+    }
+    75%{
+        transform: translateY(-3px);
+    }
+    100%{
+        transform: translateY(0)
+    }
+}
+
+.exclamation-mark{
+    position: absolute;
+    font-size: 15px;
+    color: orangered;
+    margin-top: -10px;
+    transition: all 0.5 linear;
+    animation: turnRightAndLeft 2s linear infinite
+}
+@keyframes turnRightAndLeft{
+    25%{
+        transform: rotateZ(70deg)
+    }
+    50%{
+        transform: rotateZ(-70deg)
+    }
+    75%{
+        transform: rotateZ(70deg)
+    }
+    100%{
+        transform: rotateZ(-70deg)
+    }
+}

@@ -17,7 +17,9 @@ class WishList extends React.Component{
         console.log(this.props.wishList)
         return(
             <div className = "wish-list-container">
-                {this.props.wishList.map(each => <WishListItem {...each}/>)}
+                <div className = "wish-list-small-container">
+                {this.props.wishList.map(each => <WishListItem {...each} deleteWishListItem = {this.props.deleteWishListItem}/>)}
+                </div>
             </div>
         )
     }
