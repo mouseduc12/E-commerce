@@ -62,7 +62,15 @@ wishListRouter.put("/:userId/:id", (req, res, next) => {
         }
         const data1 = data.toObject()
         const found = data1.products.filter(prod => prod._id.toString() !== req.params.id.toString())
-        return res.status(201).send(found)
+        console.log(JSON.stringify(found))
+        console.log(data1)
+        WishListSchema.findOneAndUpdate({ user: req.params.userId }, JSON.stringify(found), {new: true}, (err, data) =>{
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(data)
+        })
     })
 })
 
