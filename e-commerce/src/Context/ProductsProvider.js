@@ -24,7 +24,7 @@ class ProductsProvider extends React.Component {
             newRandon: [],
             cartData: JSON.parse(localStorage.getItem("myCart")) || [],
             totalPriceOfProducts: JSON.parse(localStorage.getItem("totalPrice")) || 0,
-            totalQuantity: JSON.parse(localStorage.getItem("quantity")) || 0
+            totalQuantity: JSON.parse(localStorage.getItem("quantity")) || 0,
         };
         this.newRandom = [];
         this.cartRemoveDuplicateData = []
@@ -77,7 +77,7 @@ class ProductsProvider extends React.Component {
         })
     }
 
-    handleNoUserCart = (id) => {
+    handleNoUserCart = (id, quantity) => {
         let newData = this.state.dataCollection.find(each => each._id === id)
         if (newData.quantity) {
             console.log("Already existed!")
@@ -88,7 +88,7 @@ class ProductsProvider extends React.Component {
 
         if (this.state.cartData.some(each => each._id === newData._id)) {
             this.setState(prevState => ({
-                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: each.quantity + 1, total: each.products.price.charAt(0) === "$" ? parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
+                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: !quantity ? each.quantity + 1: quantity, total: each.products.price.charAt(0) === "$" ? parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
             }), () => {
                 let totalPriceOfProducts = this.state.cartData.reduce((accumulator, currentIndex) => {
                     return {total: parseFloat(accumulator.total) + parseFloat(currentIndex.total)}
@@ -99,7 +99,8 @@ class ProductsProvider extends React.Component {
 
                 this.setState({
                     totalPriceOfProducts,
-                    totalQuantity
+                    totalQuantity,
+                    changeQuantity: this.state.totalQuantity.quantity
                 }, () => {
                     localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
                     localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
@@ -120,7 +121,8 @@ class ProductsProvider extends React.Component {
                 }, {quantity: 0})
             this.setState({
                 totalPriceOfProducts,
-                totalQuantity
+                totalQuantity,
+                changeQuantity: this.state.totalQuantity.quantity
             }, () => {
                 localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
                 localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
@@ -173,7 +175,8 @@ render() {
                 getCollectionData: this.getCollectionData,
                 getAllCollectionData: this.getAllCollectionData,
                 getRandomCollection: this.getRandomCollection,
-                handleNoUserCart: this.handleNoUserCart
+                handleNoUserCart: this.handleNoUserCart,
+                handleChangeQuanity: this.handleChangeQuanity
             }}>
             {this.props.children}
         </ProductProviderContext.Provider>
