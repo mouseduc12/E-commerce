@@ -77,10 +77,31 @@ class ProductsProvider extends React.Component {
         })
     }
 
+
+    hanldeDeleteCartItem = (id) =>{ 
+        this.setState({
+           cartData: this.state.cartData.filter(each => each._id !== id) 
+        }, () =>{
+            let totalPriceOfProducts = this.state.cartData.reduce((accumulator, currentIndex) => {
+                return {total: parseFloat(accumulator.total) + parseFloat(currentIndex.total)}
+            },{total: 0})
+            let totalQuantity = this.state.cartData.reduce((accumulator, currentValue) => {
+                return {quantity: parseInt(accumulator.quantity) + parseInt(currentValue.quantity)}
+            }, {quantity: 0})
+            this.setState({
+                totalPriceOfProducts,
+                totalQuantity,
+            }, () => {
+                localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
+                localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
+                localStorage.setItem("myCart", JSON.stringify(this.state.cartData))
+            })
+        })
+    }
+
     handleNoUserCart = (id, quantity) => {
         let newData = this.state.dataCollection.find(each => each._id === id)
         if (newData.quantity) {
-            console.log("Already existed!")
         } else {
             newData.quantity = 1;
             newData.total = parseFloat(newData.products.price.slice(1))
@@ -88,7 +109,8 @@ class ProductsProvider extends React.Component {
 
         if (this.state.cartData.some(each => each._id === newData._id)) {
             this.setState(prevState => ({
-                cartData: this.state.cartData.map(each => each._id === newData._id ? { ...each, quantity: !quantity ? each.quantity + 1: quantity, total: each.products.price.charAt(0) === "$" ? parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity : parseFloat(each.products.price.slice(0)) + parseFloat(each.products.price.slice(0)) * each.quantity } : each)
+                cartData: this.state.cartData.map(each => each._id === newData._id ? 
+                    { ...each, quantity: quantity ? quantity : each.quantity + 1, total: each.products.price.charAt(0) === "$" && quantity ? parseFloat(each.products.price.slice(1)) * quantity : parseFloat(each.products.price.slice(1)) + parseFloat(each.products.price.slice(1)) * each.quantity } : each)
             }), () => {
                 let totalPriceOfProducts = this.state.cartData.reduce((accumulator, currentIndex) => {
                     return {total: parseFloat(accumulator.total) + parseFloat(currentIndex.total)}
@@ -96,11 +118,9 @@ class ProductsProvider extends React.Component {
                 let totalQuantity = this.state.cartData.reduce((accumulator, currentValue) => {
                     return {quantity: parseInt(accumulator.quantity) + parseInt(currentValue.quantity)}
                 }, {quantity: 0})
-
                 this.setState({
                     totalPriceOfProducts,
                     totalQuantity,
-                    changeQuantity: this.state.totalQuantity.quantity
                 }, () => {
                     localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
                     localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
@@ -122,7 +142,6 @@ class ProductsProvider extends React.Component {
             this.setState({
                 totalPriceOfProducts,
                 totalQuantity,
-                changeQuantity: this.state.totalQuantity.quantity
             }, () => {
                 localStorage.setItem("quantity", JSON.stringify(this.state.totalQuantity))
                 localStorage.setItem("totalPrice", JSON.stringify(this.state.totalPriceOfProducts))
@@ -158,9 +177,6 @@ getAllCollectionData = (id) => {
 
 
 render() {
-    console.log(this.state.totalQuantity)
-    console.log(this.state.cartData)
-    console.log(this.state.totalPriceOfProducts)
     const data = [...this.state.plants, ...this.state.firePits, ...this.state.lights, ...this.state.sculptures]
     return (
         <ProductProviderContext.Provider
@@ -176,7 +192,8 @@ render() {
                 getAllCollectionData: this.getAllCollectionData,
                 getRandomCollection: this.getRandomCollection,
                 handleNoUserCart: this.handleNoUserCart,
-                handleChangeQuanity: this.handleChangeQuanity
+                handleChangeQuanity: this.handleChangeQuanity,
+                hanldeDeleteCartItem: this.hanldeDeleteCartItem
             }}>
             {this.props.children}
         </ProductProviderContext.Provider>

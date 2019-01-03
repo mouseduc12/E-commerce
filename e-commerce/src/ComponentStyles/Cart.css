@@ -7,3 +7,24 @@
 .cart-item-container h2{
     float: right;
 }
+
+.check-out-button{
+    display: flex;
+    justify-content: center;
+}
+
+.check-out-button button{
+    margin: 20px 0;
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    color: black;  
+    background: skyblue; 
+}
+
+.check-out-button button:hover{
+    background: #232f3e;
+    color: white;
+}

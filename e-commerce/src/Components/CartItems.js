@@ -2,13 +2,32 @@ import React from "react"
 import "../ComponentStyles/CartItem.css"
 import { withProduct } from "../Context/ProductsProvider"
 
+
 class CartItems extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             changeQuantity: this.props.quantity
         }
     }
+
+    handleDeleteItem = (id) => {
+        this.props.hanldeDeleteCartItem(id)
+    }
+
+    handleChangeQuantity = (e) => {
+        const { name, value } = e.target;
+        if (value > 999 || value <= 0) {
+
+        } else {
+            this.setState({
+                [name]: value
+            }, () => {
+                this.props.handleNoUserCart(this.props._id, this.state.changeQuantity)
+            })
+        }
+    }
+
     render() {
         return (
             <div className="cart-items">
@@ -30,8 +49,12 @@ class CartItems extends React.Component {
                                 name="changeQuantity"
                                 value={this.state.changeQuantity}
                                 max="500"
-                                onChange={(e) => this.props.handleChangeQuanity(e, this.props._id)} /></p>
-                        <p>Price: ${this.props.total}</p>
+                                min="1"
+                                onChange={this.handleChangeQuantity} /></p>
+                        <p>Price: ${parseFloat(this.props.total)}</p>
+                    </div>
+                    <div className="cancel-item">
+                        <p onClick={() => this.handleDeleteItem(this.props._id)}>X</p>
                     </div>
                 </div>
             </div>
