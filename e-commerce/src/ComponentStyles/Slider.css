@@ -132,6 +132,9 @@
 }
 
 @media (max-width: 768px) and (min-width: 561px) {
+    .arrow{
+        font-size: 25px;
+    }
     .container-sliders{
         height: 500px;
     }
@@ -157,6 +160,9 @@
 }
 
 @media (max-width: 560px) and (min-width: 425px) {
+    .arrow{
+        font-size: 20px;
+    }
     .container-sliders{
         height: 450px;
     }
@@ -184,6 +190,9 @@
 }
 
 @media (max-width: 424px) {
+    .arrow{
+        font-size: 20px;
+    }
     .container-sliders{
         height: 350px;
     }

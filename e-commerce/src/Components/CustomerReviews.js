@@ -31,7 +31,7 @@ class CustomerReviews extends React.Component {
 
     render() {
         return (
-            <LazyLoad hieght ={600} once>
+            <LazyLoad hieght ={600} once className = "customer-reviews-small-container">
             <div className="customer-reviews">
                 <div className="customers">
                     <div className="img customer-big-img"></div>

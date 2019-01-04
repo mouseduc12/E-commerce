@@ -29,3 +29,50 @@
 .scroll-arrow-container p {
     font-size: 14px;
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .visit-store-teller{
+        display: none;
+    }
+    .manage-front-inside{
+        width: 350px;
+        height: 350px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    .visit-store-teller{
+        display: none;
+    }
+    .manage-front-inside{
+        width: 300px;
+        height: 300px;
+        margin-right: 20px;
+        padding: 0 30px;
+    }
+    .product-image-text h3{
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 424px) {
+    .visit-store-teller{
+        display: none;
+    }
+    .manage-front-inside{
+        width: 300px;
+        height: 300px;
+        margin-right: 20px;
+        padding: 0 30px;
+    }
+    .product-image-text h3{
+        line-height: 25px;
+        font-size: 15px;
+    }
+}
+

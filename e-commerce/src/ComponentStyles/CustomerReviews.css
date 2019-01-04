@@ -165,3 +165,158 @@
         opacity: 1
     }
 }
+
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+  .customer-reviews{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      margin: 50px 0;
+  }
+  .customers-words-container{
+    width: 60%;
+  }
+  .customers{
+      width: 100%;
+      height: 500px;
+      margin-bottom: 50px;
+  }
+  .customer-big-img{
+      height: 300px;
+      width: 500px
+  }
+  .customer-small-img1{
+      width: 200px;
+      height: 200px;
+  }
+  .customer-medium-img1{
+      width: 300px;
+      height: 300px;
+      top: 0;
+      left: 0;
+  }
+  .customer-small-img2{
+      width: 200px;
+      height: 200px;
+      right: 100px;
+  }
+  .customer-small-img3{
+    width: 300px;
+    height: 300px;
+    left: 400px;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    .customer-reviews{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin: 50px 0;
+    }
+    .customers-words-container{
+      width: 100%;
+    }
+    .customers-words-small-container h2{
+        font-size: 15px;
+    }
+    .customers-words h3{
+        font-size: 15px;
+        line-height: 30px;
+    }
+    .customers{
+        width: 100%;
+        height: 400px;
+        margin-bottom: 50px;
+    }
+    .customer-big-img{
+        height: 250px;
+        width: 500px
+    }
+    .customer-small-img1{
+        width: 150px;
+        height: 150px;
+        bottom: 50px;
+        left: 0;
+    }
+    .customer-medium-img1{
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: 0;
+    }
+    .customer-small-img2{
+        width: 150px;
+        height: 150px;
+        right: 10px;
+        bottom: 50px;
+    }
+    .customer-small-img3{
+      width: 200px;
+      height: 200px;
+      left: 200px;
+      bottom: 0;
+    }
+}
+
+@media (max-width: 424px) {
+    .customer-reviews{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin: 50px 0;
+    }
+    .customers-words-container{
+      width: 100%;
+    }
+    .customers-words-small-container h2{
+        font-size: 15px;
+    }
+    .customers-words h3{
+        font-size: 15px;
+        line-height: 30px;
+    }
+    .customers{
+        width: 100%;
+        height: 400px;
+        margin-bottom: 50px;
+    }
+    .customer-big-img{
+        height: 250px;
+        width: 500px
+    }
+    .customer-small-img1{
+        width: 150px;
+        height: 150px;
+        bottom: 50px;
+        left: 0;
+    }
+    .customer-medium-img1{
+        width: 150px;
+        height: 150px;
+        top: 0;
+        left: 0;
+    }
+    .customer-small-img2{
+        width: 150px;
+        height: 150px;
+        right: 10px;
+        bottom: 50px;
+    }
+    .customer-small-img3{
+      width: 150px;
+      height: 150px;
+      left: 170px;
+      bottom: 0;
+    }
+}
+
