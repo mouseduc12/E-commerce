@@ -132,8 +132,8 @@ class App extends React.Component {
                                 <button onClick={this.closeModal}>X</button>
                             </div>
                             <div className="text-new-seletter">
-                                <h1>NEW SELETTER</h1>
-                                <p>Join our new seletter to get weekly discounts and ton of benefits that would suprise you!!</p>
+                                <h1>NEWSELETTER</h1>
+                                <p>Join our newseletter to get weekly discounts and ton of benefits that would suprise you!!</p>
                                 <form className="modal-sign-up">
                                     <input placeholder="Email Address" type="email"></input>
                                     <button><FontAwesomeIcon icon="envelope" /></button>

@@ -4,6 +4,8 @@ import { withProduct } from "../Context/ProductsProvider"
 import "../ComponentStyles/Shop.css"
 import { Link } from "react-router-dom"
 import HandleMouse from "../shared/HandleMouse"
+import { withWishList } from "../Context/WishListProvider"
+import { withAuth } from "../Context/AuthContext"
 
 class Shop extends React.Component {
     constructor() {
@@ -12,6 +14,7 @@ class Shop extends React.Component {
     }
     componentDidMount() {
         this.props.getCollectionData(1)
+        this.props.getAllWishList(this.props.user._id)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedData === "lowest") {
@@ -82,4 +85,4 @@ class Shop extends React.Component {
         )
     }
 }
-export default withProduct(Shop)
+export default withProduct(withAuth(withWishList(Shop)))

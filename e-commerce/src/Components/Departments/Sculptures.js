@@ -3,6 +3,8 @@ import Products from "../Products";
 import { withProduct } from "../../Context/ProductsProvider"
 import { Link } from "react-router-dom"
 import HandleMouse from "../../shared/HandleMouse"
+import { withWishList } from "../../Context/WishListProvider"
+import { withAuth } from "../../Context/AuthContext"
 
 class Sculptures extends React.Component {
     constructor() {
@@ -12,6 +14,7 @@ class Sculptures extends React.Component {
     componentDidMount() {
         this.props.getSculptures()
         this.props.getAllCollectionData()
+        this.props.getAllWishList(this.props.user._id)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.sortedSculptures === "lowest") {
@@ -70,4 +73,4 @@ class Sculptures extends React.Component {
     }
 }
 
-export default withProduct(Sculptures)
+export default withProduct(withAuth(withWishList(Sculptures)))

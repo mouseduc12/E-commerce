@@ -2,6 +2,8 @@ import React, { Fragment } from "react"
 import Products from "../Products";
 import { withProduct } from "../../Context/ProductsProvider"
 import { Link } from "react-router-dom"
+import { withWishList } from "../../Context/WishListProvider"
+import { withAuth } from "../../Context/AuthContext"
 import HandleMouse from "../../shared/HandleMouse"
 
 class Lights extends React.Component {
@@ -12,6 +14,7 @@ class Lights extends React.Component {
     componentDidMount() {
         this.props.getOutDoorLights()
         this.props.getAllCollectionData()
+        this.props.getAllWishList(this.props.user._id)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -71,4 +74,4 @@ class Lights extends React.Component {
     }
 }
 
-export default withProduct(Lights)
+export default withProduct(withAuth(withWishList(Lights)))

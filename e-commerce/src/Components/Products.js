@@ -3,7 +3,8 @@ import "../ComponentStyles/Products.css"
 import LazyLoad from "react-lazyload"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
-
+import { withWishList } from "../Context/WishListProvider"
+ 
 class Products extends React.Component {
     render() {
         return (
@@ -35,4 +36,4 @@ class Products extends React.Component {
     }
 }
 
-export default Products
+export default withWishList(Products)

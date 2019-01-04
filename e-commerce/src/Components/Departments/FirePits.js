@@ -3,7 +3,8 @@ import { withProduct } from "../../Context/ProductsProvider"
 import { Link } from "react-router-dom"
 import Products from "../Products"
 import HandleMouse from "../../shared/HandleMouse"
-// import { withWishList } from "../Context/WishListProvider"
+import { withWishList } from "../../Context/WishListProvider"
+import { withAuth } from "../../Context/AuthContext"
 
 class FirePits extends React.Component {
     constructor() {
@@ -25,6 +26,7 @@ class FirePits extends React.Component {
         }
     }
     render() {
+        console.log(this.props)
         return (
             <Fragment>
                 <div className="image-each-section-container">
@@ -69,4 +71,4 @@ class FirePits extends React.Component {
         )
     }
 }
-export default withProduct(FirePits)
+export default withProduct(withAuth(withWishList(FirePits)))
