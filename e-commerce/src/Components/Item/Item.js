@@ -13,7 +13,8 @@ class Item extends React.Component {
             isReviewing: false,
             watchingImage: "",
             activeImage: 1,
-            alreadyRun: false
+            alreadyRun: false,
+            eachItemQuantity: 1
         }
         this.checkIfAlreadyExisted = []
         this.myNewRef = React.createRef()
@@ -32,6 +33,12 @@ class Item extends React.Component {
         }
     }
    
+    handleEachItemChange = (e) =>{
+        const { value, name } = e.target;
+        this.setState({
+           [name]: value 
+        })
+    }
 
     handleReview = () => {
         if (this.state.isCheckingReview) {
@@ -47,6 +54,13 @@ class Item extends React.Component {
         }))
     }
 
+    handleEachItemSubmit = (e) =>{
+        e.preventDefault()
+        const thisId = this.props.match.params.id
+        const newQuantity = this.state.eachItemQuantity
+        this.props.handleNoUserCart(thisId, newQuantity);
+    }
+
     handleChangeImage = (image, id) => {
         this.setState({
             watchingImage: image,
@@ -55,7 +69,6 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const firstId = 1
         return (
             <div className="product-itself-container">
@@ -92,9 +105,9 @@ class Item extends React.Component {
                             <div className="specific-product-text-container">
                                 <h1>{this.props.dataOfProduct[0].products.headline}</h1>
                                 {this.props.dataOfProduct[0].products.price.charAt(0) === "$" ? <h3 className="specific-product-price">{this.props.dataOfProduct[0].products.price}</h3> : <h3 className="specific-product-price">${this.props.dataOfProduct[0].products.price}</h3>}
-                                <form className="quantity">
-                                    <input type="number" defaultValue={1} />
-                                    <button>Add To Cart</button>
+                                <form className="quantity" onSubmit = {this.handleEachItemSubmit}>
+                                    <input type="number" name = "eachItemQuantity" value={this.state.eachItemQuantity} onChange = {this.handleEachItemChange} />
+                                    <button >Add To Cart</button>
                                 </form>
                                 <div className="specific-product-descriptions">
                                     {this.props.dataOfProduct[0].products.description.map(each => <p><FontAwesomeIcon icon="circle" className="circle-icons" />{each}</p>)}
