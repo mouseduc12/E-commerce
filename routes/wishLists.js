@@ -55,22 +55,16 @@ wishListRouter.post("/:userId/:id", async (req, res, next) => {
 })
 
 wishListRouter.put("/:userId/:id", (req, res, next) => {
-    WishListSchema.findOne({ user: req.params.userId}, (err, data) => {
-        if(err) {
+    WishListSchema.findOne({ user: req.params.userId }, (err, data) => {
+        if (err) {
             res.status(500)
             return next(err)
         }
         const data1 = data.toObject()
-        console.log(req.params.id)
+
         const found = data1.products.filter(prod => prod._id.toString() !== req.params.id.toString())
-        // console.log(found)
-        const newData = data1.products.splice(0, data1.products.length-1, found)
-        console.log(data1.products.length-1)
-        console.log(data1)
-        console.log()
-    
-        WishListSchema.findOneAndUpdate({ user: req.params.userId }, {products: newData}, {new: true}, (err, data) =>{
-            if(err){
+        WishListSchema.findOneAndUpdate({ user: req.params.userId }, { products: found }, { new: true }, (err, data) => {
+            if (err) {
                 res.status(500)
                 return next(err)
             }
