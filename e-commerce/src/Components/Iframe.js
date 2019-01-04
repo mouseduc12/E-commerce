@@ -12,8 +12,6 @@ const IFrame = () => {
         >
             <div className="iframe">
                 <Iframe url="https://www.youtube.com/embed/t2q0qYDUxjk"
-                    width="1100px"
-                    height="450px"
                     id="myId"
                     className="myClassname"
                     display="initial"
@@ -28,3 +26,6 @@ const IFrame = () => {
     )
 }
 export default IFrame
+
+// width="1100px"
+// height="450px"

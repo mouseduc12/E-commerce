@@ -282,8 +282,12 @@
         font-size: 15px;
     }
     .customers-words h3{
-        font-size: 15px;
+        font-size: 11px;
         line-height: 30px;
+        width: 300px;
+    }
+    .not-selected-quote{
+        display: none;
     }
     .customers{
         width: 100%;

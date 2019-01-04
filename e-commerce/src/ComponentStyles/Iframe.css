@@ -4,7 +4,9 @@
     overflow: hidden;
     box-shadow: 0 0 10px 3px rgba(1,1,1,0.5);
     margin: 100px 20px;
+    height: 450px;
 }
+
 .info-of-author{
     background:  url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX10030015.jpg");
     box-shadow: inset 0 0 0 500px rgba(1,1,1,0.7);
@@ -47,3 +49,64 @@
     text-align: center;
     animation: inplace 2s ease-in-out
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .iframe{
+        margin: 50px 0;
+    }
+    .info-of-author p{
+        padding: 0 10px;
+        line-height: 30px;
+    }
+    .info-of-author h2{
+        text-align: center;
+        line-height: 40px;
+        padding: 0 2px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    .iframe{
+        margin: 50px 0;
+        flex-direction: column;
+        height: 750px;
+    }
+    .info-of-author{
+        padding: 0 10px;
+        line-height: 30px;
+        height: 300px;
+    }
+    .info-of-author h2{
+        text-align: center;
+        line-height: 40px;
+        padding: 0 2px;
+    }
+}
+
+@media (max-width: 424px) {
+    .iframe{
+        margin: 50px 0;
+        flex-direction: column;
+        height: 550px;
+    }
+    .info-of-author{
+        padding: 0 10px;
+        line-height: 30px;
+        height: 200px;
+        width: 100%;
+    }
+    .info-of-author h2{
+        text-align: center;
+        line-height: 40px;
+        padding: 0 2px;
+    }
+    .info-of-author p{
+        padding: 0;
+        line-height: 30px;
+    }
+}
+
