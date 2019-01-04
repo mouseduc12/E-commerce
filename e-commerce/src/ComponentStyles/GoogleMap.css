@@ -89,6 +89,9 @@
 }
 
 @media (max-width: 424px) {
+    .map{
+        margin: 100px 5px;
+    }
     .operation-city h2{
         font-size: 20px;
         line-height: 30px;
