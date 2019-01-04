@@ -7,7 +7,6 @@
 .first-event{
     display: grid;
     grid-template-rows: 1fr 1fr;
-    height: auto;
     grid-gap: 50px;
 }
 .load-animated{
@@ -26,13 +25,12 @@
 
 .promotion{
     display: grid;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 3fr 1fr;
     grid-gap: 30px;
     margin: 0 50px;
 }
 .promote-image{
     border-radius: 5px;
-
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -59,4 +57,28 @@
     text-align: center;
     line-height: 25px;
     padding: 0 50px;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .events-promotions{
+        display: flex;
+        flex-direction: column;
+        margin: 30px 0;
+    }   
+    .first-event{
+        justify-content: center;
+        grid-gap: 20px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    
+}
+
+@media (max-width: 424px) {
+
 }

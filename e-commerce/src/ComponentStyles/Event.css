@@ -1,4 +1,4 @@
-.event-image{
+.event-image {
     width: 100%;
     height: 250px;
     background-size: cover;
@@ -6,36 +6,71 @@
     background-repeat: no-repeat;
     border-radius: 5px;
 }
-.events{
+
+.events {
     border-radius: 5px;
-    box-shadow: 0px 0px 50px rgba(1,1,1,0.5);
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.5);
     animation: animated;
     animation-duration: 2s;
     transition-timing-function: linear
 }
-.event-texts{
+
+.event-texts {
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column
 }
-.event-texts p{
+
+.event-texts p {
     text-align: center;
     padding: 0 50px;
     line-height: 25px;
 }
-.event-texts h2{
+
+.event-texts h2 {
     text-align: center;
     line-height: 40px;
 }
-@keyframes animated{
-    from{
+
+@keyframes animated {
+    from {
         opacity: 0;
         transform: translateX(-50%)
     }
+
     to {
         opacity: 1;
         transform: translateX(0)
     }
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .first-event-small-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .events {
+        width: 50%;
+    }
+
+    .event {
+        width: 100%;
+    }
+
+    .event-image {
+        height: 200px;
+    }
+
+    .event-texts {
+        height: 130px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {}
+
+@media (max-width: 424px) {}

@@ -110,15 +110,104 @@
 }
 .where-you-at-parent{
     display: flex;
-    justify-content: center
+    justify-content: center;
+    align-items: center;
 }
 .where-you-at{
     display: flex;
-    width: 8%;
+    width: 30%;
     justify-content: space-evenly;
 }
 .arrow{
     font-size: 35px;
     color: rgba(255,255,255,0.5);
     cursor: pointer;
+}
+
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .where-you-at{
+        width: 20%;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .container-sliders{
+        height: 500px;
+    }
+    .image{
+        height: 500px;
+    }
+    .where-you-at{
+        width: 20%;
+        font-size: 15px;
+    }
+    .text-sub h2{
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .text-sub p{
+        font-size: 15px;
+    }
+    .button-directive button{
+        width: 150px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    .container-sliders{
+        height: 450px;
+    }
+    .image{
+        height: 450px;
+    }
+    .where-you-at{
+        width: 20%;
+        font-size: 13px;
+    }
+    .text-sub h2{
+        font-size: 23px;
+        line-height: 35px;
+        margin-bottom: 10px;
+    }
+    .text-sub p{
+        width: 100%;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .button-directive button{
+        width: 120px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 424px) {
+    .container-sliders{
+        height: 350px;
+    }
+    .image{
+        height: 350px;
+    }
+    .where-you-at{
+        width: 20%;
+        font-size: 13px;
+    }
+    .text-sub h2{
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .text-sub p{
+        width: 100%;
+        font-size: 9px;
+        line-height: 15px;
+    }
+    .button-directive button{
+        width: 100px;
+        font-size: 10px;
+        height: 30px;
+        line-height: 15px;
+    }
 }

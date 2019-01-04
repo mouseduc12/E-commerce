@@ -25,3 +25,70 @@
 .ad p{
     font-size: 18px;
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .ad p{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .benefit{
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    .icons{
+        font-size: 20px;
+    }
+    .ad h2{
+        line-height: 25px;
+        font-size: 15px;
+        text-align: center;
+    }
+    .ad p{
+        font-size: 13px;
+        text-align: center;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 560px) and (min-width: 425px) {
+    .benefit{
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    .icons{
+        font-size: 20px;
+    }
+    .ad h2{
+        line-height: 15px;
+        font-size: 12px;
+        text-align: center;
+        margin: 5px 0
+    }
+    .ad p{
+        font-size: 10px;
+        text-align: center;
+        line-height: 15px;
+    }
+}
+
+@media (max-width: 424px) {
+    .benefit{
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    .icons{
+        font-size: 20px;
+    }
+    .ad h2{
+        line-height: 20px;
+        font-size: 11px;
+        text-align: center;
+    }
+    .ad p{
+        font-size: 8px;
+        text-align: center;
+        line-height: 10px;
+    }
+}

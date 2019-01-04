@@ -57,11 +57,11 @@ class Events extends React.Component {
     render() {
         return (
             <div className="events-promotions">
-                <div className="first-event">
-                    <Link to="/shop/sculptures" style ={{color: "black"}}>
+                <div className="first-event" >
+                    <Link to="/shop/sculptures" style ={{color: "black"}} className = "first-event-small-container">
                         <Event image={this.state.images[0]} headLine={this.state.headLine[0]} text={this.state.text[0]} />
                     </Link>
-                    <Link to="/shop/fire-pits" style ={{color: "black"}}>
+                    <Link to="/shop/fire-pits" style ={{color: "black"}} className = "first-event-small-container">
                         <Event image={this.state.images[1]} headLine={this.state.headLine[1]} text={this.state.text[1]} />
                     </Link>
                 </div>
@@ -78,10 +78,10 @@ class Events extends React.Component {
                     </div>
                 </LazyLoad>
                 <div className="first-event">
-                    <Link to="/shop/lights" style ={{color: "black"}}>
+                    <Link to="/shop/lights" style ={{color: "black"}} className = "first-event-small-container">
                         <Event image={this.state.images[2]} headLine={this.state.headLine[2]} text={this.state.text[2]} number={3} />
                     </Link>
-                    <Link to="/shop/plants" style ={{color: "black"}}>
+                    <Link to="/shop/plants" style ={{color: "black"}} className = "first-event-small-container">
                         <Event image={this.state.images[3]} headLine={this.state.headLine[3]} text={this.state.text[3]} number={4} />
                     </Link>
                 </div>
