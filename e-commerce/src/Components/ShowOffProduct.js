@@ -60,7 +60,6 @@ class ShowOffProduct extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <LazyLoad height={400} once throttle={1000}>
                 <div className="manage-front" onMouseEnter={this.handleIcon} onMouseLeave={this.handleIconLeave}>

@@ -28,6 +28,7 @@ class Nav extends React.Component {
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
         this.props.getAllWishList(this.props.user._id)
+        this.props.handleNotNotifyingWish(this.props.user._id)
         axios.get("/articles/all").then(res => {
             this.setState({
                 articleData: res.data
@@ -109,6 +110,7 @@ class Nav extends React.Component {
             isSearching: false
         })
     }
+
 
     handleOnMouseLeave = () => {
         this.setState({

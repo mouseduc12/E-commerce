@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import { withRouter } from "react-router-dom"
 
 const WishListProviderContext = React.createContext()
 
@@ -10,7 +11,7 @@ class WishListProvider extends React.Component {
             wishList: [],
             allWishList: [],
             saveUserId: "",
-            isWishList: false,
+            dontHaveUser: false,
             isNotifyingWishList: false,
         }
     }
@@ -44,42 +45,53 @@ class WishListProvider extends React.Component {
         })
     }
 
+    handleNotNotifyingWish = (userId) => {
+        if (!userId) {
+            this.setState(prevState => ({
+                dontHaveUser: !prevState.dontHaveUser
+            }))
+        }
+    }
+
     handleNotifyingWishList = () => {
-        this.setState({
-            isNotifyingWishList: true
-        }, () => {
-            setTimeout(() => {
-                this.setState({
-                    isNotifyingWishList: false
-                })
-            }, 4000)
-        })
+        if (!this.state.dontHaveUser) {
+            this.setState({
+                isNotifyingWishList: true
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        isNotifyingWishList: false
+                    })
+                }, 4000)
+            })
+        }
     }
 
     createProductOfWishList = (id) => {
+        if(!this.state.saveUserId){
+            this.props.history.push("/login")
+        }
         this.handleNotifyingWishList()
         axios.post(`/wishList/${this.state.saveUserId}/${id}`).then(res => {
-            console.log(res)
             return this.getWishList(this.state.saveUserId)
         })
     }
 
     createWishList = (userId) => {
         axios.post(`/wishList/${userId}`).then(res => {
-            console.log(res)
         })
     }
 
     deleteWishListItem = (id) => {
-        console.log(id)
+        console.log(id) 
         axios.put(`/wishList/${this.state.saveUserId}/${id}`).then(res => {
-            console.log(res)
-            // return this.getAllWishList(this.state.saveUserId)
+            this.setState({
+                wishList: res.data.products
+            })
         })
     }
 
     render() {
-        console.log(this.state.wishList)
         return (
             <WishListProviderContext.Provider
                 value={{
@@ -88,7 +100,8 @@ class WishListProvider extends React.Component {
                     getAllWishList: this.getAllWishList,
                     createProductOfWishList: this.createProductOfWishList,
                     deleteWishListItem: this.deleteWishListItem,
-                    handleNotifyingWishList: this.handleNotifyingWishList
+                    handleNotifyingWishList: this.handleNotifyingWishList,
+                    handleNotNotifyingWish: this.handleNotNotifyingWish 
                 }}>
                 {this.props.children}
             </WishListProviderContext.Provider>
@@ -96,7 +109,7 @@ class WishListProvider extends React.Component {
     }
 }
 
-export default WishListProvider
+export default withRouter(WishListProvider)
 
 export const withWishList = (C) => props => (
     <WishListProviderContext.Consumer>
