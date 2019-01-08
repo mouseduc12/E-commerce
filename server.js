@@ -9,7 +9,7 @@ const passport = require("passport")
 const path = require("path")
 
 
-app.use(express.static(path.join(__dirname, "client", "build")))
+
 // app.use(passport.initialize());
 // app.use(passport.session());
 app.use(express.json())
@@ -24,7 +24,7 @@ app.use("/productCollections", require("./routes/productCollections"))
 // app.use("/auth", require("./routes/googleRoute"));
 app.use("/cart", require("./routes/cart"))
 app.use("/wishList", require("./routes/wishLists"))
-
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.use((err, req, res, next) => {
     if (err.name === "UnauthorizedError") {
         res.status(err.status)
