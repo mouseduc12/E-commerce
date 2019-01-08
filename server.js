@@ -10,8 +10,8 @@ const path = require("path")
 
 
 app.use(express.static(path.join(__dirname, "client", "build")))
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(express.json())
 app.use(morgan("dev"))
 app.use("/plants", require("./routes/plants"))
@@ -21,7 +21,7 @@ app.use("/firepits", require("./routes/firePits"))
 app.use("/articles", require("./routes/articles"))
 app.use("/user", require("./routes/users"))
 app.use("/productCollections", require("./routes/productCollections"))
-app.use("/auth", require("./routes/googleRoute"));
+// app.use("/auth", require("./routes/googleRoute"));
 app.use("/cart", require("./routes/cart"))
 app.use("/wishList", require("./routes/wishLists"))
 
