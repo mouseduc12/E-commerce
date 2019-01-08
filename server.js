@@ -7,6 +7,7 @@ const expressJwt = require("express-jwt")
 const passport = require("passport")
 // const GoogleStrategy = require("passport-google-oauth20").Strategy
 const path = require("path")
+const PORT = process.env.PORT || 8000
 
 
 
@@ -25,6 +26,7 @@ app.use("/productCollections", require("./routes/productCollections"))
 app.use("/cart", require("./routes/cart"))
 app.use("/wishList", require("./routes/wishLists"))
 app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.use((err, req, res, next) => {
     if (err.name === "UnauthorizedError") {
         res.status(err.status)
@@ -41,7 +43,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html")) 
 });
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log("Working")
 })
 
