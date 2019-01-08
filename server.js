@@ -6,8 +6,10 @@ const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
 const passport = require("passport")
 const GoogleStrategy = require("passport-google-oauth20").Strategy
+const path = require("path")
 
 
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json())
@@ -30,10 +32,14 @@ app.use((err, req, res, next) => {
     return res.send({ error: err.message })
 })
 
-mongoose.connect("mongodb://localhost:27017/garther", { useNewUrlParser: true }, () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/garther", { useNewUrlParser: true }, () => {
     console.log("I'm connected")
 })
 
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html")) 
+});
 
 app.listen(8000, () => {
     console.log("Working")

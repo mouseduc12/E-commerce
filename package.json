@@ -1,11 +1,15 @@
 {
   "name": "Ecomerce",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.11.0"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

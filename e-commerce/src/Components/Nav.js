@@ -22,11 +22,13 @@ class Nav extends React.Component {
             search: "",
             isSearching: false,
             output: [],
-            articleOutput: []
+            articleOutput: [],
+            innerWidth: window.innerWidth,
         }
     }
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
+        window.addEventListener("resize", this.checkInnerWidth)
         this.props.getAllWishList(this.props.user._id)
         this.props.handleNotNotifyingWish(this.props.user._id)
         axios.get("/articles/all").then(res => {
@@ -45,6 +47,13 @@ class Nav extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll)
+        window.removeEventListener("resize", this.checkInnerWidth)
+    }
+
+    checkInnerWidth = () => {
+        this.setState({
+            innerWidth: window.innerWidth
+        })
     }
 
     handleSearchBar = (e) => {
@@ -203,7 +212,7 @@ class Nav extends React.Component {
                     <div className="cart">
                         <Link to="/wishlist">
                             <button>
-                                <FontAwesomeIcon icon="heart" className={ this.props.wishList.length >= 1 ? "active-heart" : ""} />
+                                <FontAwesomeIcon icon="heart" className={this.props.wishList.length >= 1 ? "active-heart" : ""} />
                                 {this.props.wishList.length >= 1 && <FontAwesomeIcon icon="exclamation" className="exclamation-mark" />}
                             </button>
                         </Link>
