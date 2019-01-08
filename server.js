@@ -5,7 +5,7 @@ const morgan = require("morgan")
 const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
 const passport = require("passport")
-const GoogleStrategy = require("passport-google-oauth20").Strategy
+// const GoogleStrategy = require("passport-google-oauth20").Strategy
 const path = require("path")
 
 
