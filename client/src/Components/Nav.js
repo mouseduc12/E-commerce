@@ -135,7 +135,7 @@ class Nav extends React.Component {
 
     render() {
         return (
-            <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 100" : "1fr" }} className="nav">
+            <div style={{ position: this.state.isScroll ? "fixed" : "", gridTemplateRows: this.state.openNav ? "1fr 60px" : "1fr 30px" }} className="nav">
                 <div className="first-nav-row">
                     <div className="brand">
                         <div className="bars">

@@ -76,7 +76,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     font-family: "Roboto"
-   
+
 }
 
 .searh-items-container {
@@ -327,5 +327,69 @@
     }
     100%{
         transform: rotateZ(-70deg)
+    }
+}
+
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   
+}
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .first-nav-row{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        grid-gap: 10px;
+    }
+    .brand{
+        width: 60%;
+    }
+    .search-shop{
+        grid-row: 2;
+        width: 95%;
+        grid-column: 1/-1;
+        margin: 0 auto;
+    }
+    .cart{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .first-nav-row{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        grid-gap: 10px;
+    }
+    .brand{
+        width: 90%;
+    }
+    .brand h1{
+        font-size: 25px;
+    }
+    .search-shop{
+        grid-row: 2;
+        width: 99%;
+        grid-column: 1/-1;
+        margin: 0 auto;
+    }
+    .cart{
+        width: 100%;
+    }
+
+    .second-nav-row{
+        width: 100%;
+    }
+    .department{
+        width: 100%;
     }
 }
