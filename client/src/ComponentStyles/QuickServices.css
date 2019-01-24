@@ -96,3 +96,19 @@
 #img-of-about-us{
     background-image: linear-gradient(rgba(255,255,255,1), lightblue);
 }
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .top-level{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .top-level{
+        grid-template-columns: 1fr;
+    }
+    .second-level .second-level-text{
+        width: 50%;
+    }
+}
