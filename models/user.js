@@ -31,10 +31,6 @@ const userSchema = new Schema({
     faceImage: {
         type: String
     },
-    googleId: {
-        type: String,
-        required: true
-    }
 })
 
 userSchema.pre("save", function(next){

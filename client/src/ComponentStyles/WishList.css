@@ -7,3 +7,19 @@
     flex-wrap: wrap;
     width: 90%;
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .wish-list-small-container{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 561px) {
+    .wish-list-small-container{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+
