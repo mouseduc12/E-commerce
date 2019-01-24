@@ -111,3 +111,31 @@
 .sign-up {
     top: 100px;
 }
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .authentication-page{
+        flex-direction: column;
+        height: 100%;
+    }   
+    .authenticate{
+        width: 100%;
+    }
+    .authenticate-form-container{
+        width: 100%;
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 425px) {
+    .authentication-page{
+        flex-direction: column;
+        height: 100%;
+    }   
+    .authenticate{
+        width: 100%;
+    }
+    .authenticate-form-container{
+        width: 100%;
+        padding: 50px 0;
+    }
+}

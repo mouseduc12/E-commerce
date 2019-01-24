@@ -29,7 +29,6 @@ class CartItems extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="cart-items">
                 <div className="cart-items-small-container">
