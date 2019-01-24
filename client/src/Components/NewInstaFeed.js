@@ -6,16 +6,13 @@ import LazyLoad from "react-lazyload"
 
 class NewInstaFeed extends React.Component {
     shouldComponentUpdate(nextProps) {
-        console.log(nextProps)
         if (nextProps.count > 0) {
-            console.log("i should run ")
             return false
         } else {
             return true
         }
     }
     render() {
-        console.log(this.props)
         const display =
             `<div class ="image_general">
                 <a href='{{link}}' target='_blank' class='instafeed__item'>

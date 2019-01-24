@@ -16,7 +16,6 @@ class Cart extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <Fragment>
                 {typeof this.props.totalPriceOfProducts === "object" ?
