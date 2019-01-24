@@ -43,3 +43,27 @@
 .icon-for-posts p{
     margin: 10px 5px
 }
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .about-blog-of-author-container{
+        width: 70%;
+    }
+    .feature-content-of-author-blog h2{
+        text-align: center
+    }
+    .feature-content-of-author-blog p{
+        text-align: center
+    }
+}
+
+@media (max-width: 425px) {
+    .about-blog-of-author-container{
+        width: 100%;
+    }    
+    .feature-content-of-author-blog h2{
+        text-align: center
+    }
+    .feature-content-of-author-blog p{
+        text-align: center
+    }
+}

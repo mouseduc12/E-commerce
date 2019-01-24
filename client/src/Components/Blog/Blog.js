@@ -13,7 +13,6 @@ class Blog extends React.Component {
         for (let i = 0; i < this.props.page; i++) {
             data.push(i + 1)
         }
-        console.log(this.props.active)
         return (
             <div className="blogs-section">
                 <h1>Blogs</h1>
