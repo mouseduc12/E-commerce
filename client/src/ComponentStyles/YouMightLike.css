@@ -25,3 +25,16 @@
 .headline-and-price h3{
     margin: 10px 0;
 }
+
+@media (max-width: 768px) and (min-width: 425px) {
+   .you-might-also-like{
+       width: 40%;
+   }
+}
+
+
+@media (max-width: 425px) {
+    .you-might-also-like{
+        width: 100%;
+    }
+}

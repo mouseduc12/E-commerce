@@ -76,3 +76,32 @@
     color:white;
     cursor: pointer
 }
+
+
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .modal-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;    
+        height: 600px;
+    }
+}
+
+@media (max-width: 425px) {
+    .modal-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;    
+        height: 500px;
+        width: 90%;
+    }
+    .text-new-seletter{
+        width: 100%;
+    }
+    .text-new-seletter p{
+        padding: 0;
+        font-size: 13px;
+    }
+    .text-new-seletter h1{
+        font-size: 25px;
+    }
+}
