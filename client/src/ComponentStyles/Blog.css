@@ -26,3 +26,17 @@
     margin: 0 10px;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .blog-container{
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .blog-container{
+        width: 100%;
+    }
+}
