@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken")
 
 authRouter.post("/signup", (req, res, next) => {
     User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
-        console.log(user)
         if (err) {
+            console.log(err)
             res.status(500)
             return next(err)
         }
