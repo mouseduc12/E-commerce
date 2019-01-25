@@ -21,7 +21,6 @@ class WishListProvider extends React.Component {
 
         } else {
             axios.get(`/wishList/${userId}`).then(res => {
-                console.log(res)
                 this.setState({
                     wishList: res.data.products
                 })
@@ -37,7 +36,6 @@ class WishListProvider extends React.Component {
             }, () => {
                 if (this.state.allWishList.some(each => each.user === userId)) {
                     this.getWishList(userId)
-                    console.log("Already Exist");
                 } else {
                     this.createWishList(userId)
                 }
@@ -83,7 +81,6 @@ class WishListProvider extends React.Component {
     }
 
     deleteWishListItem = (id) => {
-        console.log(id) 
         axios.put(`/wishList/${this.state.saveUserId}/${id}`).then(res => {
             this.setState({
                 wishList: res.data.products

@@ -21,15 +21,14 @@ authRouter.post("/signup", (req, res, next) => {
                 return next(err)
             }
             const token = jwt.sign(userData.toObject(), process.env.SECRET)
+            console.log(userData)
             return res.status(201).send({ userData: userData.toObject(), token })
         })
     })
 })
 
 authRouter.post("/login", (req, res, next) => {
-    console.log(req.body)
     User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
-        console.log(user)
         if (err) {
             res.status(500)
             return next(err)

@@ -16,7 +16,7 @@ class AuthContext extends React.Component{
 
     signup = (userInfo) =>{
         return axios.post("/user/signup", userInfo).then(res => {
-            localStorage.setItem("user", JSON.stringify(res.data.user))
+            localStorage.setItem("user", JSON.stringify(res.data.userData))
             localStorage.setItem("token", res.data.token)
             this.setState({
                 user: res.data.userData,
