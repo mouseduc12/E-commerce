@@ -25,18 +25,18 @@ app.use("/productCollections", require("./routes/productCollections"))
 // app.use("/auth", require("./routes/googleRoute"));
 app.use("/cart", require("./routes/cart"))
 app.use("/wishList", require("./routes/wishLists"))
-// app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 
 
-mongoose.connect("mongodb://localhost:27017/garther", { useNewUrlParser: true }, () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/garther", { useNewUrlParser: true }, () => {
     console.log("I'm connected")
 })
 
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client", "build", "index.html")) 
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html")) 
+});
 
 app.use((err, req, res, next) => {
     if (err.name === "UnauthorizedError") {
